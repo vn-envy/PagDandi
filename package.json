@@ -1,0 +1,40 @@
+{
+  "name": "pagdandi",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "PagDandi (पगडंडी) — an offline sherpa in your pocket. Offline maps that think, speak the local language, and turn every trekker into someone else's safety net. Powered by Gemma 4 E4B on-device.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "relay": "node server/relay.js",
+    "trekpack": "node scripts/build-trekpack.mjs"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "maplibre-gl": "^4.7.1",
+    "pmtiles": "^3.2.1",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "suncalc": "^1.9.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/suncalc": "^1.9.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.11",
+    "ws": "^8.18.0"
+  }
+}

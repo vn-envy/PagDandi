@@ -1,0 +1,136 @@
+{
+  "id": "triund-indrahar",
+  "name": "Triund \u2013 Indrahar Pass",
+  "nativeName": "\u0924\u094d\u0930\u093f\u0909\u0902\u0921 \u2013 \u0907\u0902\u0926\u094d\u0930\u0939\u093e\u0930 \u092a\u093e\u0938",
+  "region": "Dhauladhar Range, McLeod Ganj, Himachal Pradesh",
+  "difficulty": "moderate",
+  "bbox": [76.318, 32.244, 76.372, 32.29],
+  "center": [76.3396, 32.2586],
+  "pmtiles": "/trek-packs/triund.pmtiles",
+  "demoDate": "2026-05-20T15:35:00+05:30",
+  "attribution": "Map \u00a9 OpenStreetMap contributors (ODbL) \u00b7 Vector tiles via Protomaps/PMTiles \u00b7 Trail curated from Indiahikes GPX + OSM. Coordinates are an illustrative demo pack.",
+  "bytes": 46137344,
+  "trail": [
+    [76.3227, 32.2469],
+    [76.3245, 32.2478],
+    [76.3268, 32.2489],
+    [76.3292, 32.2502],
+    [76.3315, 32.2518],
+    [76.3338, 32.2535],
+    [76.3358, 32.2552],
+    [76.3378, 32.257],
+    [76.3396, 32.2586],
+    [76.3418, 32.26],
+    [76.344, 32.2616],
+    [76.3455, 32.2635],
+    [76.3478, 32.2658],
+    [76.35, 32.2682],
+    [76.3522, 32.2705],
+    [76.3545, 32.2725],
+    [76.357, 32.2748],
+    [76.3595, 32.2772],
+    [76.3618, 32.2798],
+    [76.364, 32.283],
+    [76.3652, 32.2858]
+  ],
+  "elevation": [
+    2100, 2160, 2240, 2330, 2420, 2510, 2610, 2710, 2828, 2890, 2980, 3080,
+    3200, 3320, 3450, 3600, 3760, 3930, 4100, 4280, 4342
+  ],
+  "pois": [
+    {
+      "id": "poi-triund-view",
+      "name": "Triund Top",
+      "category": "viewpoint",
+      "coord": [76.3396, 32.2586],
+      "ele": 2828,
+      "note": "360\u00b0 Dhauladhar amphitheatre \u2014 the classic sunset ridge."
+    },
+    {
+      "id": "poi-triund-camp",
+      "name": "Triund Meadow Campsite",
+      "category": "campsite",
+      "coord": [76.3405, 32.259],
+      "ele": 2830,
+      "note": "Open meadow, tents in season. Windy after dark."
+    },
+    {
+      "id": "poi-snowline-camp",
+      "name": "Snowline Campsite",
+      "category": "campsite",
+      "coord": [76.3458, 32.2637],
+      "ele": 3100,
+      "note": "Last camp before the technical climb to the pass."
+    },
+    {
+      "id": "poi-magicview-water",
+      "name": "Spring below Magic View",
+      "category": "water",
+      "coord": [76.327, 32.2486],
+      "ele": 2230,
+      "note": "Reliable spring, early on the climb."
+    },
+    {
+      "id": "poi-snowline-water",
+      "name": "Snowline Stream",
+      "category": "water",
+      "coord": [76.3452, 32.2632],
+      "ele": 3060,
+      "note": "LAST reliable water before Indrahar Pass. Fill up here."
+    },
+    {
+      "id": "poi-lahesh-shelter",
+      "name": "Lahesh Cave",
+      "category": "shelter",
+      "coord": [76.3545, 32.2725],
+      "ele": 3600,
+      "note": "Rock shelter, sleeps ~6. Emergency bivvy in bad weather."
+    },
+    {
+      "id": "poi-snowline-hut",
+      "name": "Snowline Caf\u00e9 Hut",
+      "category": "shelter",
+      "coord": [76.3455, 32.2635],
+      "ele": 3080,
+      "note": "Seasonal stone hut, can shelter from storms."
+    },
+    {
+      "id": "poi-magicview-food",
+      "name": "Magic View Caf\u00e9",
+      "category": "food",
+      "coord": [76.3268, 32.2489],
+      "ele": 2240,
+      "note": "Chai and maggi, first stop on the climb."
+    },
+    {
+      "id": "poi-triund-food",
+      "name": "Triund Chai Stalls",
+      "category": "food",
+      "coord": [76.34, 32.2588],
+      "ele": 2828,
+      "note": "Seasonal stalls on the ridge."
+    },
+    {
+      "id": "poi-gallu-exit",
+      "name": "Gallu Devi Trailhead",
+      "category": "exit",
+      "coord": [76.3227, 32.2469],
+      "ele": 2100,
+      "note": "Road head. Descend ~1.5 h to McLeod Ganj taxis."
+    },
+    {
+      "id": "poi-indrahar-summit",
+      "name": "Indrahar Pass",
+      "category": "summit",
+      "coord": [76.3652, 32.2858],
+      "ele": 4342,
+      "note": "The pass into Chamba. Snow-corniced; turn back in whiteout."
+    }
+  ],
+  "emergency": [
+    { "label": "Emergency (all-India)", "number": "112" },
+    { "label": "State Disaster / SDRF", "number": "1070" },
+    { "label": "Kangra District Control Room", "number": "1077" },
+    { "label": "McLeod Ganj Police", "number": "+911892221798" }
+  ]
+}

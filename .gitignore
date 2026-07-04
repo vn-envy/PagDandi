@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Offline vector bundles are large; generate with scripts/extract-pmtiles.sh
+public/trek-packs/*.pmtiles
+
+# Raw Overpass dumps
+scripts/*.osm.json
+
+*.log
+*.tsbuildinfo
