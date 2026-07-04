@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Footprints } from "lucide-react";
 import { TrekMap } from "@/components/trek-map";
 import { TrailSathi } from "@/components/trail-sathi";
@@ -23,10 +23,14 @@ export default function PagDandiApp() {
   const [kmAlongTrail, setKmAlongTrail] = useState(DEFAULT_KM);
   const [humsafarEnabled, setHumsafarEnabled] = useState(true);
   const [visible, setVisible] = useState(true);
-  const [peerId] = useState(() =>
-    typeof crypto !== "undefined" ? crypto.randomUUID() : "demo-peer",
-  );
-  const [peerName] = useState(() => `Trekker-${Math.random().toString(36).slice(2, 5)}`);
+  // Random IDs must be generated after mount — during SSR they'd differ
+  // from the client render and break hydration (killing all interactivity).
+  const [peerId, setPeerId] = useState("");
+  const [peerName, setPeerName] = useState("");
+  useEffect(() => {
+    setPeerId(crypto.randomUUID());
+    setPeerName(`Trekker-${Math.random().toString(36).slice(2, 5)}`);
+  }, []);
 
   const position = useMemo(
     () => interpolatePosition(manifest, kmAlongTrail),
@@ -38,7 +42,7 @@ export default function PagDandiApp() {
       peerId,
       peerName,
       position,
-      humsafarEnabled,
+      humsafarEnabled && peerId !== "",
     );
 
   const showPoiLayers = useMemo(
