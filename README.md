@@ -12,11 +12,12 @@ Default demo trek — dense OSM data, foreign-backpacker crowd, perfect for tran
 
 | Feature | What it does |
 |---------|----------------|
-| **Offline map** | PMTiles vector basemap (Protomaps/OSM) via mapcn + MapLibre GL |
+| **Offline map** | PMTiles vector basemap (Protomaps/OSM) via mapcn + MapLibre GL, POI layer toggles |
+| **Elevation profile** | Interactive chart — drag to scrub your position along the trail (demo rig) |
 | **Trail Sathi** | Gemma 4 E4B calls local tools: `distance_to`, `nearest`, `remaining_ascent`, `sunset_time` |
-| **Bhasha Bridge** | 30s audio clips → Gemma AST → Hindi/English (35+ languages on-device) |
+| **Bhasha Bridge** | 30s audio clips → ffmpeg 16kHz → Gemma AST → Hindi ⇄ English with TTS read-aloud |
 | **SOS card** | Nearest exit/shelter, emergency numbers, shareable LKP code — navigation only |
-| **Humsafar** | Glowing peer dots via LAN WebSocket relay; production roadmap: BLE mesh |
+| **Humsafar** | Glowing peer dots via LAN WebSocket relay; SOS beacon triggers a full-width alert with a Gemma rescue brief |
 
 ## Quick start
 
@@ -41,12 +42,23 @@ litert-lm run --from-huggingface-repo=litert-community/gemma-4-E4B-it-litert-lm 
 litert-lm serve gemma-4-E4B-it.litertlm --port 8080
 export LITERT_URL=http://127.0.0.1:8080/v1
 
-# Option B: Ollama fallback
-ollama pull gemma4:4b
+# Option B: Ollama
+ollama pull gemma4:e4b
+ollama serve
 export OLLAMA_URL=http://127.0.0.1:11434
+export GEMMA_MODEL=gemma4:e4b   # default
 ```
 
-Without Gemma running, the server uses an honest **simulator** that executes the same trek tools — labeled in the UI.
+The server auto-detects LiteRT-LM → Ollama → an honest **simulator** that executes the same trek tools — always labeled in the UI.
+
+Verified working with real Gemma via Ollama:
+- **Trail Sathi**: native function calling — the model calls `remaining_ascent` + `sunset_time` before answering summit-timing questions (~25s/turn on 4-core CPU, thinking disabled for latency)
+- **Bhasha Bridge**: browser audio is transcoded server-side (ffmpeg → 16 kHz mono WAV) and passed to Gemma's speech-translation prompt; English speech → Hindi text in ~8s
+
+Notes:
+- `ffmpeg` is required on the server for Bhasha Bridge audio transcoding
+- On some virtualized Intel CPUs (Sapphire Rapids with AMX), ollama's AMX backend segfaults on Gemma models. Workaround: `sudo mv /usr/local/lib/ollama/libggml-cpu-sapphirerapids.so{,.disabled}` and restart `ollama serve` — it falls back to the stable AVX-512 backend
+- Models without native tool support work too: the server falls back to prompt-based tool calling (JSON blocks parsed from the reply)
 
 ## Trek Pack structure
 

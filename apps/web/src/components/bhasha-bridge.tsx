@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Languages, Loader2, Mic, Square, Volume2 } from "lucide-react";
+import { ArrowLeftRight, Languages, Loader2, Mic, Square, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,15 +9,26 @@ import { SERVER_URL } from "@/lib/types";
 
 const MAX_RECORD_MS = 30_000;
 
+const LANGS = [
+  { code: "English", speech: "en-US", label: "English" },
+  { code: "Hindi", speech: "hi-IN", label: "हिन्दी" },
+] as const;
+
 export function BhashaBridge() {
+  const [swap, setSwap] = useState(false);
   const [recording, setRecording] = useState(false);
   const [loading, setLoading] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
   const [translation, setTranslation] = useState<string | null>(null);
   const [backend, setBackend] = useState<string | null>(null);
+  const [elapsed, setElapsed] = useState(0);
   const mediaRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const source = swap ? LANGS[1] : LANGS[0];
+  const target = swap ? LANGS[0] : LANGS[1];
 
   async function startRecording() {
     try {
@@ -33,15 +44,18 @@ export function BhashaBridge() {
       mediaRef.current = recorder;
       recorder.start();
       setRecording(true);
+      setElapsed(0);
+      tickRef.current = setInterval(() => setElapsed((s) => s + 1), 1000);
       timerRef.current = setTimeout(() => stopRecording(), MAX_RECORD_MS);
     } catch {
-      // Demo without mic — use placeholder audio flag
+      // Demo without mic — placeholder audio flag
       await translateAudio(null);
     }
   }
 
   function stopRecording() {
     if (timerRef.current) clearTimeout(timerRef.current);
+    if (tickRef.current) clearInterval(tickRef.current);
     mediaRef.current?.stop();
     setRecording(false);
   }
@@ -65,8 +79,9 @@ export function BhashaBridge() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           audioBase64,
-          sourceLang: "English",
-          targetLang: "Hindi",
+          mimeType: blob?.type ?? "audio/webm",
+          sourceLang: source.code,
+          targetLang: target.code,
         }),
       });
       const data = await res.json();
@@ -76,11 +91,13 @@ export function BhashaBridge() {
 
       if (typeof window !== "undefined" && data.translation && "speechSynthesis" in window) {
         const utterance = new SpeechSynthesisUtterance(data.translation);
-        utterance.lang = "hi-IN";
+        utterance.lang = target.speech;
         window.speechSynthesis.speak(utterance);
       }
     } catch {
-      setTranslation("सर्वर से कनेक्ट नहीं हो सका।");
+      setTranslation(
+        target.code === "Hindi" ? "सर्वर से कनेक्ट नहीं हो सका।" : "Could not reach the server.",
+      );
     } finally {
       setLoading(false);
     }
@@ -97,10 +114,23 @@ export function BhashaBridge() {
           </Badge>
         </CardTitle>
         <p className="text-xs text-muted-foreground">
-          Hold up to a shepherd — English in, Hindi out. Max 30s clip.
+          Hold up to a shepherd — speech in, translated text out. Max 30s clip.
         </p>
       </CardHeader>
       <CardContent className="space-y-3">
+        <div className="flex items-center justify-center gap-3 rounded-lg border bg-muted/30 py-2 text-sm font-medium">
+          <span>{source.label}</span>
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={() => setSwap((s) => !s)}
+            aria-label="Swap languages"
+          >
+            <ArrowLeftRight className="size-3.5" />
+          </Button>
+          <span>{target.label}</span>
+        </div>
+
         <div className="flex gap-2">
           {!recording ? (
             <Button onClick={startRecording} disabled={loading} className="flex-1">
@@ -113,22 +143,26 @@ export function BhashaBridge() {
               )}
             </Button>
           ) : (
-            <Button variant="destructive" onClick={stopRecording} className="flex-1 animate-pulse">
-              <Square className="size-4" /> Recording… (max 30s)
+            <Button
+              variant="destructive"
+              onClick={stopRecording}
+              className="flex-1 animate-pulse"
+            >
+              <Square className="size-4" /> Stop ({30 - elapsed}s left)
             </Button>
           )}
         </div>
 
         {transcription && (
           <div className="rounded-lg border p-2">
-            <p className="text-[10px] text-muted-foreground">English</p>
+            <p className="text-[10px] text-muted-foreground">{source.code}</p>
             <p className="text-sm">{transcription}</p>
           </div>
         )}
         {translation && (
           <div className="rounded-lg border border-sky-500/30 bg-sky-500/5 p-2">
             <p className="flex items-center gap-1 text-[10px] text-sky-600 dark:text-sky-400">
-              <Volume2 className="size-3" /> Hindi
+              <Volume2 className="size-3" /> {target.code}
             </p>
             <p className="text-sm font-medium">{translation}</p>
             {backend && (

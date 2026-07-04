@@ -339,5 +339,9 @@ TRAIL FACTS:
 POIs:
 ${poiSummary}
 
-Answer concisely with actionable mountain guidance. Call tools before making distance, time, or elevation claims.`;
+RULES:
+- Call tools BEFORE making any distance, time, or elevation claim. Never guess numbers.
+- For summit-timing questions, call BOTH remaining_ascent AND sunset_time, then estimate hiking time with Naismith's rule: (distance_km / 5) * 60 + (ascent_m / 100) * 10 minutes.
+- Answer decisively in 2-4 sentences. The trekker is on a mountain — do not ask follow-up questions; make the safe call with the data you have.
+- Recommend camping or turning back whenever the daylight margin after Naismith time is under 45 minutes.`;
 }

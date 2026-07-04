@@ -11,7 +11,7 @@ import {
 
 const LITERT_URL = process.env.LITERT_URL ?? "http://127.0.0.1:8080/v1";
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://127.0.0.1:11434";
-const GEMMA_MODEL = process.env.GEMMA_MODEL ?? "gemma4:4b";
+const GEMMA_MODEL = process.env.GEMMA_MODEL ?? "gemma4:e4b";
 
 export type GemmaBackend = "litert-lm" | "ollama" | "simulator";
 
@@ -41,7 +41,20 @@ interface ChatMessage {
 interface ToolCall {
   id: string;
   type: "function";
-  function: { name: string; arguments: string };
+  // Ollama returns arguments as an object; OpenAI-compatible servers as a JSON string
+  function: { name: string; arguments: string | Record<string, unknown> };
+}
+
+function parseToolArgs(args: string | Record<string, unknown> | undefined): Record<string, unknown> {
+  if (!args) return {};
+  if (typeof args === "string") {
+    try {
+      return JSON.parse(args) as Record<string, unknown>;
+    } catch {
+      return {};
+    }
+  }
+  return args;
 }
 
 async function callOpenAICompatible(
@@ -74,9 +87,13 @@ async function callOpenAICompatible(
   return { content: msg.content ?? "", tool_calls: msg.tool_calls };
 }
 
+let ollamaSupportsTools: boolean | null = null;
+
 async function callOllama(
   messages: ChatMessage[],
+  useNativeTools = true,
 ): Promise<{ content: string; tool_calls?: ToolCall[] }> {
+  const withTools = useNativeTools && ollamaSupportsTools !== false;
   const res = await fetch(`${OLLAMA_URL}/api/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -84,17 +101,86 @@ async function callOllama(
       model: GEMMA_MODEL,
       messages,
       stream: false,
-      tools: TOOL_DEFINITIONS,
+      think: false, // thinking mode adds ~30s/turn on CPU; disable for trail latency
+      options: { temperature: 0.3, num_ctx: 4096 },
+      ...(withTools ? { tools: TOOL_DEFINITIONS } : {}),
     }),
   });
-  if (!res.ok) throw new Error(`Ollama error ${res.status}`);
+  if (!res.ok) {
+    const text = await res.text();
+    // Model lacks native tool support — remember and retry via prompt-based tools
+    if (withTools && /does not support tools/i.test(text)) {
+      ollamaSupportsTools = false;
+      return callOllama(messages, false);
+    }
+    throw new Error(`Ollama error ${res.status}: ${text.slice(0, 200)}`);
+  }
+  if (withTools) ollamaSupportsTools = true;
   const data = (await res.json()) as {
     message: { content?: string; tool_calls?: ToolCall[] };
   };
-  return {
-    content: data.message.content ?? "",
-    tool_calls: data.message.tool_calls,
-  };
+  let content = data.message.content ?? "";
+  let tool_calls = data.message.tool_calls;
+
+  // Prompt-based tool calling: parse ```tool_call {...}``` JSON blocks the
+  // system prompt asks for when native tools are unavailable.
+  if (!tool_calls?.length) {
+    const parsed = parsePromptToolCalls(content);
+    if (parsed.length) {
+      tool_calls = parsed;
+      content = "";
+    }
+  }
+  return { content, tool_calls };
+}
+
+function parsePromptToolCalls(content: string): ToolCall[] {
+  const calls: ToolCall[] = [];
+  const regex = /```(?:tool_call|json)?\s*(\{[\s\S]*?\})\s*```/g;
+  let match: RegExpExecArray | null;
+  let i = 0;
+  while ((match = regex.exec(content)) !== null) {
+    try {
+      const obj = JSON.parse(match[1]) as {
+        name?: string;
+        tool?: string;
+        arguments?: Record<string, unknown>;
+        parameters?: Record<string, unknown>;
+      };
+      const name = obj.name ?? obj.tool;
+      if (!name) continue;
+      const validNames = TOOL_DEFINITIONS.map((t) => t.function.name);
+      if (!validNames.includes(name)) continue;
+      calls.push({
+        id: `prompt-tc-${Date.now()}-${i++}`,
+        type: "function",
+        function: {
+          name,
+          arguments: JSON.stringify(obj.arguments ?? obj.parameters ?? {}),
+        },
+      });
+    } catch {
+      /* not a tool call */
+    }
+  }
+  return calls;
+}
+
+export function promptToolInstructions(): string {
+  const tools = TOOL_DEFINITIONS.map(
+    (t) =>
+      `- ${t.function.name}(${Object.keys(t.function.parameters.properties ?? {}).join(", ")}): ${t.function.description}`,
+  ).join("\n");
+  return `
+
+TOOLS AVAILABLE (call before making any distance/time/elevation claim):
+${tools}
+
+To call a tool, reply with ONLY a fenced block:
+\`\`\`tool_call
+{"name": "<tool_name>", "arguments": {}}
+\`\`\`
+After receiving the tool result, give your final answer as plain text with no code fences.`;
 }
 
 function simulatorGuide(question: string, position: Position): {
@@ -192,8 +278,13 @@ export async function trailSathiGuide(
     };
   }
 
+  const systemWithTools =
+    backend === "ollama" && ollamaSupportsTools === false
+      ? systemPrompt + promptToolInstructions()
+      : systemPrompt;
+
   const messages: ChatMessage[] = [
-    { role: "system", content: systemPrompt },
+    { role: "system", content: systemWithTools },
     { role: "user", content: question },
   ];
 
@@ -213,23 +304,42 @@ export async function trailSathiGuide(
         };
       }
 
-      messages.push({
-        role: "assistant",
-        content: response.content || "",
-        // @ts-expect-error ollama/openai tool_calls shape
-        tool_calls: response.tool_calls,
-      });
+      const promptBasedTools = backend === "ollama" && ollamaSupportsTools === false;
 
-      for (const tc of response.tool_calls) {
-        const args = JSON.parse(tc.function.arguments || "{}") as Record<string, unknown>;
-        const result = executeTool(tc.function.name, args, position);
-        toolCalls.push({ name: tc.function.name, args, result });
+      if (promptBasedTools) {
+        // Models without native tool templates reject assistant tool_calls and
+        // the tool role — feed results back as plain conversation turns.
+        const results: string[] = [];
+        for (const tc of response.tool_calls) {
+          const args = parseToolArgs(tc.function.arguments);
+          const result = executeTool(tc.function.name, args, position);
+          toolCalls.push({ name: tc.function.name, args, result });
+          results.push(`${tc.function.name}(${JSON.stringify(args)}) → ${JSON.stringify(result)}`);
+        }
+        messages.push({ role: "assistant", content: `Calling tools:\n${results.map((r) => r.split(" →")[0]).join("\n")}` });
         messages.push({
-          role: "tool",
-          tool_call_id: tc.id,
-          name: tc.function.name,
-          content: JSON.stringify(result),
+          role: "user",
+          content: `TOOL RESULTS:\n${results.join("\n")}\n\nNow answer the original question in plain text using these results.`,
         });
+      } else {
+        messages.push({
+          role: "assistant",
+          content: response.content || "",
+          // @ts-expect-error ollama/openai tool_calls shape
+          tool_calls: response.tool_calls,
+        });
+
+        for (const tc of response.tool_calls) {
+          const args = parseToolArgs(tc.function.arguments);
+          const result = executeTool(tc.function.name, args, position);
+          toolCalls.push({ name: tc.function.name, args, result });
+          messages.push({
+            role: "tool",
+            tool_call_id: tc.id,
+            name: tc.function.name,
+            content: JSON.stringify(result),
+          });
+        }
       }
     }
 
@@ -255,6 +365,36 @@ export async function trailSathiGuide(
   }
 }
 
+/** Transcode any browser audio (webm/ogg/mp4) to 16kHz mono WAV — Gemma's required format. */
+async function transcodeTo16kWav(audioBase64: string): Promise<string | null> {
+  const { execFile } = await import("node:child_process");
+  const { promisify } = await import("node:util");
+  const { writeFile, readFile, rm, mkdtemp } = await import("node:fs/promises");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+
+  const dir = await mkdtemp(join(tmpdir(), "bhasha-"));
+  const input = join(dir, "in.audio");
+  const output = join(dir, "out.wav");
+  try {
+    await writeFile(input, Buffer.from(audioBase64, "base64"));
+    await promisify(execFile)("ffmpeg", [
+      "-y",
+      "-i", input,
+      "-ar", "16000",
+      "-ac", "1",
+      "-t", "30", // enforce the 30-second clip limit
+      output,
+    ]);
+    const wav = await readFile(output);
+    return wav.toString("base64");
+  } catch {
+    return null;
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+}
+
 export async function bhashaTranslate(
   audioBase64: string,
   sourceLang: string,
@@ -265,24 +405,40 @@ When formatting the answer, first output the transcription in ${sourceLang}, the
 
   const backend = await detectBackend();
 
-  if (backend === "ollama") {
+  if (backend === "ollama" && audioBase64 !== "demo") {
     try {
-      const res = await fetch(`${OLLAMA_URL}/api/generate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: GEMMA_MODEL,
-          prompt,
-          images: [audioBase64],
-          stream: false,
-        }),
-      });
-      if (res.ok) {
-        const data = (await res.json()) as { response: string };
-        const parts = data.response.split("\n");
-        const transcription = parts[0] ?? "";
-        const translation = parts.slice(1).join("\n").replace(new RegExp(`^${targetLang}:\\s*`), "");
-        return { transcription, translation, backend };
+      const wavBase64 = await transcodeTo16kWav(audioBase64);
+      if (wavBase64) {
+        const res = await fetch(`${OLLAMA_URL}/api/generate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: GEMMA_MODEL,
+            prompt,
+            images: [wavBase64],
+            stream: false,
+            think: false,
+            options: { temperature: 0.1 },
+          }),
+        });
+        if (res.ok) {
+          const data = (await res.json()) as { response: string };
+          const raw = data.response.trim();
+          const marker = new RegExp(`^${targetLang}:\\s*`, "im");
+          const lines = raw.split("\n").filter((l) => l.trim());
+          const translationLineIdx = lines.findIndex((l) => marker.test(l));
+          if (translationLineIdx > 0) {
+            return {
+              transcription: lines.slice(0, translationLineIdx).join(" "),
+              translation: lines
+                .slice(translationLineIdx)
+                .join(" ")
+                .replace(marker, ""),
+              backend,
+            };
+          }
+          return { transcription: raw, translation: raw, backend };
+        }
       }
     } catch {
       /* fall through */

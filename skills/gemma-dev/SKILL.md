@@ -60,3 +60,11 @@ Follow these specific instructions for formatting the answer:
 ## Demo without GPU
 
 PagDandi's `simulator` backend runs the same tool functions deterministically — always label it in UI when active.
+
+## Ollama specifics (verified)
+
+- `gemma4:e4b` supports native `tools` and `thinking`. Disable thinking (`"think": false`) for trail latency — it costs ~30s/turn on CPU.
+- Ollama returns `tool_calls[].function.arguments` as an **object**, not a JSON string (OpenAI-compatible servers use strings). Parse both.
+- Audio: pass base64 **16 kHz mono WAV** in the `images` field of `/api/generate`. Browser `audio/webm` must be transcoded first (ffmpeg `-ar 16000 -ac 1`). Max 30s.
+- AMX segfault on virtualized Sapphire Rapids CPUs: disable `libggml-cpu-sapphirerapids.so` so ollama falls back to AVX-512.
+- Models lacking a tools template reject the `tools` field and the `tool` role; use prompt-based JSON tool calls and feed results back as user turns.

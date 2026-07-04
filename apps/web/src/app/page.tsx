@@ -8,11 +8,15 @@ import { BhashaBridge } from "@/components/bhasha-bridge";
 import { SosCard } from "@/components/sos-card";
 import { HumsafarPanel } from "@/components/humsafar-panel";
 import { NightTrekToggle } from "@/components/night-trek-toggle";
+import { ElevationProfile } from "@/components/elevation-profile";
+import { SosAlertBanner } from "@/components/sos-alert-banner";
+import { PoiLayerToggle } from "@/components/poi-layer-toggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useHumsafar } from "@/hooks/use-humsafar";
 import { interpolatePosition } from "@/lib/geo";
 import { triundManifest, triundPois, triundTrailCoords } from "@/data/triund-pack";
+import type { PoiType } from "@/lib/types";
 
 const DEFAULT_KM = 5.1;
 
@@ -32,6 +36,15 @@ export default function PagDandiApp() {
     setPeerName(`Trekker-${Math.random().toString(36).slice(2, 5)}`);
   }, []);
 
+  const [poiLayers, setPoiLayers] = useState<Record<string, boolean>>({
+    viewpoint: true,
+    campsite: true,
+    water: true,
+    shelter: true,
+    exit: true,
+    sos: true,
+  });
+
   const position = useMemo(
     () => interpolatePosition(manifest, kmAlongTrail),
     [manifest, kmAlongTrail],
@@ -45,20 +58,20 @@ export default function PagDandiApp() {
       humsafarEnabled && peerId !== "",
     );
 
-  const showPoiLayers = useMemo(
-    () => ({
-      viewpoint: true,
-      campsite: true,
-      water: true,
-      shelter: true,
-      exit: true,
-      sos: true,
-    }),
-    [],
-  );
+  const togglePoiLayer = (type: PoiType) =>
+    setPoiLayers((l) => ({ ...l, [type]: l[type] === false }));
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      {sosAlert && (
+        <SosAlertBanner
+          sosPeer={sosAlert}
+          position={position}
+          kmAlongTrail={kmAlongTrail}
+          onDismiss={clearSosAlert}
+        />
+      )}
+
       <header className="flex items-center gap-3 border-b px-4 py-3">
         <Footprints className="size-6 text-orange-500" />
         <div className="flex-1">
@@ -76,15 +89,25 @@ export default function PagDandiApp() {
       </header>
 
       <main className="grid flex-1 gap-4 p-4 lg:grid-cols-[1fr_380px]">
-        <div className="h-[55vh] min-h-[360px] lg:h-[calc(100vh-5rem)]">
-          <TrekMap
+        <div className="flex flex-col gap-3">
+          <div className="relative h-[48vh] min-h-[340px] lg:h-[calc(100vh-16.5rem)]">
+            <TrekMap
+              manifest={manifest}
+              trailCoords={trailCoords}
+              pois={pois}
+              position={position}
+              peers={peers}
+              staleMs={staleMs}
+              showPoiLayers={poiLayers}
+            />
+            <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10">
+              <PoiLayerToggle layers={poiLayers} onToggle={togglePoiLayer} />
+            </div>
+          </div>
+          <ElevationProfile
             manifest={manifest}
-            trailCoords={trailCoords}
-            pois={pois}
-            position={position}
-            peers={peers}
-            staleMs={staleMs}
-            showPoiLayers={showPoiLayers}
+            kmAlongTrail={kmAlongTrail}
+            onKmChange={setKmAlongTrail}
           />
         </div>
 
@@ -122,15 +145,6 @@ export default function PagDandiApp() {
                 onVisibleChange={setVisible}
               />
               <SosCard kmAlongTrail={kmAlongTrail} sosPeer={sosAlert} />
-              {sosAlert && (
-                <button
-                  type="button"
-                  className="text-xs text-muted-foreground underline"
-                  onClick={clearSosAlert}
-                >
-                  Dismiss SOS alert
-                </button>
-              )}
             </TabsContent>
           </Tabs>
         </div>
