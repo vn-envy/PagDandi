@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Siren, X } from "lucide-react";
 import { useApp } from "@/state/store";
-import { llmAvailable, rescueBrief, type SathiReply } from "@/lib/gemma";
+import { llmStatus, rescueBrief, type SathiReply } from "@/lib/gemma";
 
 /**
  * When an SOS beacon appears on the Humsafar layer, Trail Sathi composes a
@@ -10,7 +10,7 @@ import { llmAvailable, rescueBrief, type SathiReply } from "@/lib/gemma";
 export function RescueBrief() {
   const peers = useApp((s) => s.peers);
   const pack = useApp((s) => s.pack);
-  const [brief, setBrief] = useState<{ name: string; reply: SathiReply } | null>(null);
+  const [brief, setBrief] = useState<{ name: string; reply: SathiReply; model: string | null } | null>(null);
   const [busy, setBusy] = useState(false);
   const knownSos = useRef<Set<string>>(new Set());
 
@@ -22,12 +22,12 @@ export function RescueBrief() {
         setBusy(true);
         const s = useApp.getState();
         (async () => {
-          const useModel = await llmAvailable();
+          const status = await llmStatus();
           const reply = await rescueBrief(
             { peerName: p.name, peerLat: p.lat, peerLng: p.lng, ctx: { pack, position: s.position(), now: s.now() } },
-            useModel,
+            status.up,
           );
-          setBrief({ name: p.name, reply });
+          setBrief({ name: p.name, reply, model: status.model });
           setBusy(false);
         })();
       }
@@ -56,7 +56,9 @@ export function RescueBrief() {
       </div>
       <p className="text-sm leading-snug">{brief.reply.answer}</p>
       <div className="text-muted-foreground mt-2 text-[9px] uppercase tracking-wide">
-        {brief.reply.source === "gemma" ? "Situational brief · Gemma E4B on-device" : "Situational brief · Pack Brain (deterministic)"}
+        {brief.reply.source === "gemma"
+          ? `Situational brief · ${brief.model ?? "local model"} on-device`
+          : "Situational brief · Pack Brain (deterministic)"}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
 const SRC = new URL("../data-src/", import.meta.url);
-const OUT = new URL("../public/packs/triund/pack.json", import.meta.url);
+const OUT = new URL("../public/packs/triund-indrahar/pack.json", import.meta.url);
 
 // ---------------------------------------------------------------------------
 // geometry helpers

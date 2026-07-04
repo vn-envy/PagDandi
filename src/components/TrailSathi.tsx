@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useApp } from "@/state/store";
-import { askSathi, llmAvailable, packBrain, type ChatMessage, type SathiSource, type SathiStep } from "@/lib/gemma";
+import { askSathi, llmStatus, packBrain, type ChatMessage, type SathiSource, type SathiStep } from "@/lib/gemma";
 import type { ToolContext } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 
@@ -44,10 +44,14 @@ export function TrailSathi() {
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [modelUp, setModelUp] = useState<boolean | null>(null);
+  const [modelName, setModelName] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    llmAvailable().then(setModelUp);
+    llmStatus().then((s) => {
+      setModelUp(s.up);
+      setModelName(s.model);
+    });
   }, []);
 
   useEffect(() => {
@@ -93,8 +97,8 @@ export function TrailSathi() {
             Position-aware guide · tools over a live world model · fully offline
           </div>
         </div>
-        <Badge variant={modelUp ? "default" : "secondary"} className="text-[9px]">
-          {modelUp === null ? "…" : modelUp ? "GEMMA E4B ON-DEVICE" : "PACK BRAIN (no model)"}
+        <Badge variant={modelUp ? "default" : "secondary"} className="text-[9px] uppercase">
+          {modelUp === null ? "…" : modelUp ? `${modelName ?? "model"} · on-device` : "PACK BRAIN (no model)"}
         </Badge>
       </div>
 
@@ -131,7 +135,9 @@ export function TrailSathi() {
                     {turn.steps && <StepTrace steps={turn.steps} />}
                     <div className="text-muted-foreground mt-1 flex items-center gap-1 text-[9px] uppercase tracking-wide">
                       <Sparkles className="size-2.5" />
-                      {turn.source === "gemma" ? "Gemma E4B, on-device" : "Pack Brain (deterministic tools, no model)"}
+                      {turn.source === "gemma"
+                        ? `${modelName ?? "local model"}, on-device`
+                        : "Pack Brain (deterministic tools, no model)"}
                     </div>
                   </>
                 )}

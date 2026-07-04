@@ -241,6 +241,9 @@ export function TrekMap() {
       </MapMarker>
 
       <MapControls position="bottom-right" showZoom showCompass />
+      <div className="text-muted-foreground pointer-events-none absolute bottom-0.5 left-1 z-10 text-[8px]">
+        © OpenStreetMap contributors · Protomaps
+      </div>
     </MapCn>
   );
 }

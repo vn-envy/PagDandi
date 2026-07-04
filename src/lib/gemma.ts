@@ -34,8 +34,13 @@ export interface SathiReply {
   source: SathiSource;
 }
 
-const MODEL = () => localStorage.getItem("pagdandi.model") ?? "gemma3n:e4b";
 const LLM_BASE = "/llm";
+
+/** Model actually served by the local endpoint (resolved by llmStatus). */
+let activeModel: string | null = null;
+
+const MODEL = () =>
+  activeModel ?? localStorage.getItem("pagdandi.model") ?? "gemma3n:e4b";
 
 function systemPrompt(ctx: ToolContext): string {
   const { pack } = ctx;
@@ -172,17 +177,29 @@ export async function askSathi(
   return { answer: final, steps, source: "gemma" };
 }
 
-/** Quick reachability probe so the UI can show which brain is answering. */
-export async function llmAvailable(): Promise<boolean> {
+/**
+ * Reachability probe. Resolves the model the endpoint actually serves so the
+ * UI can label answers truthfully (e.g. "gemma3n:e4b" vs a dev mock).
+ */
+export async function llmStatus(): Promise<{ up: boolean; model: string | null }> {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 2500);
     const res = await fetch(`${LLM_BASE}/api/tags`, { signal: controller.signal });
     clearTimeout(timer);
-    return res.ok;
+    if (!res.ok) return { up: false, model: null };
+    const data = await res.json().catch(() => null);
+    const names: string[] = data?.models?.map((m: { name: string }) => m.name) ?? [];
+    const preferred = localStorage.getItem("pagdandi.model") ?? "gemma3n:e4b";
+    activeModel = names.find((n) => n.startsWith(preferred)) ?? names[0] ?? preferred;
+    return { up: true, model: activeModel };
   } catch {
-    return false;
+    return { up: false, model: null };
   }
+}
+
+export async function llmAvailable(): Promise<boolean> {
+  return (await llmStatus()).up;
 }
 
 // ---------------------------------------------------------------------------
