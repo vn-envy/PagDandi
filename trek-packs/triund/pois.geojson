@@ -1,0 +1,115 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-view-1",
+        "name": "Dhauladhar Viewpoint",
+        "type": "viewpoint",
+        "elevationM": 2460,
+        "description": "Panoramic view of the Dhauladhar range and Kangra valley"
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3455, 32.2478] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-camp-1",
+        "name": "Triund Meadow Campsite",
+        "type": "campsite",
+        "elevationM": 2870,
+        "description": "Main camping meadow below Triund top. Forest rest house nearby."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3655, 32.2578] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-camp-2",
+        "name": "Snowline Café Camp",
+        "type": "campsite",
+        "elevationM": 2700,
+        "description": "Last tea stall before the final ascent. Common overnight stop."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3588, 32.2545] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-water-1",
+        "name": "Stream near Galu",
+        "type": "water",
+        "elevationM": 2280,
+        "description": "Reliable stream crossing. Last major water before Magic View."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3365, 32.2428] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-water-2",
+        "name": "Magic View spring",
+        "type": "water",
+        "elevationM": 2510,
+        "description": "Seasonal spring near café. Check flow in late season."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3475, 32.2495] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-shelter-1",
+        "name": "Forest Rest House Triund",
+        "type": "shelter",
+        "elevationM": 2865,
+        "description": "Government forest rest house. Basic shelter, no guarantee of vacancy."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3648, 32.2575] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-shelter-2",
+        "name": "Galu Temple shelter",
+        "type": "shelter",
+        "elevationM": 2300,
+        "description": "Temple veranda offers rain shelter. Last structure before ridge."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3345, 32.2415] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-exit-1",
+        "name": "Dharamkot exit (fastest descent)",
+        "type": "exit",
+        "elevationM": 2150,
+        "description": "Alternate descent via Dharamkot. 45 min to road."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3285, 32.2325] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-exit-2",
+        "name": "McLeod Ganj main trail exit",
+        "type": "exit",
+        "elevationM": 2082,
+        "description": "Return via Galu–McLeod route. Nearest road and phone signal."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3234, 32.2196] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi-sos-1",
+        "name": "SOS Rally Point — Galu Temple",
+        "type": "sos",
+        "elevationM": 2300,
+        "description": "Last point with partial cell signal on clear days. SDRF knows this landmark."
+      },
+      "geometry": { "type": "Point", "coordinates": [76.3348, 32.2418] }
+    }
+  ]
+}
