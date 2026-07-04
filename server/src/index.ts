@@ -6,6 +6,7 @@ import {
   bhashaTranslate,
   detectBackend,
   humsafarSosBrief,
+  prakritiLens,
   trailSathiGuide,
 } from "./gemma.js";
 import { interpolatePosition, loadManifest, nearestPoi } from "./trek-tools.js";
@@ -57,6 +58,19 @@ app.post("/api/translate", async (req, res) => {
     return;
   }
   const result = await bhashaTranslate(audioBase64, sourceLang, targetLang);
+  res.json(result);
+});
+
+app.post("/api/lens", async (req, res) => {
+  const { imageBase64, kmAlongTrail = 5.1 } = req.body as {
+    imageBase64?: string;
+    kmAlongTrail?: number;
+  };
+  if (!imageBase64) {
+    res.status(400).json({ error: "imageBase64 required" });
+    return;
+  }
+  const result = await prakritiLens(imageBase64, Number(kmAlongTrail));
   res.json(result);
 });
 

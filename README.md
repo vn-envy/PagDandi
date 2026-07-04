@@ -16,6 +16,7 @@ Default demo trek — dense OSM data, foreign-backpacker crowd, perfect for tran
 | **Elevation profile** | Interactive chart — drag to scrub your position along the trail (demo rig) |
 | **Trail Sathi** | Gemma 4 E4B calls local tools: `distance_to`, `nearest`, `remaining_ascent`, `sunset_time` |
 | **Bhasha Bridge** | 30s audio clips → ffmpeg 16kHz → Gemma AST → Hindi ⇄ English with TTS read-aloud |
+| **Prakriti Lens** | Camera/photo → Gemma vision identifies flora, fauna & peaks with altitude-aware sherpa context — never medical/edibility advice |
 | **SOS card** | Nearest exit/shelter, emergency numbers, shareable LKP code — navigation only |
 | **Humsafar** | Glowing peer dots via LAN WebSocket relay; SOS beacon triggers a full-width alert with a Gemma rescue brief |
 
@@ -54,6 +55,7 @@ The server auto-detects LiteRT-LM → Ollama → an honest **simulator** that ex
 Verified working with real Gemma via Ollama:
 - **Trail Sathi**: native function calling — the model calls `remaining_ascent` + `sunset_time` before answering summit-timing questions (~25s/turn on 4-core CPU, thinking disabled for latency)
 - **Bhasha Bridge**: browser audio is transcoded server-side (ffmpeg → 16 kHz mono WAV) and passed to Gemma's speech-translation prompt; English speech → Hindi text in ~8s
+- **Prakriti Lens**: camera frames are downscaled client-side (≤1024px JPEG) and sent to Gemma vision with the trek/elevation context in the prompt (~25–50s on CPU)
 
 Notes:
 - `ffmpeg` is required on the server for Bhasha Bridge audio transcoding

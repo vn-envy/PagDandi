@@ -3,6 +3,7 @@ import {
   buildSystemPrompt,
   executeTool,
   interpolatePosition,
+  loadManifest,
   type Position,
   estimateHikingMinutes,
   remainingAscent,
@@ -400,7 +401,8 @@ export async function bhashaTranslate(
   sourceLang: string,
   targetLang: string,
 ): Promise<{ transcription: string; translation: string; backend: GemmaBackend }> {
-  const prompt = `Transcribe the following speech segment in ${sourceLang}, then translate it into ${targetLang}.
+  // Nonce defeats ollama's prompt-prefix KV cache (see prakritiLens).
+  const prompt = `[clip ${Date.now().toString(36)}] Transcribe the following speech segment in ${sourceLang}, then translate it into ${targetLang}.
 When formatting the answer, first output the transcription in ${sourceLang}, then one newline, then output the string '${targetLang}: ', then the translation in ${targetLang}.`;
 
   const backend = await detectBackend();
@@ -412,13 +414,14 @@ When formatting the answer, first output the transcription in ${sourceLang}, the
         const res = await fetch(`${OLLAMA_URL}/api/generate`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          signal: AbortSignal.timeout(120_000),
           body: JSON.stringify({
             model: GEMMA_MODEL,
             prompt,
             images: [wavBase64],
             stream: false,
             think: false,
-            options: { temperature: 0.1 },
+            options: { temperature: 0.1, num_predict: 300 },
           }),
         });
         if (res.ok) {
@@ -461,6 +464,83 @@ When formatting the answer, first output the transcription in ${sourceLang}, the
   return {
     ...demo,
     backend: "simulator",
+  };
+}
+
+const LENS_DEMOS = [
+  {
+    subject: "Rhododendron arboreum (बुरांश / Burans)",
+    reply:
+      "Rhododendron arboreum — बुरांश (Burans), Himachal's state flower. Those deep-red blooms cover the Dhauladhar slopes between 1,500–3,000m in spring. Locals make a famous sharbat from the petals, and you'll see the twisted trunks used as trail markers. At your elevation this is the dominant flowering tree — where burans thrives, you're still below the treeline.",
+  },
+  {
+    subject: "Himalayan Griffon (Gyps himalayensis)",
+    reply:
+      "Himalayan Griffon vulture — one of the largest birds in the Himalaya with a near 3m wingspan. They ride the thermals off the Dhauladhar ridge most afternoons. Seeing them circling low can mean livestock carcass nearby — shepherds' dogs may be around, give them space.",
+  },
+] as const;
+
+export async function prakritiLens(
+  imageBase64: string,
+  kmAlongTrail: number,
+): Promise<{ reply: string; backend: GemmaBackend; position: Position }> {
+  const position = interpolatePosition(kmAlongTrail);
+  const manifest = loadManifest();
+  // Prompt structure matters: with a long persona-first prompt, gemma4:e4b
+  // intermittently claims no image was attached (even though ollama decodes
+  // it — visible as "image decoded" in server logs). Anchoring on the image
+  // in the first sentence and keeping instructions tight fixes it. The nonce
+  // defeats ollama's prompt-prefix KV cache.
+  const prompt = `Look carefully at the attached photo. It was just taken on the ${manifest.name} trail (${manifest.region}) at about ${position.elevationM}m elevation.
+
+First, describe what you actually see. Then, speaking as Prakriti Lens — a warm, knowledgeable local sherpa-naturalist — explain it in 3-5 sentences: common name (with Hindi/Pahari local name and scientific name if it's a plant or animal), its ecology at this altitude, and any trail lore or practical relevance.
+
+Safety rules: mention hazards (aggressive wildlife, thorns, unstable ground) when relevant, but give absolutely NO medical, edibility, or foraging advice — if locals traditionally use a plant you may say so, adding that trekkers must never consume wild plants.
+[shot ${Date.now().toString(36)}]`;
+
+  const backend = await detectBackend();
+
+  // gemma4:e4b via ollama intermittently ignores the attached image even
+  // though the runtime decodes it (verified in ollama logs). Detect the
+  // refusal pattern and retry — the second attempt nearly always sees it.
+  const refusalPattern =
+    /(no image|cannot (directly )?["']?(look|see|view)|not provided|unable to (view|see)|provide the (image|photo|picture))/i;
+
+  if (backend === "ollama" && imageBase64 && imageBase64 !== "demo") {
+    try {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        const res = await fetch(`${OLLAMA_URL}/api/generate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: AbortSignal.timeout(120_000),
+          body: JSON.stringify({
+            model: GEMMA_MODEL,
+            prompt: `${prompt}\n[attempt ${attempt}-${Date.now().toString(36)}]`,
+            images: [imageBase64],
+            stream: false,
+            think: false,
+            // num_predict caps runaway generations that stall low-RAM CPU boxes
+            options: { temperature: 0.4, num_predict: 260 },
+          }),
+        });
+        if (!res.ok) break;
+        const data = (await res.json()) as { response: string };
+        const reply = data.response.trim();
+        if (!refusalPattern.test(reply.slice(0, 200))) {
+          return { reply, backend, position };
+        }
+        console.log(`[lens] model ignored image (attempt ${attempt + 1}/2), retrying`);
+      }
+    } catch {
+      /* fall through */
+    }
+  }
+
+  const demo = LENS_DEMOS[Math.floor(Math.random() * LENS_DEMOS.length)];
+  return {
+    reply: `${demo.reply}\n\n_(Demo response — connect Gemma for live identification.)_`,
+    backend: "simulator",
+    position,
   };
 }
 

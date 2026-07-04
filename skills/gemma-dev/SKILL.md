@@ -68,3 +68,5 @@ PagDandi's `simulator` backend runs the same tool functions deterministically �
 - Audio: pass base64 **16 kHz mono WAV** in the `images` field of `/api/generate`. Browser `audio/webm` must be transcoded first (ffmpeg `-ar 16000 -ac 1`). Max 30s.
 - AMX segfault on virtualized Sapphire Rapids CPUs: disable `libggml-cpu-sapphirerapids.so` so ollama falls back to AVX-512.
 - Models lacking a tools template reject the `tools` field and the `tool` role; use prompt-based JSON tool calls and feed results back as user turns.
+- **Vision flakiness**: gemma4:e4b via ollama intermittently replies "no image was provided" even though the runtime decoded the image (`image decoded` visible in ollama logs). Mitigation: detect the refusal pattern in the first ~200 chars and retry once with a nonce in the prompt — the retry almost always sees the image. Cap `num_predict` (~260) so runaway generations don't stall low-RAM CPU hosts.
+- Vision prompt tip: anchor the image in the first sentence ("Look carefully at the attached photo…") before persona instructions; persona-first prompts trigger the refusal more often.

@@ -9,6 +9,7 @@ import { SosCard } from "@/components/sos-card";
 import { HumsafarPanel } from "@/components/humsafar-panel";
 import { NightTrekToggle } from "@/components/night-trek-toggle";
 import { ElevationProfile } from "@/components/elevation-profile";
+import { PrakritiLens } from "@/components/prakriti-lens";
 import { SosAlertBanner } from "@/components/sos-alert-banner";
 import { PoiLayerToggle } from "@/components/poi-layer-toggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -120,6 +121,9 @@ export default function PagDandiApp() {
               <TabsTrigger value="bhasha" className="flex-1">
                 Bhasha
               </TabsTrigger>
+              <TabsTrigger value="lens" className="flex-1">
+                Lens
+              </TabsTrigger>
               <TabsTrigger value="sos" className="flex-1">
                 SOS
               </TabsTrigger>
@@ -133,6 +137,9 @@ export default function PagDandiApp() {
             </TabsContent>
             <TabsContent value="bhasha" className="mt-3">
               <BhashaBridge />
+            </TabsContent>
+            <TabsContent value="lens" className="mt-3">
+              <PrakritiLens kmAlongTrail={kmAlongTrail} />
             </TabsContent>
             <TabsContent value="sos" className="mt-3 space-y-3">
               <HumsafarPanel
