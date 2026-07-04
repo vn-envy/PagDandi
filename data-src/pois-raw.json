@@ -1,0 +1,6433 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-04T10:21:44Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 513003842,
+  "lat": 32.2455835,
+  "lon": 76.3362033,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-05-07",
+    "name": "No Name Cafe",
+    "name:en": "No Name Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 513003846,
+  "lat": 32.2449496,
+  "lon": 76.3364588,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chinar Cafe",
+    "name:en": "Chinar Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 513003884,
+  "lat": 32.2438877,
+  "lon": 76.3338964,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Café Bhagsu"
+  }
+},
+{
+  "type": "node",
+  "id": 513003893,
+  "lat": 32.2447252,
+  "lon": 76.3370755,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 513003894,
+  "lat": 32.2442760,
+  "lon": 76.3345604,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2023-12-11",
+    "int_name": "Bhagsu Naag Mandir",
+    "name": "Bhagsu Naag Temple",
+    "name:en": "Bhagsu Naag Temple",
+    "name:hi": "भागसू नाग मंदिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 539994189,
+  "lat": 32.2545856,
+  "lon": 76.3259043,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2023-11-27",
+    "designation": "Small shine with attached basic shelter",
+    "name": "Galu Devi Mandir",
+    "name:hi": "गल्लू देवि मंदिर"
+  }
+},
+{
+  "type": "node",
+  "id": 539994191,
+  "lat": 32.2558247,
+  "lon": 76.3427529,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Magic View Café"
+  }
+},
+{
+  "type": "node",
+  "id": 539994192,
+  "lat": 32.2622946,
+  "lon": 76.3486921,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:housenumber": "Triund",
+    "addr:postcode": "176216",
+    "addr:street": "Galu Devi Temple to - Trail to Triund Hill",
+    "amenity": "cafe",
+    "cuisine": "snackbar",
+    "internet_access": "no",
+    "name": "Praveen Tea Stall",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "wifi": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 539994193,
+  "lat": 32.2617119,
+  "lon": 76.3545169,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:housenumber": "Triund Campsite",
+    "addr:postcode": "176216",
+    "camp_site": "basic",
+    "caravans": "no",
+    "fee": "yes",
+    "name": "Trimund",
+    "static_caravans": "no",
+    "tents": "yes",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 539994860,
+  "lat": 32.2682123,
+  "lon": 76.3547786,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:district": "Kangra",
+    "addr:postcode": "176216",
+    "addr:street": "Triund Campsite - SnowLine Cafe Trail",
+    "amenity": "place_of_worship",
+    "denomination": "Hanuman shrine",
+    "name": "Jhande Wali Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 539994861,
+  "lat": 32.2741416,
+  "lon": 76.3615720,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:street": "Galu Temple - Lahesh Caves Trail",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "no",
+    "name": "Snowline Cafe",
+    "opening_hours": "08:00-22:00",
+    "smoking": "separated"
+  }
+},
+{
+  "type": "node",
+  "id": 539994862,
+  "lat": 32.2759412,
+  "lon": 76.3619262,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Laka Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 539994864,
+  "lat": 32.2833202,
+  "lon": 76.3655376,
+  "tags": {
+    "bin": "no",
+    "fee": "no",
+    "fireplace": "yes",
+    "name": "Laka Boulder Cave",
+    "natural": "cave_entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 539994865,
+  "lat": 32.2901871,
+  "lon": 76.3741994,
+  "tags": {
+    "bin": "no",
+    "fee": "no",
+    "fireplace": "yes",
+    "name": "Lahesh Cave",
+    "natural": "cave_entrance",
+    "shelter_type": "weather_shelter",
+    "shelter_type_1": "lean"
+  }
+},
+{
+  "type": "node",
+  "id": 539996696,
+  "lat": 32.3174482,
+  "lon": 76.4007074,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Chata Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 540018346,
+  "lat": 32.3288118,
+  "lon": 76.4108607,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 540018351,
+  "lat": 32.3319372,
+  "lon": 76.4240834,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Omal Kuddu",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 540018355,
+  "lat": 32.3322025,
+  "lon": 76.4247377,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Mandhara Caves"
+  }
+},
+{
+  "type": "node",
+  "id": 540018359,
+  "lat": 32.3527903,
+  "lon": 76.4556529,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kuvarasi Nag Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 553912584,
+  "lat": 32.2975617,
+  "lon": 76.3812582,
+  "tags": {
+    "description": "High altitude Mountain pass a key connection between kangra and chamba valley. Traditional pilgrimage route to manimahesh kailash",
+    "ele": "4342",
+    "mountain_pass": "yes",
+    "name": "Indrahar Jot",
+    "name:en": "Indrahar Pass",
+    "natural": "saddle",
+    "wikidata": "Q6026874"
+  }
+},
+{
+  "type": "node",
+  "id": 559940607,
+  "lat": 32.2388520,
+  "lon": 76.3248130,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Lhamo's Croissant"
+  }
+},
+{
+  "type": "node",
+  "id": 570710808,
+  "lat": 32.2135833,
+  "lon": 76.2868217,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 570710813,
+  "lat": 32.2066505,
+  "lon": 76.2747638,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 570721054,
+  "lat": 32.2403908,
+  "lon": 76.2796347,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 570738911,
+  "lat": 32.2562023,
+  "lon": 76.2773228,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Vankhandi Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 570750400,
+  "lat": 32.2735962,
+  "lon": 76.2870116,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 570754545,
+  "lat": 32.2900965,
+  "lon": 76.2720432,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sarai Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 570755315,
+  "lat": 32.3251028,
+  "lon": 76.2732756,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 622322839,
+  "lat": 32.2619218,
+  "lon": 76.3178557,
+  "tags": {
+    "name": "Balh Water Tap",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 622324719,
+  "lat": 32.2727711,
+  "lon": 76.3052436,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 622368406,
+  "lat": 32.3035569,
+  "lon": 76.2747984,
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "name": "Jammu Goth",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 622368407,
+  "lat": 32.2932869,
+  "lon": 76.2757789,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "ele": "2351",
+    "name": "Jammu Goth"
+  }
+},
+{
+  "type": "node",
+  "id": 622368431,
+  "lat": 32.3041777,
+  "lon": 76.2738549,
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 622368432,
+  "lat": 32.3180817,
+  "lon": 76.2713553,
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 622368703,
+  "lat": 32.3217917,
+  "lon": 76.2707772,
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 622368714,
+  "lat": 32.3265583,
+  "lon": 76.2756230,
+  "tags": {
+    "amenity": "shelter",
+    "ele": "2996",
+    "name": "Gaddi Huts"
+  }
+},
+{
+  "type": "node",
+  "id": 622368737,
+  "lat": 32.3320466,
+  "lon": 76.2694098,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 622811183,
+  "lat": 32.2757843,
+  "lon": 76.2830281,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sheetla Mata Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 622811591,
+  "lat": 32.2605564,
+  "lon": 76.3029683,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 673858648,
+  "lat": 32.2238156,
+  "lon": 76.3935162,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "ele": "1655",
+    "name": "Naguni"
+  }
+},
+{
+  "type": "node",
+  "id": 673859642,
+  "lat": 32.2253098,
+  "lon": 76.3869669,
+  "tags": {
+    "ele": "1937",
+    "name": "Kembli",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 673860143,
+  "lat": 32.2332416,
+  "lon": 76.3904930,
+  "tags": {
+    "ele": "2060",
+    "name": "Chakke Ka Nahar",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 673861341,
+  "lat": 32.2391662,
+  "lon": 76.3916830,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "description": "Lean in to Boulder, shelter can be made only using tarpaulin.",
+    "fireplace": "yes",
+    "name": "Manhudd",
+    "shelter_type": "rock_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 673861415,
+  "lat": 32.2423236,
+  "lon": 76.3983664,
+  "tags": {
+    "fee": "no",
+    "internet_access": "no",
+    "name": "Hara Goth",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 673864134,
+  "lat": 32.2394205,
+  "lon": 76.3775762,
+  "tags": {
+    "ele": "2454",
+    "name": "Jwala",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 673872024,
+  "lat": 32.2345926,
+  "lon": 76.3643250,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Lakshmi Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 673872658,
+  "lat": 32.2625240,
+  "lon": 76.3682324,
+  "tags": {
+    "name": "Trakdi",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 673872659,
+  "lat": 32.2624904,
+  "lon": 76.3682497,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Trakdi"
+  }
+},
+{
+  "type": "node",
+  "id": 673872951,
+  "lat": 32.2728084,
+  "lon": 76.3680382,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Lower Manhudd"
+  }
+},
+{
+  "type": "node",
+  "id": 673872991,
+  "lat": 32.2766969,
+  "lon": 76.3669171,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Upper Manhudd"
+  }
+},
+{
+  "type": "node",
+  "id": 673873810,
+  "lat": 32.2477214,
+  "lon": 76.3516146,
+  "tags": {
+    "name": "Karthani",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 673873811,
+  "lat": 32.2477268,
+  "lon": 76.3513713,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Karthani"
+  }
+},
+{
+  "type": "node",
+  "id": 673874089,
+  "lat": 32.2463456,
+  "lon": 76.3449389,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Leta"
+  }
+},
+{
+  "type": "node",
+  "id": 673874102,
+  "lat": 32.2467131,
+  "lon": 76.3443031,
+  "tags": {
+    "name": "Leta",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 673874103,
+  "lat": 32.2470963,
+  "lon": 76.3441156,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 673875510,
+  "lat": 32.1926888,
+  "lon": 76.4504114,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Aadi Himani Chamunda Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 708985032,
+  "lat": 32.2651658,
+  "lon": 76.3567570,
+  "tags": {
+    "drinking_water": "yes",
+    "intermittent": "no",
+    "name": "Mountain Spring",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 708985293,
+  "lat": 32.2452177,
+  "lon": 76.3258918,
+  "tags": {
+    "amenity": "cafe",
+    "changing_table": "no",
+    "cuisine": "tea;breakfast;coffee_shop",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "level": "0",
+    "name": "Himalaya Tea Shop",
+    "toilets:wheelchair": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 716019502,
+  "lat": 32.2525813,
+  "lon": 76.3026689,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2025-06-11",
+    "name": "HH Shri Mata Ji Nirmala Devi Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 716022986,
+  "lat": 32.2949495,
+  "lon": 76.3051934,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Parala Mata",
+    "trail_visibility": "good"
+  }
+},
+{
+  "type": "node",
+  "id": 716023091,
+  "lat": 32.3101009,
+  "lon": 76.3068039,
+  "tags": {
+    "name": "Raeel",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 716023132,
+  "lat": 32.3118611,
+  "lon": 76.3039948,
+  "tags": {
+    "ele": "2251",
+    "name": "Raeel",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 716025041,
+  "lat": 32.3134808,
+  "lon": 76.2976294,
+  "tags": {
+    "name": "Kanjrela",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 716029108,
+  "lat": 32.3438796,
+  "lon": 76.2619050,
+  "tags": {
+    "name": "Raeel",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 716029111,
+  "lat": 32.3438796,
+  "lon": 76.2620503,
+  "tags": {
+    "amenity": "shelter",
+    "ele": "2494",
+    "name": "Raeel"
+  }
+},
+{
+  "type": "node",
+  "id": 716029198,
+  "lat": 32.3489358,
+  "lon": 76.2675439,
+  "tags": {
+    "name": "Chala",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 716029199,
+  "lat": 32.3489125,
+  "lon": 76.2677376,
+  "tags": {
+    "amenity": "shelter",
+    "ele": "2586",
+    "name": "Chala"
+  }
+},
+{
+  "type": "node",
+  "id": 716029247,
+  "lat": 32.3510518,
+  "lon": 76.2708304,
+  "tags": {
+    "amenity": "shelter",
+    "ele": "2676",
+    "name": "Charkhotu"
+  }
+},
+{
+  "type": "node",
+  "id": 716044371,
+  "lat": 32.3603858,
+  "lon": 76.2855816,
+  "tags": {
+    "ele": "3737",
+    "mountain_pass": "yes",
+    "name": "Baleni Pass",
+    "natural": "saddle"
+  }
+},
+{
+  "type": "node",
+  "id": 716064587,
+  "lat": 32.3668904,
+  "lon": 76.2933309,
+  "tags": {
+    "name": "Duggi Goth",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 716099117,
+  "lat": 32.3744640,
+  "lon": 76.2959462,
+  "tags": {
+    "amenity": "shelter",
+    "fireplace": "yes",
+    "name": "Duggi Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 761080366,
+  "lat": 32.2813521,
+  "lon": 76.2754070,
+  "tags": {
+    "amenity": "drinking_water",
+    "name": "Neelkanth Base"
+  }
+},
+{
+  "type": "node",
+  "id": 773376563,
+  "lat": 32.3015806,
+  "lon": 76.3257426,
+  "tags": {
+    "name": "Deep Goth",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 773376564,
+  "lat": 32.3016031,
+  "lon": 76.3258003,
+  "tags": {
+    "ele": "2650",
+    "name": "Deep Goth",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 773377013,
+  "lat": 32.3107710,
+  "lon": 76.3121565,
+  "tags": {
+    "name": "Bagga",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 773378814,
+  "lat": 32.3119749,
+  "lon": 76.3113145,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bagga Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 773378958,
+  "lat": 32.3280901,
+  "lon": 76.3142802,
+  "tags": {
+    "caravans": "no",
+    "fee": "yes",
+    "name": "Drakka",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 773378978,
+  "lat": 32.3294812,
+  "lon": 76.3162948,
+  "tags": {
+    "addr:street": "Bagga Gaj Pass Trail",
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 773379065,
+  "lat": 32.3355271,
+  "lon": 76.3183707,
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 773379087,
+  "lat": 32.3363854,
+  "lon": 76.3211698,
+  "tags": {
+    "ele": "4109",
+    "mountain_pass": "yes",
+    "name": "Gaj Pass",
+    "natural": "saddle"
+  }
+},
+{
+  "type": "node",
+  "id": 773379682,
+  "lat": 32.3437237,
+  "lon": 76.3210766,
+  "tags": {
+    "name": "Kala Chho",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 773382005,
+  "lat": 32.3390195,
+  "lon": 76.3275209,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Lam Dal Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 773389136,
+  "lat": 32.3458942,
+  "lon": 76.3054131,
+  "tags": {
+    "name": "Nigar",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 773389399,
+  "lat": 32.3663854,
+  "lon": 76.2942350,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Duggi Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 796800429,
+  "lat": 32.3398091,
+  "lon": 76.2920033,
+  "tags": {
+    "ele": "4061",
+    "mountain_pass": "yes",
+    "name": "Minkiani Pass"
+  }
+},
+{
+  "type": "node",
+  "id": 948014625,
+  "lat": 32.2198068,
+  "lon": 76.3895886,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Naguni Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 948026810,
+  "lat": 32.2675025,
+  "lon": 76.4054058,
+  "tags": {
+    "addr:street": "Khabrotu - Bakluddu Trail",
+    "amenity": "place_of_worship",
+    "name": "Shindi Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 948032592,
+  "lat": 32.2865785,
+  "lon": 76.4163904,
+  "tags": {
+    "name": "Galod Dhar",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 948033971,
+  "lat": 32.3042945,
+  "lon": 76.4229601,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 948034021,
+  "lat": 32.3224901,
+  "lon": 76.4347679,
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "name": "Mandrala",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 948036956,
+  "lat": 32.3367349,
+  "lon": 76.4479694,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bhangini Mata",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 948041652,
+  "lat": 32.3576024,
+  "lon": 76.4730534,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 968448587,
+  "lat": 32.2386974,
+  "lon": 76.3237676,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Hot Spot Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 994331128,
+  "lat": 32.2261225,
+  "lon": 76.3256658,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "tibetan;indian",
+    "diet:vegetarian": "yes",
+    "name": "Nechung Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 1187173304,
+  "lat": 32.2378378,
+  "lon": 76.3220400,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2023-12-08",
+    "name": "Dip Tse-Chok Ling Monastery",
+    "name:zh": "策觉林寺",
+    "note": "The original temple is in Lhasa, as one of the four regency temples. See \"Tsechokling\".",
+    "religion": "buddhist",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1227378176,
+  "lat": 32.2361202,
+  "lon": 76.3238401,
+  "tags": {
+    "addr:city": "Mcleodganj, Dharamshala",
+    "addr:housenumber": "Shop 4",
+    "addr:postcode": "176219",
+    "addr:street": "Temple Road",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;sandwich",
+    "diet:vegetarian": "yes",
+    "int_name": "Moonpeak Cafe",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Moonpeak Espresso",
+    "opening_hours": "07:00-21:00",
+    "wifi": "free"
+  }
+},
+{
+  "type": "node",
+  "id": 1230141042,
+  "lat": 32.2363130,
+  "lon": 76.3263530,
+  "tags": {
+    "addr:city": "Mcleodganj, Dharamshala",
+    "addr:postcode": "176219",
+    "addr:street": "Jogiwara Road",
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Cafe Budan",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1237971936,
+  "lat": 32.2367486,
+  "lon": 76.3256157,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "diet:vegetarian": "yes",
+    "name": "Rogpa Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 1437190946,
+  "lat": 32.2551395,
+  "lon": 76.3266596,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "diet:vegetarian": "yes",
+    "internet_access": "no",
+    "name": "Sun & Moon Cafe",
+    "opening_hours": "09:00-21:00",
+    "phone": "+919805831447",
+    "smoking": "separated"
+  }
+},
+{
+  "type": "node",
+  "id": 1439106441,
+  "lat": 32.2511949,
+  "lon": 76.3260400,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 1439127914,
+  "lat": 32.2544375,
+  "lon": 76.3258321,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rest a while",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1451405561,
+  "lat": 32.2388209,
+  "lon": 76.3242010,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Zomsa Cafe",
+    "website": "https://zomsacafe.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 1456887018,
+  "lat": 32.2406154,
+  "lon": 76.3299563,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Flourishing Flora"
+  }
+},
+{
+  "type": "node",
+  "id": 2043646881,
+  "lat": 32.2030575,
+  "lon": 76.3258017,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 2046763089,
+  "lat": 32.2733075,
+  "lon": 76.4208248,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 2046763094,
+  "lat": 32.3273014,
+  "lon": 76.3529697,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 2092280712,
+  "lat": 32.2366892,
+  "lon": 76.3723510,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jwala Devi Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 2371547931,
+  "lat": 32.2002156,
+  "lon": 76.3101402,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mata Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2371682461,
+  "lat": 32.2702302,
+  "lon": 76.3528743,
+  "tags": {
+    "ele": "3240",
+    "name": "Triund Hill",
+    "name:hi": "त्रिउंड हिल",
+    "natural": "peak",
+    "source": "www.triundhill.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2374835144,
+  "lat": 32.1985892,
+  "lon": 76.3680837,
+  "tags": {
+    "amenity": "drinking_water",
+    "name": "Village Pump"
+  }
+},
+{
+  "type": "node",
+  "id": 2374835382,
+  "lat": 32.2035513,
+  "lon": 76.3703719,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Naag Mandir",
+    "name:hi": "नाग मंदिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2376974344,
+  "lat": 32.2409681,
+  "lon": 76.3770730,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jwala Devi Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 2376974348,
+  "lat": 32.1982792,
+  "lon": 76.3890137,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "Hindu",
+    "name": "Naudrani Mata Mandir;Mata Node Rani",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2376974349,
+  "lat": 32.2135716,
+  "lon": 76.3847886,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Saloti Mata Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 2376974351,
+  "lat": 32.2103640,
+  "lon": 76.3949067,
+  "tags": {
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 2376974654,
+  "lat": 32.2186459,
+  "lon": 76.4199081,
+  "tags": {
+    "name": "Ghurlu",
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 2378804050,
+  "lat": 32.1984249,
+  "lon": 76.3585560,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Norbulingka Institute"
+  }
+},
+{
+  "type": "node",
+  "id": 2378804064,
+  "lat": 32.1909279,
+  "lon": 76.3560705,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2378804066,
+  "lat": 32.1976787,
+  "lon": 76.3586328,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Norling Cafe",
+    "name:en": "Hummingbird Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 2380229678,
+  "lat": 32.2466641,
+  "lon": 76.4633409,
+  "tags": {
+    "ele": "4791",
+    "name": "Gauri Jhundha",
+    "name:en": "Dhauladhar Matterhorn",
+    "name:hi": "गौरी झुन्धा",
+    "natural": "peak",
+    "wikidata": "Q123573916"
+  }
+},
+{
+  "type": "node",
+  "id": 2386707394,
+  "lat": 32.3776415,
+  "lon": 76.2625093,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 2393039696,
+  "lat": 32.2329385,
+  "lon": 76.3477774,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Tille Wali Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 2399467885,
+  "lat": 32.2109229,
+  "lon": 76.3732852,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Gupteshwar Mahadev Mandir",
+    "religion": "hindu",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 2399467888,
+  "lat": 32.2059889,
+  "lon": 76.3713323,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 2766884302,
+  "lat": 32.1999419,
+  "lon": 76.3682157,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2767061040,
+  "lat": 32.1981564,
+  "lon": 76.3687956,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 2788049938,
+  "lat": 32.2020781,
+  "lon": 76.3715550,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 2788221427,
+  "lat": 32.1980249,
+  "lon": 76.3692879,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2788688686,
+  "lat": 32.1987274,
+  "lon": 76.3588721,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Deden Tsuglagkhang",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 2788688837,
+  "lat": 32.2021768,
+  "lon": 76.3728120,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2789018905,
+  "lat": 32.2049317,
+  "lon": 76.3714071,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2789185630,
+  "lat": 32.2084395,
+  "lon": 76.3733484,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2902181085,
+  "lat": 32.3231906,
+  "lon": 76.3588053,
+  "tags": {
+    "ele": "4580",
+    "mountain_pass": "yes",
+    "name": "Bhim Gasutri Pass",
+    "natural": "saddle"
+  }
+},
+{
+  "type": "node",
+  "id": 2902184489,
+  "lat": 32.3361908,
+  "lon": 76.3499969,
+  "tags": {
+    "ele": "4159",
+    "name": "Karan Khal",
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 2902195163,
+  "lat": 32.2597530,
+  "lon": 76.3551706,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:housenumber": "Triund",
+    "addr:postcode": "176216",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "no",
+    "name": "Sunil Tea Stall",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "node",
+  "id": 2902196345,
+  "lat": 32.2611294,
+  "lon": 76.3547752,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Shrine"
+  }
+},
+{
+  "type": "node",
+  "id": 2959614058,
+  "lat": 32.2630502,
+  "lon": 76.3537504,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:housenumber": "Triund Campsite",
+    "addr:postcode": "176216",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "no",
+    "name": "Lallu Tea Stall & Guest House",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "node",
+  "id": 2960000991,
+  "lat": 32.2974665,
+  "lon": 76.3812744,
+  "tags": {
+    "addr:street": "Galu Temple - Kuvarasi via Indrahar Pass",
+    "amenity": "place_of_worship",
+    "name": "Jotan Wali Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 2960003178,
+  "lat": 32.2874933,
+  "lon": 76.3906628,
+  "tags": {
+    "alt_name": "Moon Peak;Mon Peak",
+    "ele": "4650",
+    "name": "Mun Peak",
+    "natural": "peak",
+    "wikidata": "Q123573425"
+  }
+},
+{
+  "type": "node",
+  "id": 3006769718,
+  "lat": 32.2000783,
+  "lon": 76.3603554,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesha Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3006769722,
+  "lat": 32.1991298,
+  "lon": 76.3592274,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sumdo Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006769723,
+  "lat": 32.1990790,
+  "lon": 76.3594010,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Three Brothers Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006769724,
+  "lat": 32.1990392,
+  "lon": 76.3593227,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006769732,
+  "lat": 32.1998475,
+  "lon": 76.3574881,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006771936,
+  "lat": 32.1999612,
+  "lon": 76.3602626,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006771938,
+  "lat": 32.2001467,
+  "lon": 76.3607452,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006771954,
+  "lat": 32.1998883,
+  "lon": 76.3579108,
+  "tags": {
+    "amenity": "cafe",
+    "name": "21 Tara Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3006989760,
+  "lat": 32.1945883,
+  "lon": 76.3590353,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 3007004058,
+  "lat": 32.1988401,
+  "lon": 76.3593375,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Shideling Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3015829367,
+  "lat": 32.3487655,
+  "lon": 76.2976844,
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "name": "Nagara Campsite",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 3020441735,
+  "lat": 32.2119502,
+  "lon": 76.3807405,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 3020441789,
+  "lat": 32.2148683,
+  "lon": 76.3848989,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 3067019065,
+  "lat": 32.2055729,
+  "lon": 76.3280226,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "yes",
+    "building": "roof",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Charan",
+    "name:hi": "चरान",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "shelter_type": "weather_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 3067019070,
+  "lat": 32.1986626,
+  "lon": 76.3374960,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3138633999,
+  "lat": 32.2112427,
+  "lon": 76.3213581,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 3147827039,
+  "lat": 32.2207516,
+  "lon": 76.3358958,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Indrunag Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3212416987,
+  "lat": 32.1924117,
+  "lon": 76.4497322,
+  "tags": {
+    "ele": "3000",
+    "name": "Himani Chamunda",
+    "name:hi": "हिमानी चामुंडा",
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 3512712997,
+  "lat": 32.2464706,
+  "lon": 76.3320608,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-05-07",
+    "internet_access": "no",
+    "name": "Sansu Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3514932552,
+  "lat": 32.2461657,
+  "lon": 76.3322569,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kibbutz"
+  }
+},
+{
+  "type": "node",
+  "id": 3514932576,
+  "lat": 32.2450995,
+  "lon": 76.3325423,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:signed": "no",
+    "religion": "hindu",
+    "tourism": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3525036987,
+  "lat": 32.2394362,
+  "lon": 76.3261132,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "korean",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "name": "Ri:",
+    "name:en": "Korean Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3527611885,
+  "lat": 32.2396242,
+  "lon": 76.3286552,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Shambu fast food"
+  }
+},
+{
+  "type": "node",
+  "id": 3527615100,
+  "lat": 32.2391543,
+  "lon": 76.3310897,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Last chance"
+  }
+},
+{
+  "type": "node",
+  "id": 3655099660,
+  "lat": 32.1913113,
+  "lon": 76.3655490,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 3656256973,
+  "lat": 32.2701096,
+  "lon": 76.3527457,
+  "tags": {
+    "amenity": "place_of_worship",
+    "ele": "3241",
+    "name": "Kunal Pathri Devi Temple",
+    "note": "10632 feet"
+  }
+},
+{
+  "type": "node",
+  "id": 3656257288,
+  "lat": 32.3273222,
+  "lon": 76.2713856,
+  "tags": {
+    "amenity": "shelter",
+    "building:material": "wood",
+    "name": "Gaddi Huts"
+  }
+},
+{
+  "type": "node",
+  "id": 3656259788,
+  "lat": 32.3250148,
+  "lon": 76.2731285,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Kareri Lake Temple Sarai"
+  }
+},
+{
+  "type": "node",
+  "id": 3664140518,
+  "lat": 32.2851541,
+  "lon": 76.3802055,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Gaddi Shelter Point"
+  }
+},
+{
+  "type": "node",
+  "id": 3664148097,
+  "lat": 32.2816279,
+  "lon": 76.3633524,
+  "tags": {
+    "addr:street": "Galu Temple - Lahesh Caves Trail",
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "Lake Wali Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 3664155705,
+  "lat": 32.2841698,
+  "lon": 76.3614025,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Gaddi Shelter Point"
+  }
+},
+{
+  "type": "node",
+  "id": 3664160447,
+  "lat": 32.2825162,
+  "lon": 76.3640540,
+  "tags": {
+    "amenity": "shelter",
+    "bin": "no",
+    "name": "Seasonal Gaddi Shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 3770508560,
+  "lat": 32.2360230,
+  "lon": 76.3263820,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "atm": "no",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "yes",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "name": "Cafe Tibet",
+    "opening_hours": "07:00-21:00",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 4207692219,
+  "lat": 32.2116859,
+  "lon": 76.3718611,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Aghanjar Chai & Pakoda"
+  }
+},
+{
+  "type": "node",
+  "id": 4235656190,
+  "lat": 32.2478228,
+  "lon": 76.3258343,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-06-14",
+    "cuisine": "breakfast;coffee_shop;indian",
+    "name": "Cool talk cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4341074794,
+  "lat": 32.2485985,
+  "lon": 76.3281246,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-05-14",
+    "cuisine": "italian",
+    "name": "Space Out"
+  }
+},
+{
+  "type": "node",
+  "id": 4360019793,
+  "lat": 32.2463985,
+  "lon": 76.3360639,
+  "tags": {
+    "name": "View Point",
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 4371160110,
+  "lat": 32.3398091,
+  "lon": 76.2920033,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Temple",
+    "name:en": "Jota Wali Mata",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4377185604,
+  "lat": 32.3364004,
+  "lon": 76.3210899,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jota Wali Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 4386458989,
+  "lat": 32.2472091,
+  "lon": 76.3316946,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "name": "Dudu Welcome restaurant-cafe",
+    "name:en": "Dudu Welcome restaurant-cafe",
+    "name:he": "וולקאם קפה-מסעדה"
+  }
+},
+{
+  "type": "node",
+  "id": 4416317900,
+  "lat": 32.2833699,
+  "lon": 76.3653261,
+  "tags": {
+    "amenity": "cafe",
+    "name:en": "Tea stall",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4416453891,
+  "lat": 32.2408877,
+  "lon": 76.3541413,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mana Café",
+    "name:en": "Mana Café"
+  }
+},
+{
+  "type": "node",
+  "id": 4432744989,
+  "lat": 32.2435623,
+  "lon": 76.3254117,
+  "tags": {
+    "addr:street": "Tushita Road",
+    "amenity": "place_of_worship",
+    "denomination": "tibetan",
+    "name": "Tushita Meditation Centre",
+    "name:en": "Tushita Meditation Centre",
+    "name:he": "מרכז טושיטה למדיטציה",
+    "opening_hours": "Mo-Sa 09:30-11:30, 12:30-16:00",
+    "phone": "+91 89881 60988",
+    "religion": "buddhist",
+    "website": "https://www.tushita.info/"
+  }
+},
+{
+  "type": "node",
+  "id": 4560258189,
+  "lat": 32.1911394,
+  "lon": 76.3510912,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-11-18",
+    "cuisine": "burger;cake;deli;coffee_shop",
+    "diet:lacto_vegetarian": "yes",
+    "diet:vegan": "no",
+    "internet_access": "wlan",
+    "name": "Bakes and Brews",
+    "name:en": "Bakes and Brews",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4597629593,
+  "lat": 32.2471469,
+  "lon": 76.3376989,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-05-07",
+    "name": "Our Cafe",
+    "name:en": "Our Cafe",
+    "opening_hours": "Mo-Su 10:00-18:00",
+    "operator": "Vishant"
+  }
+},
+{
+  "type": "node",
+  "id": 4665169295,
+  "lat": 32.2195757,
+  "lon": 76.3190724,
+  "tags": {
+    "addr:housenumber": "200",
+    "addr:postcode": "176215",
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "email": "jamamasjiddharamsala@gmail.com",
+    "name": "Jama Masjid Dharamsala",
+    "opening_hours": "24/7",
+    "phone": "1892224338",
+    "religion": "muslim",
+    "website": "http://www.jamamasjiddharamsala.co.in"
+  }
+},
+{
+  "type": "node",
+  "id": 4728704594,
+  "lat": 32.2390536,
+  "lon": 76.3252651,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "JJI Exile Brothers Mothers cafe",
+    "name:en": "Jji cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4775822524,
+  "lat": 32.2368871,
+  "lon": 76.3250567,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "name": "Black Tent Café",
+    "name:en": "Black Tent Café",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 4787000523,
+  "lat": 32.2600188,
+  "lon": 76.3197152,
+  "tags": {
+    "amenity": "cafe",
+    "check_date:diet:vegetarian": "2023-11-24",
+    "diet:vegetarian": "yes",
+    "name": "Adventure café",
+    "name:en": "Adventure café"
+  }
+},
+{
+  "type": "node",
+  "id": 4787002221,
+  "lat": 32.2793842,
+  "lon": 76.2787929,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sunrise café",
+    "name:en": "Sunrise café"
+  }
+},
+{
+  "type": "node",
+  "id": 4789486515,
+  "lat": 32.2434371,
+  "lon": 76.3254696,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2023-11-19",
+    "name": "Tushita Temple",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 4789498678,
+  "lat": 32.2447402,
+  "lon": 76.3264571,
+  "tags": {
+    "alt_name": "Dharamshala Vipassana Mediatation Centre",
+    "amenity": "place_of_worship",
+    "email": "info@sikhara.dhamma.org",
+    "name": "Dhamma Sikhara Vipassana Meditation Centre",
+    "phone": "[91] 92184-14051",
+    "religion": "buddhist",
+    "website": "https://sikhara.dhamma.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 4790764823,
+  "lat": 32.2548298,
+  "lon": 76.3260949,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Café Galu",
+    "name:en": "Café Galu"
+  }
+},
+{
+  "type": "node",
+  "id": 4814990424,
+  "lat": 32.2354575,
+  "lon": 76.3238982,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 4854819621,
+  "lat": 32.2336524,
+  "lon": 76.3247116,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "name": "Coffee Talk",
+    "name:en": "Coffee Talk"
+  }
+},
+{
+  "type": "node",
+  "id": 4903806322,
+  "lat": 32.2384042,
+  "lon": 76.3239622,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Sambhala Coffee Talk"
+  }
+},
+{
+  "type": "node",
+  "id": 4907668267,
+  "lat": 32.3480683,
+  "lon": 76.3015195,
+  "tags": {
+    "addr:city": "Chamba",
+    "addr:street": "Duggi Goth Lam Dal Trail",
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "shelter_type": "rock_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 4924004291,
+  "lat": 32.3000674,
+  "lon": 76.3245704,
+  "tags": {
+    "drinking_water": "yes",
+    "intermittent": "no",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 5021690493,
+  "lat": 32.2209431,
+  "lon": 76.3198730,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Cafe Coffee Day",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5059830729,
+  "lat": 32.2351802,
+  "lon": 76.3242620,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Cafe",
+    "name:en": "The Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5059830736,
+  "lat": 32.2457674,
+  "lon": 76.3320700,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Nature twins cafe",
+    "name:en": "Nature twins cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5059843727,
+  "lat": 32.2140264,
+  "lon": 76.3171887,
+  "tags": {
+    "addr:street": "Dharamshala Road",
+    "amenity": "cafe",
+    "name": "Cafe coffee day",
+    "name:en": "Cafe Coffee Day"
+  }
+},
+{
+  "type": "node",
+  "id": 5059843830,
+  "lat": 32.2463713,
+  "lon": 76.3320848,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Loop Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5059848922,
+  "lat": 32.2462960,
+  "lon": 76.3321385,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Beet Root Café"
+  }
+},
+{
+  "type": "node",
+  "id": 5074567722,
+  "lat": 32.2549874,
+  "lon": 76.3551942,
+  "tags": {
+    "name": "Triund camp",
+    "name:en": "Triund camp",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 5074567723,
+  "lat": 32.2383556,
+  "lon": 76.3239239,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "breakfast;coffee_shop;cake;local",
+    "diet:vegetarian": "yes",
+    "name": "Snow Lion",
+    "name:en": "Snow Lion"
+  }
+},
+{
+  "type": "node",
+  "id": 5074576121,
+  "lat": 32.2593220,
+  "lon": 76.3192155,
+  "tags": {
+    "name": "Bal guesthouse",
+    "name:en": "Bahl guesthouse",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 5076809125,
+  "lat": 32.2532020,
+  "lon": 76.3028603,
+  "tags": {
+    "name": "White mountain viewdeck",
+    "name:en": "White mountain viewdeck",
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 5076809126,
+  "lat": 32.2565117,
+  "lon": 76.3025912,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sahaja yoga",
+    "name:en": "Sahaja yoga"
+  }
+},
+{
+  "type": "node",
+  "id": 5082082626,
+  "lat": 32.2557564,
+  "lon": 76.3397817,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sharma store",
+    "name:en": "Sharma store"
+  }
+},
+{
+  "type": "node",
+  "id": 5082089723,
+  "lat": 32.2364380,
+  "lon": 76.3276759,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Habibis cafe",
+    "name:en": "Habibis cafe",
+    "phone": "+91 9816999928"
+  }
+},
+{
+  "type": "node",
+  "id": 5082089724,
+  "lat": 32.2367902,
+  "lon": 76.3270508,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5082089725,
+  "lat": 32.2365533,
+  "lon": 76.3257026,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Poetry tea cafe",
+    "name:en": "Poetry tea cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5082089729,
+  "lat": 32.2407565,
+  "lon": 76.3296317,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Taste of India"
+  }
+},
+{
+  "type": "node",
+  "id": 5082090124,
+  "lat": 32.2454095,
+  "lon": 76.3324497,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Raku's bar and cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5082090126,
+  "lat": 32.2525266,
+  "lon": 76.3388955,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe moon peak & store",
+    "name:en": "Cafe moon peak & store"
+  }
+},
+{
+  "type": "node",
+  "id": 5082092121,
+  "lat": 32.2614105,
+  "lon": 76.3547582,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Anil's Store",
+    "name:en": "Anil's Store"
+  }
+},
+{
+  "type": "node",
+  "id": 5150217121,
+  "lat": 32.2827196,
+  "lon": 76.3645307,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "indian",
+    "internet_access": "no",
+    "name": "Dhauladhar Cafe",
+    "outdoor_seating": "yes",
+    "seasonal": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5183831744,
+  "lat": 32.2580818,
+  "lon": 76.3220898,
+  "tags": {
+    "caravans": "no",
+    "fee": "yes",
+    "name": "Jungle Camp",
+    "tents": "yes",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 5190651917,
+  "lat": 32.2300274,
+  "lon": 76.3268682,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "indoor_seating": "yes",
+    "outdoor_seating": "no",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5201275313,
+  "lat": 32.2594681,
+  "lon": 76.3553463,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5201275824,
+  "lat": 32.2598446,
+  "lon": 76.3552833,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5201275834,
+  "lat": 32.2543946,
+  "lon": 76.3547515,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5201275860,
+  "lat": 32.2646522,
+  "lon": 76.3535662,
+  "tags": {
+    "fee": "no",
+    "natural": "cave_entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 5212500221,
+  "lat": 32.2442044,
+  "lon": 76.3349138,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "indian;local;coffee_shop",
+    "diet:vegetarian": "yes",
+    "name": "Punjabi tadka",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5217517522,
+  "lat": 32.2444931,
+  "lon": 76.3104367,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "indian;breakfast;coffee_shop",
+    "name": "Delight Tandoori Dhaba",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5217517523,
+  "lat": 32.2437202,
+  "lon": 76.3338673,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-12-11",
+    "cuisine": "indian",
+    "diet:vegetarian": "yes",
+    "name": "Shahi Tadka"
+  }
+},
+{
+  "type": "node",
+  "id": 5338688321,
+  "lat": 32.2467086,
+  "lon": 76.3442394,
+  "tags": {
+    "name:ru": "Родник",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 5425964012,
+  "lat": 32.2445977,
+  "lon": 76.3346821,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 5434814248,
+  "lat": 32.2067326,
+  "lon": 76.3876398,
+  "tags": {
+    "internet_access:fee": "no",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 5507502830,
+  "lat": 32.2963191,
+  "lon": 76.2658972,
+  "tags": {
+    "amenity": "shelter",
+    "bin": "no",
+    "name": "Boulder Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 5587918766,
+  "lat": 32.2008102,
+  "lon": 76.3364323,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:postcode": "176215",
+    "addr:street": "Dari-Kandi Road",
+    "amenity": "place_of_worship",
+    "name": "Shani Dev Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 5621203222,
+  "lat": 32.2260646,
+  "lon": 76.3261852,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Buddhist Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 5682204459,
+  "lat": 32.3051258,
+  "lon": 76.4111136,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682204460,
+  "lat": 32.2928813,
+  "lon": 76.4350576,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682204461,
+  "lat": 32.2685192,
+  "lon": 76.4766025,
+  "tags": {
+    "name": "Jottnu",
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682204462,
+  "lat": 32.2989954,
+  "lon": 76.3246822,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682204466,
+  "lat": 32.3278296,
+  "lon": 76.3794421,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682204467,
+  "lat": 32.3730752,
+  "lon": 76.3195323,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682205589,
+  "lat": 32.3709366,
+  "lon": 76.2824535,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682205590,
+  "lat": 32.3480623,
+  "lon": 76.2902212,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682205591,
+  "lat": 32.3372938,
+  "lon": 76.2977743,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5682205592,
+  "lat": 32.3512165,
+  "lon": 76.3248968,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 5982936999,
+  "lat": 32.2051373,
+  "lon": 76.3696795,
+  "tags": {
+    "addr:street": "Sokni Da Kot, Khanyara, Near H.P. Regional College, Dharamshala, Kangra (HP)",
+    "amenity": "cafe",
+    "name": "Tunna's Book Café",
+    "phone": "7011307350"
+  }
+},
+{
+  "type": "node",
+  "id": 6151494785,
+  "lat": 32.2210442,
+  "lon": 76.3191387,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tea stall"
+  }
+},
+{
+  "type": "node",
+  "id": 6155447085,
+  "lat": 32.1998644,
+  "lon": 76.2769845,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Buddist institute"
+  }
+},
+{
+  "type": "node",
+  "id": 6314630185,
+  "lat": 32.2331509,
+  "lon": 76.3247025,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "One two cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6317865186,
+  "lat": 32.2553486,
+  "lon": 76.3261645,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Amazing view"
+  }
+},
+{
+  "type": "node",
+  "id": 6317865187,
+  "lat": 32.2553408,
+  "lon": 76.3260392,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 6322584287,
+  "lat": 32.2465732,
+  "lon": 76.3409792,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 6322584288,
+  "lat": 32.2460312,
+  "lon": 76.3420773,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 6325359987,
+  "lat": 32.2260278,
+  "lon": 76.3261608,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Nechung Monastery",
+    "name:ru": "Нечунг — монастырь государственного тибетского оракула в Дхарамсале."
+  }
+},
+{
+  "type": "node",
+  "id": 6344211320,
+  "lat": 32.2009034,
+  "lon": 76.3923827,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Node Rani Mata",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6344211321,
+  "lat": 32.2099401,
+  "lon": 76.3944558,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341282,
+  "lat": 32.2050946,
+  "lon": 76.3892019,
+  "tags": {
+    "operator": "govt",
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341283,
+  "lat": 32.2048677,
+  "lon": 76.3903445,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341284,
+  "lat": 32.2046907,
+  "lon": 76.3905484,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341385,
+  "lat": 32.2043094,
+  "lon": 76.3897866,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341386,
+  "lat": 32.2057392,
+  "lon": 76.3874263,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341387,
+  "lat": 32.2079497,
+  "lon": 76.3904840,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341388,
+  "lat": 32.2094976,
+  "lon": 76.3931345,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341389,
+  "lat": 32.2104126,
+  "lon": 76.3962156,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341390,
+  "lat": 32.2107020,
+  "lon": 76.3967547,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341391,
+  "lat": 32.2103501,
+  "lon": 76.3964097,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341392,
+  "lat": 32.2107064,
+  "lon": 76.4062978,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341393,
+  "lat": 32.2025246,
+  "lon": 76.3907543,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352341652,
+  "lat": 32.2048843,
+  "lon": 76.3907717,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6352543854,
+  "lat": 32.2095635,
+  "lon": 76.3930568,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6352544568,
+  "lat": 32.2039944,
+  "lon": 76.4122255,
+  "tags": {
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6352544718,
+  "lat": 32.2104989,
+  "lon": 76.4111060,
+  "tags": {
+    "name": "Chatkar",
+    "name:en": "Rising Star",
+    "name:hi": "चट्कर",
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 6352550211,
+  "lat": 32.2105250,
+  "lon": 76.4113215,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chatkar"
+  }
+},
+{
+  "type": "node",
+  "id": 6397879686,
+  "lat": 32.2453301,
+  "lon": 76.3124096,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Tibetan monastery",
+    "name:en": "School Temple, TCV School Upper",
+    "name:he": "מנזר טיבטי",
+    "name:hi": "विद्यालय मंदिर, टीसीव्ही विद्यालय अपर",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 6401885685,
+  "lat": 32.2525102,
+  "lon": 76.3248305,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Little Chai shop"
+  }
+},
+{
+  "type": "node",
+  "id": 6408660485,
+  "lat": 32.2383921,
+  "lon": 76.3238989,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shangrila monastery",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 6424859587,
+  "lat": 32.2508936,
+  "lon": 76.3303826,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "indian;breakfast",
+    "diet:vegetarian": "yes",
+    "name": "Café Friends Corner",
+    "name:en": "Café Friends Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 6440081186,
+  "lat": 32.2466272,
+  "lon": 76.3294416,
+  "tags": {
+    "amenity": "cafe",
+    "name": "B&B ॐTara Café",
+    "phone": "+919816879749"
+  }
+},
+{
+  "type": "node",
+  "id": 6457170685,
+  "lat": 32.2513710,
+  "lon": 76.3242798,
+  "tags": {
+    "drinking_water": "no",
+    "intermittent": "yes",
+    "name:en": "spring water",
+    "name:hi": "spring water",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 6464366785,
+  "lat": 32.2591296,
+  "lon": 76.3462789,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6464366985,
+  "lat": 32.2606658,
+  "lon": 76.3475116,
+  "tags": {
+    "amenity": "cafe",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6464367185,
+  "lat": 32.2626957,
+  "lon": 76.3521731,
+  "tags": {
+    "amenity": "cafe",
+    "trail_visibility": "excellent"
+  }
+},
+{
+  "type": "node",
+  "id": 6466224188,
+  "lat": 32.2594258,
+  "lon": 76.3553301,
+  "tags": {
+    "name": "Mool Raj Camp-Triund",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 6466224189,
+  "lat": 32.2577444,
+  "lon": 76.3438555,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6467100556,
+  "lat": 32.2479364,
+  "lon": 76.3388027,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Peace Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6467100603,
+  "lat": 32.2556885,
+  "lon": 76.3427393,
+  "tags": {
+    "name": "Magic View",
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 6467101605,
+  "lat": 32.2462554,
+  "lon": 76.3364965,
+  "tags": {
+    "amenity": "cafe",
+    "name": "OM Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6467102037,
+  "lat": 32.2451139,
+  "lon": 76.3351235,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Adventure Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6503199903,
+  "lat": 32.2478630,
+  "lon": 76.3098369,
+  "tags": {
+    "amenity": "shelter",
+    "shelter_type": "picnic_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 6503199919,
+  "lat": 32.2471956,
+  "lon": 76.3097108,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2023-11-24",
+    "name": "Jay Mata Chintpurni Mandir",
+    "name:hi": "जय माता चिंतपूर्णी मंदिर",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6503199935,
+  "lat": 32.2477507,
+  "lon": 76.3091884,
+  "tags": {
+    "amenity": "shelter",
+    "shelter_type": "picnic_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 6503199940,
+  "lat": 32.2469354,
+  "lon": 76.3100747,
+  "tags": {
+    "addr:province": "Dal",
+    "addr:subdistrict": "Dharamshala",
+    "amenity": "place_of_worship",
+    "check_date": "2023-11-24",
+    "name": "Mandir Shri Durgeshwar Mahadev",
+    "name:hi": "मंदिर श्री दुर्गेश्वर महादेव",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6503326548,
+  "lat": 32.2527372,
+  "lon": 76.3025022,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-06-11",
+    "name": "Naddi Mountain Cafe",
+    "phone": "+91-97361-97472"
+  }
+},
+{
+  "type": "node",
+  "id": 6503326553,
+  "lat": 32.2584356,
+  "lon": 76.3022302,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 6503326561,
+  "lat": 32.2548849,
+  "lon": 76.3028663,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 6503326564,
+  "lat": 32.2527720,
+  "lon": 76.3025272,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-06-11",
+    "name": "Naddi Bakery and Coffee",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6503326567,
+  "lat": 32.2536382,
+  "lon": 76.3028903,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 6506109422,
+  "lat": 32.2311396,
+  "lon": 76.3182238,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "yes",
+    "public_transport": "platform",
+    "shelter_type": "weather_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 6533603267,
+  "lat": 32.3604589,
+  "lon": 76.2855827,
+  "tags": {
+    "addr:street": "Charkhotu-Baleni Pass Trail",
+    "amenity": "place_of_worship",
+    "name": "Baleni Pass"
+  }
+},
+{
+  "type": "node",
+  "id": 6536301085,
+  "lat": 32.2743892,
+  "lon": 76.3614668,
+  "tags": {
+    "name": "Snow line",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 6580809343,
+  "lat": 32.2727463,
+  "lon": 76.3692582,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 6580811888,
+  "lat": 32.3245893,
+  "lon": 76.3127891,
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 6580825985,
+  "lat": 32.3349218,
+  "lon": 76.3167089,
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 6591544825,
+  "lat": 32.2190068,
+  "lon": 76.3185467,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 6591544831,
+  "lat": 32.2386220,
+  "lon": 76.3237033,
+  "tags": {
+    "amenity": "drinking_water",
+    "man_made": "water_tap"
+  }
+},
+{
+  "type": "node",
+  "id": 6591680530,
+  "lat": 32.2192285,
+  "lon": 76.3186701,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 6610278291,
+  "lat": 32.2003817,
+  "lon": 76.3212677,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "pizza;burger;sandwich",
+    "diet:vegetarian": "yes",
+    "name": "Melted Cheese Cafe",
+    "opening_hours": "Mo-Su 10:30-20:30",
+    "seats": "24",
+    "toilets": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 6610278292,
+  "lat": 32.1995773,
+  "lon": 76.3204452,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 6610278300,
+  "lat": 32.2003218,
+  "lon": 76.3212481,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Tandoori Bites"
+  }
+},
+{
+  "type": "node",
+  "id": 6635516690,
+  "lat": 32.2209311,
+  "lon": 76.3359015,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Indrani Devi Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6673771485,
+  "lat": 32.2388191,
+  "lon": 76.3247246,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Night Owl Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6681596825,
+  "lat": 32.2548773,
+  "lon": 76.3262126,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Cafe 5060"
+  }
+},
+{
+  "type": "node",
+  "id": 6721178019,
+  "lat": 32.2106223,
+  "lon": 76.4116387,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chamunda Devi",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6721260168,
+  "lat": 32.1985828,
+  "lon": 76.4238883,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "shelter_type": "rock_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 6721260287,
+  "lat": 32.1962869,
+  "lon": 76.4276747,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6721260524,
+  "lat": 32.2052782,
+  "lon": 76.4305977,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6721260544,
+  "lat": 32.2052754,
+  "lon": 76.4308676,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 6795176310,
+  "lat": 32.2106981,
+  "lon": 76.4089483,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "shelter_type": "rock_shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 6795176311,
+  "lat": 32.2106533,
+  "lon": 76.4088336,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6795195810,
+  "lat": 32.2147759,
+  "lon": 76.4196865,
+  "tags": {
+    "fee": "no",
+    "internet_access": "no",
+    "tourism": "alpine_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6810676673,
+  "lat": 32.2545657,
+  "lon": 76.3939113,
+  "tags": {
+    "addr:street": "Hara Goth-Haudi ki Goth Trail",
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 6810723447,
+  "lat": 32.2433916,
+  "lon": 76.3868341,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 6970999086,
+  "lat": 32.2713834,
+  "lon": 76.2998562,
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 7079251828,
+  "lat": 32.2323081,
+  "lon": 76.3244486,
+  "tags": {
+    "addr:street": "Temple Road",
+    "amenity": "place_of_worship",
+    "check_date": "2023-11-26",
+    "name": "Dalai Lama temple",
+    "name:es": "Templo del Dalai Lama",
+    "name:hi": "दलाई लामा मंदिर",
+    "religion": "buddhist",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 7085595885,
+  "lat": 32.2394643,
+  "lon": 76.3534557,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 7674331974,
+  "lat": 32.3185509,
+  "lon": 76.2806111,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Charoti Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7674358524,
+  "lat": 32.2816089,
+  "lon": 76.3636279,
+  "tags": {
+    "mountain_pass": "yes",
+    "name": "Laka Deep"
+  }
+},
+{
+  "type": "node",
+  "id": 7775827181,
+  "lat": 32.3012988,
+  "lon": 76.3255727,
+  "tags": {
+    "mountain_pass": "yes",
+    "name": "Deep Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7859506431,
+  "lat": 32.2049141,
+  "lon": 76.4104298,
+  "tags": {
+    "mountain_pass": "yes",
+    "name": "Rasala Goth"
+  }
+},
+{
+  "type": "node",
+  "id": 7859584095,
+  "lat": 32.3719766,
+  "lon": 76.4779564,
+  "tags": {
+    "mountain_pass": "yes",
+    "name": "Si Pass"
+  }
+},
+{
+  "type": "node",
+  "id": 7890572942,
+  "lat": 32.3521319,
+  "lon": 76.2716389,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Charkhotu Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7890572943,
+  "lat": 32.3485132,
+  "lon": 76.2694180,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Chala Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7890572944,
+  "lat": 32.3461815,
+  "lon": 76.2671703,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Minkiani Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7890572945,
+  "lat": 32.3434985,
+  "lon": 76.2663549,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Bathla Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7890572947,
+  "lat": 32.3262656,
+  "lon": 76.2767534,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Hig Got"
+  }
+},
+{
+  "type": "node",
+  "id": 7890589174,
+  "lat": 32.3223218,
+  "lon": 76.2782022,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Chakli got"
+  }
+},
+{
+  "type": "node",
+  "id": 8212368817,
+  "lat": 32.3398256,
+  "lon": 76.2920300,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Minkiani Pass temple"
+  }
+},
+{
+  "type": "node",
+  "id": 8263193217,
+  "lat": 32.3565354,
+  "lon": 76.2736829,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chandraghanta Shiva Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 8574344117,
+  "lat": 32.2931934,
+  "lon": 76.2756068,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "description": "Emergency shelter built by shepherds"
+  }
+},
+{
+  "type": "node",
+  "id": 8584512817,
+  "lat": 32.2793773,
+  "lon": 76.4121412,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 8588779217,
+  "lat": 32.2636915,
+  "lon": 76.4307528,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Toral Pass temple"
+  }
+},
+{
+  "type": "node",
+  "id": 8689596483,
+  "lat": 32.3140749,
+  "lon": 76.2873497,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 8764510447,
+  "lat": 32.3016229,
+  "lon": 76.3209573,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 8764517429,
+  "lat": 32.2935259,
+  "lon": 76.3034445,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8780375217,
+  "lat": 32.2890694,
+  "lon": 76.2922755,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 8831138592,
+  "lat": 32.3062105,
+  "lon": 76.2707772,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 8831180026,
+  "lat": 32.2741904,
+  "lon": 76.3683823,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Cave"
+  }
+},
+{
+  "type": "node",
+  "id": 8831187931,
+  "lat": 32.2455461,
+  "lon": 76.3696854,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 9214173819,
+  "lat": 32.2621391,
+  "lon": 76.4021382,
+  "tags": {
+    "name": "Khabrotu",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 9214173820,
+  "lat": 32.2622348,
+  "lon": 76.3999454,
+  "tags": {
+    "drinking_water": "yes",
+    "intermittent": "no",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 9214173821,
+  "lat": 32.2674789,
+  "lon": 76.4024264,
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 9214190717,
+  "lat": 32.2949935,
+  "lon": 76.4224983,
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 9698304638,
+  "lat": 32.2577317,
+  "lon": 76.3248080,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sundowner Café"
+  }
+},
+{
+  "type": "node",
+  "id": 9734107705,
+  "lat": 32.2513419,
+  "lon": 76.3368029,
+  "tags": {
+    "amenity": "drinking_water",
+    "fee": "no",
+    "seasonal": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9796885737,
+  "lat": 32.2632508,
+  "lon": 76.4362030,
+  "tags": {
+    "mountain_pass": "yes",
+    "name": "तोरल जोत"
+  }
+},
+{
+  "type": "node",
+  "id": 9802365394,
+  "lat": 32.2487210,
+  "lon": 76.3288207,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:signed": "no",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9802962617,
+  "lat": 32.2514735,
+  "lon": 76.3290759,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "rains.coffeehouse",
+    "cuisine": "bagel;cake;coffee_shop",
+    "internet_access": "wlan",
+    "name": "Rains Coffee House",
+    "name:en": "Rains Coffee House",
+    "opening_hours": "Mo-Su 09:00-19:00",
+    "phone": "9805037035"
+  }
+},
+{
+  "type": "node",
+  "id": 10542154868,
+  "lat": 32.2469237,
+  "lon": 76.3116443,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 10542154871,
+  "lat": 32.2891924,
+  "lon": 76.2922676,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 10561935525,
+  "lat": 32.2523889,
+  "lon": 76.3296040,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Molly’s cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 10567775280,
+  "lat": 32.2491537,
+  "lon": 76.3265240,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 10570822548,
+  "lat": 32.2531189,
+  "lon": 76.3295707,
+  "tags": {
+    "name": "Hippie Trail cottage",
+    "tourism": "wilderness_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 10572254147,
+  "lat": 32.2561421,
+  "lon": 76.3938376,
+  "tags": {
+    "drinking_water": "yes",
+    "intermittent": "no",
+    "name": "Stream",
+    "natural": "spring",
+    "note": "water is drinkable better if you have filter or can boil it[we used cloth filtration while at this spot}"
+  }
+},
+{
+  "type": "node",
+  "id": 10574302488,
+  "lat": 32.2803509,
+  "lon": 76.2816003,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Himalayan musfair Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 10574319292,
+  "lat": 32.2760865,
+  "lon": 76.2880079,
+  "tags": {
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 10574319308,
+  "lat": 32.2715260,
+  "lon": 76.2913563,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 10574322321,
+  "lat": 32.2535552,
+  "lon": 76.3238141,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "check_date": "23-11-2025",
+    "lit": "yes",
+    "lockable": "yes",
+    "note": "Concrete hut made for the priest",
+    "shelter_type": "basic_hut"
+  }
+},
+{
+  "type": "node",
+  "id": 10574322324,
+  "lat": 32.2535406,
+  "lon": 76.3239109,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Naag Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 10578901775,
+  "lat": 32.2484304,
+  "lon": 76.3293738,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Crossover cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 10578955070,
+  "lat": 32.2457108,
+  "lon": 76.3328274,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-05-06",
+    "cuisine": "russian",
+    "name": "Astral Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 10687760615,
+  "lat": 32.2726082,
+  "lon": 76.3155279,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Guna Devi",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 10688121516,
+  "lat": 32.2277412,
+  "lon": 76.3792384,
+  "tags": {
+    "name": "Thatharana",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 10907106629,
+  "lat": 32.2557268,
+  "lon": 76.3430782,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Halfway food point"
+  }
+},
+{
+  "type": "node",
+  "id": 10915226483,
+  "lat": 32.2804447,
+  "lon": 76.2764118,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 10915437709,
+  "lat": 32.2605824,
+  "lon": 76.3030205,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 10916466505,
+  "lat": 32.2472558,
+  "lon": 76.3317265,
+  "tags": {
+    "amenity": "cafe",
+    "name": "en Café"
+  }
+},
+{
+  "type": "node",
+  "id": 10936220499,
+  "lat": 32.2513223,
+  "lon": 76.3290356,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mysore Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 10936229367,
+  "lat": 32.2512532,
+  "lon": 76.3292314,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:signed": "no",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 10936237740,
+  "lat": 32.2514022,
+  "lon": 76.3290545,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Roja Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 10960939705,
+  "lat": 32.2465961,
+  "lon": 76.3154186,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "tibetan",
+    "name": "Tibetan Flag Temple",
+    "religion": "buddhist",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11082878117,
+  "lat": 32.1961808,
+  "lon": 76.2804580,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 11090407215,
+  "lat": 32.2526994,
+  "lon": 76.3027972,
+  "tags": {
+    "amenity": "bench",
+    "backrest": "yes",
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 11091188244,
+  "lat": 32.2454859,
+  "lon": 76.3340535,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Temple",
+    "religion": "hindu",
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 11099906629,
+  "lat": 32.2485387,
+  "lon": 76.3357953,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 11343151669,
+  "lat": 32.1949368,
+  "lon": 76.3420196,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11346812499,
+  "lat": 32.2070047,
+  "lon": 76.3257236,
+  "tags": {
+    "addr:place": "Lower Shamnagar",
+    "addr:suburb": "Dharmshala",
+    "amenity": "place_of_worship",
+    "name": "Kewal Nath Shiv Mandir",
+    "religion": "hindu",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11348411603,
+  "lat": 32.2183710,
+  "lon": 76.3154915,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11348918978,
+  "lat": 32.2068807,
+  "lon": 76.3257513,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 11350340262,
+  "lat": 32.1985964,
+  "lon": 76.3670953,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "sandwich;cake",
+    "level": "0",
+    "name": "The Fat Teapot",
+    "opening_hours": "Mo-Su 09:30-19:30",
+    "wikimedia_commons": "File:Interior_of_The_Fat_Teapot.jpg"
+  }
+},
+{
+  "type": "node",
+  "id": 11350411289,
+  "lat": 32.2157038,
+  "lon": 76.3610775,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bitterbean Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11351008287,
+  "lat": 32.2260297,
+  "lon": 76.3629486,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 11351008398,
+  "lat": 32.2320537,
+  "lon": 76.3640089,
+  "tags": {
+    "amenity": "cafe",
+    "contact:mobile": "+91-83549-57585",
+    "level": "0",
+    "name": "Kosen Rofu Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11359810093,
+  "lat": 32.1996975,
+  "lon": 76.3437222,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Guru Gorakh Nath Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11361193767,
+  "lat": 32.2052827,
+  "lon": 76.3270533,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 11361489751,
+  "lat": 32.2181883,
+  "lon": 76.3171172,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 11362302790,
+  "lat": 32.1956103,
+  "lon": 76.3236368,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11362309370,
+  "lat": 32.2083551,
+  "lon": 76.3239088,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 11367866712,
+  "lat": 32.2483500,
+  "lon": 76.3322675,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:signed": "no",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11377238777,
+  "lat": 32.2360879,
+  "lon": 76.3239339,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Moonpeak"
+  }
+},
+{
+  "type": "node",
+  "id": 11380926954,
+  "lat": 32.2391502,
+  "lon": 76.3237744,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Ajju Tea Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 11380986679,
+  "lat": 32.2390964,
+  "lon": 76.3237237,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Zom Zom Tea Point"
+  }
+},
+{
+  "type": "node",
+  "id": 11381033861,
+  "lat": 32.2469272,
+  "lon": 76.3317705,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Tara Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11402472698,
+  "lat": 32.2388394,
+  "lon": 76.3242789,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Juniper Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11402484391,
+  "lat": 32.2388866,
+  "lon": 76.3241108,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Tsampa Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11402590615,
+  "lat": 32.2368534,
+  "lon": 76.3249012,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Welcome Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11402652388,
+  "lat": 32.2465934,
+  "lon": 76.3311677,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Milaan Café",
+    "name:en": "Milaan Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11402682939,
+  "lat": 32.2484929,
+  "lon": 76.3322150,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Astral Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11406941395,
+  "lat": 32.2508597,
+  "lon": 76.3299408,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11406942511,
+  "lat": 32.2508686,
+  "lon": 76.3298490,
+  "tags": {
+    "amenity": "cafe",
+    "diet:vegetarian": "yes",
+    "name": "Mowgli Café"
+  }
+},
+{
+  "type": "node",
+  "id": 11406951684,
+  "lat": 32.2508114,
+  "lon": 76.3300666,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Butterfly Mandala"
+  }
+},
+{
+  "type": "node",
+  "id": 11816107669,
+  "lat": 32.2974781,
+  "lon": 76.3812448,
+  "tags": {
+    "mountain_pass": "yes",
+    "name": "Indrahar Pass"
+  }
+},
+{
+  "type": "node",
+  "id": 11909407099,
+  "lat": 32.2293152,
+  "lon": 76.3249514,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Stupa"
+  }
+},
+{
+  "type": "node",
+  "id": 11922460670,
+  "lat": 32.2426072,
+  "lon": 76.3301568,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Foresta"
+  }
+},
+{
+  "type": "node",
+  "id": 12301149982,
+  "lat": 32.2059589,
+  "lon": 76.3752541,
+  "tags": {
+    "name": "Natural Spring",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 12301149983,
+  "lat": 32.2062827,
+  "lon": 76.3713131,
+  "tags": {
+    "name": "Spring",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 12328661002,
+  "lat": 32.2445237,
+  "lon": 76.3468868,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 12334330101,
+  "lat": 32.2255423,
+  "lon": 76.3235010,
+  "tags": {
+    "amenity": "cafe",
+    "name": "MO-NGA Bakery and Cafe",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12334330202,
+  "lat": 32.2224490,
+  "lon": 76.3185106,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 12353157401,
+  "lat": 32.3234522,
+  "lon": 76.2713854,
+  "tags": {
+    "name": "Tej singh kareri lake camping and trekking",
+    "phone": "8894023021",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 12705625506,
+  "lat": 32.2466337,
+  "lon": 76.3250268,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 12738753637,
+  "lat": 32.1938812,
+  "lon": 76.3190726,
+  "tags": {
+    "addr:city": "Dharamshala",
+    "addr:postcode": "176215",
+    "addr:street": "Jawahar Nagar",
+    "amenity": "place_of_worship",
+    "name": "Pingaleshwar Mahadev",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12791236745,
+  "lat": 32.2504300,
+  "lon": 76.3247533,
+  "tags": {
+    "name": "Small Ground",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "node",
+  "id": 12813477388,
+  "lat": 32.2465432,
+  "lon": 76.3297057,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12813500946,
+  "lat": 32.2485222,
+  "lon": 76.3292081,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Hang Out Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12813515396,
+  "lat": 32.2466148,
+  "lon": 76.3316811,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Pedro"
+  }
+},
+{
+  "type": "node",
+  "id": 12813527568,
+  "lat": 32.2482361,
+  "lon": 76.3283478,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Da' wiara cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12813719160,
+  "lat": 32.2458288,
+  "lon": 76.3318786,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tashi Delek"
+  }
+},
+{
+  "type": "node",
+  "id": 12813826321,
+  "lat": 32.2467246,
+  "lon": 76.3318550,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Crêpes & love"
+  }
+},
+{
+  "type": "node",
+  "id": 12814099913,
+  "lat": 32.2456653,
+  "lon": 76.3322793,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Maya's cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12815919765,
+  "lat": 32.2486752,
+  "lon": 76.3289971,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Center point cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12815921245,
+  "lat": 32.2493550,
+  "lon": 76.3292848,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Homie's Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12815929897,
+  "lat": 32.2478322,
+  "lon": 76.3298328,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Backwoods Bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 12815939910,
+  "lat": 32.2508204,
+  "lon": 76.3301563,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Young Monk Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12815951507,
+  "lat": 32.2513238,
+  "lon": 76.3288242,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Forest view Café"
+  }
+},
+{
+  "type": "node",
+  "id": 12816496483,
+  "lat": 32.2452251,
+  "lon": 76.3349809,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Lockdown Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12816499192,
+  "lat": 32.2455398,
+  "lon": 76.3323307,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sunny's Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12816523033,
+  "lat": 32.2453895,
+  "lon": 76.3350936,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Flight mode cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12818912400,
+  "lat": 32.2458140,
+  "lon": 76.3279510,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Eevolve Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12821576658,
+  "lat": 32.2469257,
+  "lon": 76.3310680,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12825295618,
+  "lat": 32.2534020,
+  "lon": 76.3289058,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Parvati Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12825307887,
+  "lat": 32.2534020,
+  "lon": 76.3289058,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Parvati Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 12825393550,
+  "lat": 32.2507595,
+  "lon": 76.3353900,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Nature Cafe Best Sunset Point"
+  }
+},
+{
+  "type": "node",
+  "id": 12828028890,
+  "lat": 32.2491238,
+  "lon": 76.3291944,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Nukkad"
+  }
+},
+{
+  "type": "node",
+  "id": 12828136489,
+  "lat": 32.2494401,
+  "lon": 76.3284545,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chillax Café"
+  }
+},
+{
+  "type": "node",
+  "id": 12833596579,
+  "lat": 32.2494045,
+  "lon": 76.3293022,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tapri Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12835212312,
+  "lat": 32.2486740,
+  "lon": 76.3284919,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Open Heart Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12853414563,
+  "lat": 32.2031297,
+  "lon": 76.4600602,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "place_of_worship",
+    "name": "KhadGoshani Mata",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12870313765,
+  "lat": 32.2702250,
+  "lon": 76.3527225,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "name": "Trimund Sarai"
+  }
+},
+{
+  "type": "node",
+  "id": 12891895668,
+  "lat": 32.2490422,
+  "lon": 76.3325659,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Paradise cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12903897161,
+  "lat": 32.2450858,
+  "lon": 76.3255969,
+  "tags": {
+    "amenity": "shelter",
+    "shelter_type": "public_transport"
+  }
+},
+{
+  "type": "node",
+  "id": 12903904816,
+  "lat": 32.2466404,
+  "lon": 76.3249836,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 12903972699,
+  "lat": 32.2526695,
+  "lon": 76.3026057,
+  "tags": {
+    "amenity": "cafe",
+    "name": "View sunrise cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12903994324,
+  "lat": 32.2527249,
+  "lon": 76.3027721,
+  "tags": {
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 12904002920,
+  "lat": 32.2526576,
+  "lon": 76.3023361,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12913603850,
+  "lat": 32.2472326,
+  "lon": 76.3270846,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Zula Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12961194243,
+  "lat": 32.2388091,
+  "lon": 76.3245744,
+  "tags": {
+    "addr:city": "Dharmsala, Macleod Ganj",
+    "addr:district": "Kangra",
+    "addr:postcode": "176216",
+    "addr:street": "Bhagsu Road",
+    "amenity": "cafe",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61577895811051",
+    "cuisine": "bubble_tea;american;asian",
+    "delivery": "yes",
+    "name": "Tego Bubble Tea shop",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:google_pay": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+919886329198",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12992948582,
+  "lat": 32.2395074,
+  "lon": 76.3720239,
+  "tags": {
+    "drinking_water": "yes",
+    "intermittent": "no",
+    "name": "Water point",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 12992964023,
+  "lat": 32.2438277,
+  "lon": 76.3727461,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "description": "cave made by hydroproject",
+    "name": "Tunnel cave"
+  }
+},
+{
+  "type": "node",
+  "id": 12992995101,
+  "lat": 32.2432041,
+  "lon": 76.3867045,
+  "tags": {
+    "amenity": "shelter",
+    "name": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 12993020549,
+  "lat": 32.2995129,
+  "lon": 76.2738039,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13011636512,
+  "lat": 32.2385995,
+  "lon": 76.3245066,
+  "tags": {
+    "addr:street": "Bhagsu road",
+    "amenity": "cafe",
+    "name": "Juniper Terrace",
+    "opening_hours": "Mo-Su 09:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13246992833,
+  "lat": 32.2793056,
+  "lon": 76.4121888,
+  "tags": {
+    "name": "कुंडली जोत",
+    "natural": "saddle"
+  }
+},
+{
+  "type": "node",
+  "id": 13246992834,
+  "lat": 32.2798355,
+  "lon": 76.4115673,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13264089627,
+  "lat": 32.2652089,
+  "lon": 76.3537780,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "name": "Shepherds Tarp Shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13264095276,
+  "lat": 32.2409190,
+  "lon": 76.3484122,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13264112146,
+  "lat": 32.2709663,
+  "lon": 76.3600770,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "name": "Shepherds Cave Shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13319069499,
+  "lat": 32.2366664,
+  "lon": 76.3564213,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva temple"
+  }
+},
+{
+  "type": "node",
+  "id": 13319069500,
+  "lat": 32.2365740,
+  "lon": 76.3550092,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13325762391,
+  "lat": 32.2458383,
+  "lon": 76.3366908,
+  "tags": {
+    "amenity": "shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13325762393,
+  "lat": 32.2470827,
+  "lon": 76.3316697,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "south_indian",
+    "name": "South Cliff cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13327355065,
+  "lat": 32.2436190,
+  "lon": 76.3360448,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "name": "Boulder Shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13327358025,
+  "lat": 32.2478982,
+  "lon": 76.3076480,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13327400717,
+  "lat": 32.2537579,
+  "lon": 76.3223371,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13327587196,
+  "lat": 32.2524210,
+  "lon": 76.3241401,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13332885417,
+  "lat": 32.2465528,
+  "lon": 76.3920147,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13333699092,
+  "lat": 32.2527893,
+  "lon": 76.3923391,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13337417198,
+  "lat": 32.2816216,
+  "lon": 76.4315058,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13337455033,
+  "lat": 32.2846180,
+  "lon": 76.4332007,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13354687535,
+  "lat": 32.2407031,
+  "lon": 76.3351820,
+  "tags": {
+    "amenity": "shelter",
+    "name": "Cave Shelter"
+  }
+},
+{
+  "type": "node",
+  "id": 13392720629,
+  "lat": 32.2348292,
+  "lon": 76.3421242,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13392769196,
+  "lat": 32.2196286,
+  "lon": 76.3351063,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jhaadd Wali Mata"
+  }
+},
+{
+  "type": "node",
+  "id": 13392775617,
+  "lat": 32.2263374,
+  "lon": 76.3415985,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13392779877,
+  "lat": 32.2226883,
+  "lon": 76.3375899,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13392790016,
+  "lat": 32.2210089,
+  "lon": 76.3360990,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Xo Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13392800910,
+  "lat": 32.2200959,
+  "lon": 76.3304910,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13410612320,
+  "lat": 32.2319379,
+  "lon": 76.3616253,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Naag Devta Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 13507939033,
+  "lat": 32.2394323,
+  "lon": 76.3471697,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Hanuman Ji"
+  }
+},
+{
+  "type": "node",
+  "id": 13507939100,
+  "lat": 32.2397710,
+  "lon": 76.3622113,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13508335328,
+  "lat": 32.2482061,
+  "lon": 76.3620962,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13512128733,
+  "lat": 32.2360793,
+  "lon": 76.3917948,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13512131503,
+  "lat": 32.2277099,
+  "lon": 76.3799450,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13513616816,
+  "lat": 32.2528217,
+  "lon": 76.4039078,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13516722040,
+  "lat": 32.2248245,
+  "lon": 76.4138404,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13614354932,
+  "lat": 32.2421647,
+  "lon": 76.3505183,
+  "tags": {
+    "amenity": "cafe",
+    "description": "Cafe and Camping",
+    "name": "Bhai Chara Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13614627366,
+  "lat": 32.2330638,
+  "lon": 76.3637462,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13614674014,
+  "lat": 32.2128575,
+  "lon": 76.3586950,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "yes",
+    "bin": "no",
+    "lit": "no",
+    "shelter_type": "public_transport"
+  }
+},
+{
+  "type": "node",
+  "id": 13668499190,
+  "lat": 32.2075382,
+  "lon": 76.3222978,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kulcha Kulture"
+  }
+},
+{
+  "type": "node",
+  "id": 13698146273,
+  "lat": 32.3346603,
+  "lon": 76.3241385,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13716361601,
+  "lat": 32.2310980,
+  "lon": 76.3267990,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Skol Culture Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13728887887,
+  "lat": 32.2220554,
+  "lon": 76.3186391,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Ji"
+  }
+},
+{
+  "type": "node",
+  "id": 13728933748,
+  "lat": 32.2231813,
+  "lon": 76.3222676,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13729915701,
+  "lat": 32.2391921,
+  "lon": 76.3310345,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Strings Cafe and Bistro"
+  }
+},
+{
+  "type": "node",
+  "id": 13734469102,
+  "lat": 32.2620383,
+  "lon": 76.2863501,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bamboo Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13759933901,
+  "lat": 32.2390956,
+  "lon": 76.3253522,
+  "tags": {
+    "addr:postcode": "176219",
+    "addr:street": "Bhagsu Road",
+    "amenity": "cafe",
+    "name": "Peace Coffee House"
+  }
+},
+{
+  "type": "node",
+  "id": 13810133546,
+  "lat": 32.2071582,
+  "lon": 76.3238471,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13823403963,
+  "lat": 32.2558278,
+  "lon": 76.3428784,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 13844941434,
+  "lat": 32.3784507,
+  "lon": 76.3717434,
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "name": "Thatch"
+  }
+},
+{
+  "type": "node",
+  "id": 13854881954,
+  "lat": 32.3183191,
+  "lon": 76.3598503,
+  "tags": {
+    "ele": "4480",
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13854881955,
+  "lat": 32.3058384,
+  "lon": 76.3698404,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13854881956,
+  "lat": 32.3100072,
+  "lon": 76.3648938,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13854881957,
+  "lat": 32.3241212,
+  "lon": 76.3641694,
+  "tags": {
+    "natural": "peak"
+  }
+},
+{
+  "type": "node",
+  "id": 13973987301,
+  "lat": 32.2071442,
+  "lon": 76.3221505,
+  "tags": {
+    "addr:city": "Dharamsala",
+    "addr:district": "Kangra",
+    "addr:postcode": "176215",
+    "addr:street": "Civil Lines Road",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;ice_cream;indian",
+    "internet_access": "no",
+    "name": "Sip & Snacks",
+    "name:hi": "सिप एंड स्नेक्स",
+    "opening_hours": "Mo-Su 09:00-19:00",
+    "outdoor_seating": "yes",
+    "website:menu": "https://drive.google.com/drive/folders/1GSga7DEj6CYI0zULTitnQ6RYqrs0V04i?usp=sharing"
+  }
+},
+{
+  "type": "way",
+  "id": 43752491,
+  "center": {
+    "lat": 32.2428380,
+    "lon": 76.3180919
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "anglican",
+    "name": "Church of Saint John in the Wilderness",
+    "note": "Service end time estimated.",
+    "religion": "christian",
+    "service_times": "Su 11:30-12:30",
+    "start_date": "1852",
+    "tourism": "attraction",
+    "wheelchair": "yes",
+    "wikidata": "Q7588934",
+    "wikipedia": "en:St. John in the Wilderness Church (Dharamshala)"
+  }
+},
+{
+  "type": "way",
+  "id": 49042229,
+  "center": {
+    "lat": 32.2726697,
+    "lon": 76.3154611
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2023-11-23",
+    "name": "Guna Mata",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 102799167,
+  "center": {
+    "lat": 32.2322998,
+    "lon": 76.3252670
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "check_date": "2023-12-02",
+    "name": "Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 102800366,
+  "center": {
+    "lat": 32.2297352,
+    "lon": 76.3229021
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 102801012,
+  "center": {
+    "lat": 32.2283324,
+    "lon": 76.3237350
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 102801720,
+  "center": {
+    "lat": 32.2283700,
+    "lon": 76.3241881
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 102801723,
+  "center": {
+    "lat": 32.2283574,
+    "lon": 76.3232836
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 103122026,
+  "center": {
+    "lat": 32.2382573,
+    "lon": 76.3238256
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Kalachakra Temple",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 192888193,
+  "center": {
+    "lat": 32.1987375,
+    "lon": 76.3675167
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Nageshwar Mahadev Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 192888195,
+  "center": {
+    "lat": 32.2425474,
+    "lon": 76.3182822
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "church",
+    "building:architecture": "neo-gothic",
+    "denomination": "anglican",
+    "name": "Saint John in the Wilderness",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 227490770,
+  "center": {
+    "lat": 32.2034916,
+    "lon": 76.3707141
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 228478336,
+  "center": {
+    "lat": 32.2001822,
+    "lon": 76.3100170
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 228818389,
+  "center": {
+    "lat": 32.1952476,
+    "lon": 76.3640496
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Daruni Mata Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 229259676,
+  "center": {
+    "lat": 32.2324761,
+    "lon": 76.3244405
+  },
+  "tags": {
+    "addr:street": "Temple Road",
+    "alt_name": "Namgyal Monastery",
+    "amenity": "place_of_worship",
+    "name": "Dalai Lama temple",
+    "name:en": "Dalai Lama Temple",
+    "name:es": "Templo del Dalai Lama",
+    "name:hi": "दलाई लामा मंदिर",
+    "religion": "buddhist",
+    "tourism": "attraction",
+    "wikidata": "Q2292183",
+    "wikipedia": "en:Namgyal Monastery"
+  }
+},
+{
+  "type": "way",
+  "id": 240702495,
+  "center": {
+    "lat": 32.2139511,
+    "lon": 76.3676957
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Nag Mandir",
+    "religion": "hindu",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 241166893,
+  "center": {
+    "lat": 32.2165003,
+    "lon": 76.3194485
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "sikh"
+  }
+},
+{
+  "type": "way",
+  "id": 242961194,
+  "center": {
+    "lat": 32.1993729,
+    "lon": 76.3657810
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 242961195,
+  "center": {
+    "lat": 32.1993801,
+    "lon": 76.3369340
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 296870622,
+  "center": {
+    "lat": 32.2009280,
+    "lon": 76.3571948
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "temple",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 296870628,
+  "center": {
+    "lat": 32.2009763,
+    "lon": 76.3570719
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Lhundrub Chime Gatsal Ling Monastery",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 403143828,
+  "center": {
+    "lat": 32.1946349,
+    "lon": 76.3693357
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 460390594,
+  "center": {
+    "lat": 32.2153049,
+    "lon": 76.3549429
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Shani Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 715097525,
+  "center": {
+    "lat": 32.1964109,
+    "lon": 76.4253501
+  },
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "building": "shed",
+    "name": "Shepherds Seasonal Hut"
+  }
+},
+{
+  "type": "way",
+  "id": 715097530,
+  "center": {
+    "lat": 32.2048994,
+    "lon": 76.4282362
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes",
+    "name": "Abandoned and Ruined Shelter"
+  }
+},
+{
+  "type": "way",
+  "id": 715097531,
+  "center": {
+    "lat": 32.2060809,
+    "lon": 76.4286987
+  },
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 715097534,
+  "center": {
+    "lat": 32.2052748,
+    "lon": 76.4310990
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes",
+    "name": "Khiladu"
+  }
+},
+{
+  "type": "way",
+  "id": 1223814262,
+  "center": {
+    "lat": 32.2055122,
+    "lon": 76.3276271
+  },
+  "tags": {
+    "amenity": "shelter",
+    "bench": "yes",
+    "bin": "no",
+    "building": "yes",
+    "bus": "yes",
+    "lit": "no",
+    "name": "Charan",
+    "name:hi": "चरान",
+    "public_transport": "platform",
+    "roof:material": "slate",
+    "roof:shape": "pyramidal",
+    "shelter": "yes",
+    "shelter_type": "public_transport"
+  }
+},
+{
+  "type": "way",
+  "id": 1224961102,
+  "center": {
+    "lat": 32.1960648,
+    "lon": 76.3446598
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sant Nirankari Satsang Bhawan",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1392701719,
+  "center": {
+    "lat": 32.2495673,
+    "lon": 76.3293845
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "chinese;italian_pizza;italian;asian",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "level": "0",
+    "name": "Flügler Cafe",
+    "outdoor_seating": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 1410218900,
+  "center": {
+    "lat": 32.2806623,
+    "lon": 76.4568493
+  },
+  "tags": {
+    "caravans": "no",
+    "fee": "no",
+    "name": "Jottnu",
+    "static_caravans": "no",
+    "tents": "no",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "way",
+  "id": 1445655818,
+  "center": {
+    "lat": 32.2329444,
+    "lon": 76.3477788
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Tille Wali Mata"
+  }
+},
+{
+  "type": "way",
+  "id": 1445655819,
+  "center": {
+    "lat": 32.2334400,
+    "lon": 76.3456940
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1453261380,
+  "center": {
+    "lat": 32.2550344,
+    "lon": 76.3264291
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Thapa Tea Shop"
+  }
+},
+{
+  "type": "way",
+  "id": 1453261389,
+  "center": {
+    "lat": 32.2549156,
+    "lon": 76.3262690
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Thapa Tea Shop"
+  }
+},
+{
+  "type": "way",
+  "id": 1453509692,
+  "center": {
+    "lat": 32.2320389,
+    "lon": 76.3640877
+  },
+  "tags": {
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "way",
+  "id": 1460242083,
+  "center": {
+    "lat": 32.2308510,
+    "lon": 76.3385182
+  },
+  "tags": {
+    "caravans": "no",
+    "fee": "yes",
+    "static_caravans": "no",
+    "tents": "yes",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "way",
+  "id": 1460246287,
+  "center": {
+    "lat": 32.2264966,
+    "lon": 76.3418833
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1460246292,
+  "center": {
+    "lat": 32.2263147,
+    "lon": 76.3411392
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1460247315,
+  "center": {
+    "lat": 32.2214233,
+    "lon": 76.3366266
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1472122460,
+  "center": {
+    "lat": 32.2421743,
+    "lon": 76.3505116
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "no",
+    "name": "Make Shift Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 1472122461,
+  "center": {
+    "lat": 32.2427380,
+    "lon": 76.3498300
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1472122462,
+  "center": {
+    "lat": 32.2440807,
+    "lon": 76.3498951
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1472171625,
+  "center": {
+    "lat": 32.2366358,
+    "lon": 76.3723331
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1484972756,
+  "center": {
+    "lat": 32.2319411,
+    "lon": 76.3616210
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1485165181,
+  "center": {
+    "lat": 32.2114148,
+    "lon": 76.3725688
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Aghanjar Mahadev Mandir",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 1485165190,
+  "center": {
+    "lat": 32.2113641,
+    "lon": 76.3693936
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "tea"
+  }
+},
+{
+  "type": "way",
+  "id": 1491374837,
+  "center": {
+    "lat": 32.2278515,
+    "lon": 76.3287727
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Guna Mata Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 1491374850,
+  "center": {
+    "lat": 32.2234571,
+    "lon": 76.3218775
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495012232,
+  "center": {
+    "lat": 32.2759841,
+    "lon": 76.3037669
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Naag Devta Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110474,
+  "center": {
+    "lat": 32.3120632,
+    "lon": 76.3115303
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110475,
+  "center": {
+    "lat": 32.3120440,
+    "lon": 76.3114236
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110476,
+  "center": {
+    "lat": 32.3119540,
+    "lon": 76.3114942
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110477,
+  "center": {
+    "lat": 32.3107681,
+    "lon": 76.3112064
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110478,
+  "center": {
+    "lat": 32.3106509,
+    "lon": 76.3112757
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110479,
+  "center": {
+    "lat": 32.3105623,
+    "lon": 76.3113297
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110480,
+  "center": {
+    "lat": 32.3102264,
+    "lon": 76.3119813
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1495110483,
+  "center": {
+    "lat": 32.3045012,
+    "lon": 76.3137097
+  },
+  "tags": {
+    "amenity": "shelter",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1497677618,
+  "center": {
+    "lat": 32.2156357,
+    "lon": 76.3187790
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Durga Mata Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 1499207438,
+  "center": {
+    "lat": 32.2248235,
+    "lon": 76.3226373
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Vaishni Devi Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 1510791834,
+  "center": {
+    "lat": 32.2067604,
+    "lon": 76.3225846
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Hanuman Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 1510791835,
+  "center": {
+    "lat": 32.2066977,
+    "lon": 76.3225113
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "1"
+  }
+},
+{
+  "type": "way",
+  "id": 1510791850,
+  "center": {
+    "lat": 32.2032205,
+    "lon": 76.3229951
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Police Tea Stall"
+  }
+},
+{
+  "type": "way",
+  "id": 1512854564,
+  "center": {
+    "lat": 32.2570483,
+    "lon": 76.3431209
+  },
+  "tags": {
+    "amenity": "shelter",
+    "bench": "no",
+    "bin": "no",
+    "building": "yes",
+    "name": "Seasonal Cattle Herders Shelter"
+  }
+},
+{
+  "type": "way",
+  "id": 1516246195,
+  "center": {
+    "lat": 32.2544542,
+    "lon": 76.3258685
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1516246196,
+  "center": {
+    "lat": 32.2554448,
+    "lon": 76.3265783
+  },
+  "tags": {
+    "caravans": "no",
+    "fee": "yes",
+    "group_only": "no",
+    "static_caravans": "no",
+    "tents": "yes",
+    "tourism": "camp_site"
+  }
+},
+{
+  "type": "way",
+  "id": 1517878354,
+  "center": {
+    "lat": 32.2827374,
+    "lon": 76.3645334
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "no",
+    "outdoor_seating": "yes",
+    "surface": "tarp"
+  }
+}
+
+  ]
+}
