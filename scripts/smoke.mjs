@@ -52,12 +52,14 @@ console.log("   sathi answered:", answer.slice(0, 220).replace(/\n/g, " | "));
 
 console.log("5. SOS card");
 await page.keyboard.press("Escape");
+await page.waitForTimeout(1000);
 await page.getByTitle("SOS — exits, numbers, position code").click();
-await page.waitForTimeout(800);
+await page.waitForTimeout(1200);
 await page.screenshot({ path: `${SHOTS}/04-sos.png` });
-const plusCode = await page.locator(".font-mono.text-lg").innerText().catch(() => "??");
+const plusCode = await page.locator(".font-mono.text-lg").innerText({ timeout: 5000 }).catch(() => "??");
 console.log("   plus code:", plusCode);
 await page.keyboard.press("Escape");
+await page.waitForTimeout(1000);
 
 console.log("6. Humsafar demo peers + SOS beacon + rescue brief");
 await page.getByTitle("Demo companions (clearly labeled simulated peers)").click();
