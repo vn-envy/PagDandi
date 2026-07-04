@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useTheme } from "next-themes";
 import {
   Map,
@@ -10,9 +10,7 @@ import {
   MarkerContent,
   MarkerLabel,
   MarkerPopup,
-  useMap,
 } from "@/components/ui/map";
-import { usePmtilesProtocol } from "@/hooks/use-pmtiles";
 import { buildOfflineStyle } from "@/hooks/use-pmtiles";
 import type { PeerState, PoiFeature, Position, TrekManifest } from "@/lib/types";
 import { POI_COLORS, POI_LABELS } from "@/lib/types";
@@ -36,19 +34,6 @@ const POI_ICONS = {
   exit: LogOut,
   sos: Siren,
 };
-
-function PmtilesStyleSync({ pmtilesPath }: { pmtilesPath: string }) {
-  const { map, isLoaded, resolvedTheme } = useMap();
-  const { theme } = useTheme();
-  const activeTheme = theme === "system" ? resolvedTheme : (theme as "light" | "dark");
-
-  useEffect(() => {
-    if (!map || !isLoaded) return;
-    map.setStyle(buildOfflineStyle(pmtilesPath, activeTheme ?? "dark"));
-  }, [map, isLoaded, pmtilesPath, activeTheme]);
-
-  return null;
-}
 
 function PeerMarker({ peer, staleMs }: { peer: PeerState; staleMs: number }) {
   const stale = isPeerStale(peer.timestamp, staleMs);
@@ -148,7 +133,8 @@ export function TrekMap({
   staleMs,
   showPoiLayers,
 }: TrekMapProps) {
-  usePmtilesProtocol();
+  const { resolvedTheme } = useTheme();
+  const mapTheme = resolvedTheme === "light" ? "light" : "dark";
 
   const visiblePois = useMemo(
     () => pois.filter((p) => showPoiLayers[p.type] !== false),
@@ -156,20 +142,19 @@ export function TrekMap({
   );
 
   const offlineStyle = useMemo(
-    () => buildOfflineStyle(manifest.pmtiles, "dark"),
-    [manifest.pmtiles],
+    () => buildOfflineStyle(manifest.pmtiles, mapTheme),
+    [manifest.pmtiles, mapTheme],
   );
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full min-h-[320px] w-full">
       <Map
         center={manifest.center}
         zoom={manifest.defaultZoom}
-        className="h-full w-full rounded-xl"
-        theme="dark"
+        className="absolute inset-0 rounded-xl"
+        theme={mapTheme}
         styles={{ light: offlineStyle, dark: offlineStyle }}
       >
-        <PmtilesStyleSync pmtilesPath={manifest.pmtiles} />
         <MapControls showZoom showCompass position="bottom-right" />
         <MapRoute
           coordinates={trailCoords}
@@ -192,7 +177,7 @@ export function TrekMap({
           <MarkerLabel>{manifest.summit.name}</MarkerLabel>
         </MapMarker>
       </Map>
-      <div className="pointer-events-none absolute left-3 top-3 rounded-lg border bg-background/80 px-3 py-2 text-xs backdrop-blur-sm">
+      <div className="pointer-events-none absolute left-3 top-3 z-10 rounded-lg border bg-background/80 px-3 py-2 text-xs backdrop-blur-sm">
         <p className="font-semibold">✈️ Offline · PMTiles</p>
         <p className="text-muted-foreground">{manifest.name}</p>
       </div>

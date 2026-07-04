@@ -74,7 +74,10 @@ export const POI_LABELS: Record<PoiType, string> = {
   sos: "SOS",
 };
 
-export const SERVER_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL ?? "http://localhost:3847";
+// Same-origin /api/* is proxied to the backend via next.config.ts rewrites
+export const SERVER_URL = "";
+
 export const WS_URL =
-  process.env.NEXT_PUBLIC_WS_URL ?? "ws://localhost:3847/humsafar";
+  typeof window !== "undefined"
+    ? `${window.location.protocol === "https:" ? "wss" : "ws"}://${window.location.hostname}:3847/humsafar`
+    : "ws://localhost:3847/humsafar";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Footprints } from "lucide-react";
 import { TrekMap } from "@/components/trek-map";
 import { TrailSathi } from "@/components/trail-sathi";
@@ -12,14 +12,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useHumsafar } from "@/hooks/use-humsafar";
 import { interpolatePosition } from "@/lib/geo";
-import type { PoiFeature, TrekManifest } from "@/lib/types";
+import { triundManifest, triundPois, triundTrailCoords } from "@/data/triund-pack";
 
 const DEFAULT_KM = 5.1;
 
 export default function PagDandiApp() {
-  const [manifest, setManifest] = useState<TrekManifest | null>(null);
-  const [trailCoords, setTrailCoords] = useState<[number, number][]>([]);
-  const [pois, setPois] = useState<PoiFeature[]>([]);
+  const manifest = triundManifest;
+  const trailCoords = triundTrailCoords;
+  const pois = triundPois;
   const [kmAlongTrail, setKmAlongTrail] = useState(DEFAULT_KM);
   const [humsafarEnabled, setHumsafarEnabled] = useState(true);
   const [visible, setVisible] = useState(true);
@@ -28,43 +28,8 @@ export default function PagDandiApp() {
   );
   const [peerName] = useState(() => `Trekker-${Math.random().toString(36).slice(2, 5)}`);
 
-  useEffect(() => {
-    Promise.all([
-      fetch("/trek-packs/triund/manifest.json").then((r) => r.json()),
-      fetch("/trek-packs/triund/trail.geojson").then((r) => r.json()),
-      fetch("/trek-packs/triund/pois.geojson").then((r) => r.json()),
-    ]).then(([m, trail, poiGeo]) => {
-      setManifest(m);
-      setTrailCoords(
-        trail.features[0].geometry.coordinates as [number, number][],
-      );
-      setPois(
-        poiGeo.features.map(
-          (f: {
-            properties: {
-              id: string;
-              name: string;
-              type: PoiFeature["type"];
-              elevationM: number;
-              description?: string;
-            };
-            geometry: { coordinates: [number, number] };
-          }) => ({
-            id: f.properties.id,
-            name: f.properties.name,
-            type: f.properties.type,
-            elevationM: f.properties.elevationM,
-            description: f.properties.description,
-            lng: f.geometry.coordinates[0],
-            lat: f.geometry.coordinates[1],
-          }),
-        ),
-      );
-    });
-  }, []);
-
   const position = useMemo(
-    () => (manifest ? interpolatePosition(manifest, kmAlongTrail) : null),
+    () => interpolatePosition(manifest, kmAlongTrail),
     [manifest, kmAlongTrail],
   );
 
@@ -72,8 +37,8 @@ export default function PagDandiApp() {
     useHumsafar(
       peerId,
       peerName,
-      position ?? { lat: 32.22, lng: 76.32 },
-      humsafarEnabled && !!position,
+      position,
+      humsafarEnabled,
     );
 
   const showPoiLayers = useMemo(
@@ -87,14 +52,6 @@ export default function PagDandiApp() {
     }),
     [],
   );
-
-  if (!manifest || !position) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="animate-pulse text-muted-foreground">Loading Trek Pack…</p>
-      </div>
-    );
-  }
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -115,7 +72,7 @@ export default function PagDandiApp() {
       </header>
 
       <main className="grid flex-1 gap-4 p-4 lg:grid-cols-[1fr_380px]">
-        <div className="min-h-[50vh] lg:min-h-[calc(100vh-5rem)]">
+        <div className="h-[55vh] min-h-[360px] lg:h-[calc(100vh-5rem)]">
           <TrekMap
             manifest={manifest}
             trailCoords={trailCoords}
