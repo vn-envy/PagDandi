@@ -22,7 +22,9 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
   const [reply, setReply] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [backend, setBackend] = useState<string | null>(null);
-  const [toolCalls, setToolCalls] = useState<Array<{ name: string; result: unknown }>>([]);
+  const [toolCalls, setToolCalls] = useState<
+    Array<{ name: string; args?: unknown; result: unknown }>
+  >([]);
 
   const position = interpolatePosition(manifest, kmAlongTrail);
 
@@ -56,12 +58,13 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
             type: string;
             backend?: string;
             name?: string;
+            args?: unknown;
             result?: unknown;
             text?: string;
           };
           if (ev.type === "meta" && ev.backend) setBackend(ev.backend);
           if (ev.type === "tool_call" && ev.name)
-            setToolCalls((tc) => [...tc, { name: ev.name!, result: ev.result }]);
+            setToolCalls((tc) => [...tc, { name: ev.name!, args: ev.args, result: ev.result }]);
           if (ev.type === "token" && ev.text) {
             gotTokens = true;
             setLoading(false);
@@ -168,7 +171,8 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
                     key={i}
                     className="overflow-x-auto rounded bg-background p-1.5 text-[9px]"
                   >
-                    {tc.name}() → {JSON.stringify(tc.result, null, 0).slice(0, 120)}…
+                    {tc.name}({tc.args ? JSON.stringify(tc.args, null, 0) : ""}) →{" "}
+                    {JSON.stringify(tc.result, null, 0).slice(0, 120)}…
                   </pre>
                 ))}
               </div>

@@ -5,3 +5,6 @@ dist/
 .env.local
 *.log
 .DS_Store
+
+# runtime hazard log (user data, not pack content)
+trek-packs/*/hazards.json
