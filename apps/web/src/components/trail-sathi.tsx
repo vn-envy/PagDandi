@@ -23,6 +23,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
   const [loading, setLoading] = useState(false);
   const [backend, setBackend] = useState<string | null>(null);
   const [routedBy, setRoutedBy] = useState<string | null>(null);
+  const [almanac, setAlmanac] = useState<{ method: string; titles: string[] } | null>(null);
   const [toolCalls, setToolCalls] = useState<
     Array<{ name: string; args?: unknown; result: unknown }>
   >([]);
@@ -35,6 +36,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
     setToolCalls([]);
     setBackend(null);
     setRoutedBy(null);
+    setAlmanac(null);
     try {
       // Streaming path: SSE over fetch — tool_call events + live tokens
       const res = await fetch(`${SERVER_URL}/api/guide/stream`, {
@@ -60,6 +62,8 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
             type: string;
             backend?: string;
             model?: string;
+            method?: string;
+            titles?: string[];
             name?: string;
             args?: unknown;
             result?: unknown;
@@ -67,6 +71,8 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
           };
           if (ev.type === "meta" && ev.backend) setBackend(ev.backend);
           if (ev.type === "router" && ev.model) setRoutedBy(ev.model);
+          if (ev.type === "rag" && ev.method && ev.titles)
+            setAlmanac({ method: ev.method, titles: ev.titles });
           if (ev.type === "tool_call" && ev.name)
             setToolCalls((tc) => [...tc, { name: ev.name!, args: ev.args, result: ev.result }]);
           if (ev.type === "token" && ev.text) {
@@ -90,6 +96,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
         setReply(data.reply);
         setBackend(data.backend);
         setToolCalls(data.toolCalls ?? []);
+        setAlmanac(data.almanac ?? null);
       } catch {
         setReply("Could not reach Trail Sathi. Is the local server running?");
       }
@@ -168,6 +175,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
               <p className="text-[10px] text-muted-foreground">
                 Backend: {backend}
                 {routedBy ? ` · routed by ${routedBy}` : ""}
+                {almanac ? ` · almanac: ${almanac.titles.join(", ")} (${almanac.method})` : ""}
               </p>
             )}
             {toolCalls.length > 0 && (

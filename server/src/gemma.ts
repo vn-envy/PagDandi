@@ -13,6 +13,7 @@ import {
   remainingAscent,
   sunsetTime,
 } from "./trek-tools.js";
+import { almanacBlock } from "./rag.js";
 
 const LITERT_URL = process.env.LITERT_URL ?? "http://127.0.0.1:8080/v1";
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://127.0.0.1:11434";
@@ -368,10 +369,12 @@ export async function trailSathiGuide(
   position: Position;
   backend: GemmaBackend;
   toolCalls: Array<{ name: string; args?: unknown; result: unknown }>;
+  almanac?: { method: string; titles: string[] } | null;
 }> {
   const position = interpolatePosition(kmAlongTrail);
   const backend = await detectBackend();
-  const systemPrompt = buildSystemPrompt(position);
+  const rag = await almanacBlock(question);
+  const systemPrompt = buildSystemPrompt(position) + rag.block;
   const toolCalls: Array<{ name: string; args?: unknown; result: unknown }> = [];
 
   if (backend === "simulator") {
@@ -381,6 +384,7 @@ export async function trailSathiGuide(
       position,
       backend,
       toolCalls: sim.toolCalls.map((t) => ({ name: t.name, result: t.result })),
+      almanac: rag.meta,
     };
   }
 
@@ -407,6 +411,7 @@ export async function trailSathiGuide(
           position,
           backend,
           toolCalls,
+          almanac: rag.meta,
         };
       }
 
@@ -459,6 +464,7 @@ export async function trailSathiGuide(
       position,
       backend,
       toolCalls,
+      almanac: rag.meta,
     };
   } catch (err) {
     const sim = simulatorGuide(question, position);
@@ -467,6 +473,7 @@ export async function trailSathiGuide(
       position,
       backend: "simulator",
       toolCalls: sim.toolCalls.map((t) => ({ name: t.name, result: t.result })),
+      almanac: rag.meta,
     };
   }
 }
@@ -570,6 +577,7 @@ async function callOllamaStreamRound(
 export type GuideStreamEvent =
   | { type: "meta"; backend: GemmaBackend; position: Position }
   | { type: "router"; model: string }
+  | { type: "rag"; method: string; titles: string[] }
   | { type: "tool_call"; name: string; args?: unknown; result: unknown }
   | { type: "token"; text: string }
   | { type: "done"; backend: GemmaBackend }
@@ -584,6 +592,8 @@ export async function trailSathiGuideStream(
   const position = interpolatePosition(kmAlongTrail);
   const backend = await detectBackend();
   emit({ type: "meta", backend, position });
+  const rag = await almanacBlock(question);
+  if (rag.meta) emit({ type: "rag", method: rag.meta.method, titles: rag.meta.titles });
 
   if (backend === "simulator") {
     const sim = simulatorGuide(question, position);
@@ -591,7 +601,14 @@ export async function trailSathiGuideStream(
       emit({ type: "tool_call", name: t.name, result: t.result });
       await sleep(120);
     }
-    for (const w of sim.reply.split(/(\s+)/)) {
+    let reply = sim.reply;
+    if (rag.meta) {
+      // Even offline with no model, the trek pack still answers: quote the
+      // top retrieved almanac section.
+      const first = rag.block.split("\n\n")[1] ?? "";
+      reply += `\n\nAlmanac — ${rag.meta.titles[0]}: ${first.split("\n").slice(1).join(" ").slice(0, 220)}…`;
+    }
+    for (const w of reply.split(/(\s+)/)) {
       if (!w) continue;
       emit({ type: "token", text: w });
       await sleep(14);
@@ -633,6 +650,7 @@ export async function trailSathiGuideStream(
               role: "system",
               content:
                 buildSystemPrompt(position) +
+                rag.block +
                 "\nTOOL RESULTS are already provided below — do NOT call tools; answer directly.",
             },
             {
@@ -657,8 +675,8 @@ export async function trailSathiGuideStream(
 
   const systemWithTools =
     ollamaSupportsTools === false
-      ? buildSystemPrompt(position) + promptToolInstructions()
-      : buildSystemPrompt(position);
+      ? buildSystemPrompt(position) + rag.block + promptToolInstructions()
+      : buildSystemPrompt(position) + rag.block;
   const messages: ChatMessage[] = [
     { role: "system", content: systemWithTools },
     { role: "user", content: question },

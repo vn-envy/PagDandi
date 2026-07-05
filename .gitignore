@@ -8,3 +8,4 @@ dist/
 
 # runtime hazard log (user data, not pack content)
 trek-packs/*/hazards.json
+trek-packs/*/almanac-embeddings.json
