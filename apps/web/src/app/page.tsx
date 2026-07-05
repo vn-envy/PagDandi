@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Footprints } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Footprints, LocateFixed } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { TrekMap } from "@/components/trek-map";
 import { TrailSathi } from "@/components/trail-sathi";
 import { BhashaBridge } from "@/components/bhasha-bridge";
@@ -15,7 +16,7 @@ import { PoiLayerToggle } from "@/components/poi-layer-toggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useHumsafar } from "@/hooks/use-humsafar";
-import { interpolatePosition } from "@/lib/geo";
+import { interpolatePosition, snapToTrail } from "@/lib/geo";
 import { triundManifest, triundPois, triundTrailCoords } from "@/data/triund-pack";
 import type { PoiType } from "@/lib/types";
 
@@ -27,6 +28,45 @@ export default function PagDandiApp() {
   const pois = triundPois;
   const [kmAlongTrail, setKmAlongTrail] = useState(DEFAULT_KM);
   const [humsafarEnabled, setHumsafarEnabled] = useState(true);
+
+  // Real GPS, snapped to the trail. Manual drag exits follow mode (map-app convention).
+  const [gpsEnabled, setGpsEnabled] = useState(false);
+  const [gpsStatus, setGpsStatus] = useState<"off" | "locating" | "on" | "error">("off");
+  const [offTrailKm, setOffTrailKm] = useState(0);
+  const watchRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!gpsEnabled) {
+      if (watchRef.current !== null) navigator.geolocation?.clearWatch(watchRef.current);
+      watchRef.current = null;
+      setGpsStatus("off");
+      return;
+    }
+    if (!("geolocation" in navigator)) {
+      setGpsStatus("error");
+      return;
+    }
+    setGpsStatus("locating");
+    watchRef.current = navigator.geolocation.watchPosition(
+      (pos) => {
+        const snapped = snapToTrail(triundManifest, pos.coords.latitude, pos.coords.longitude);
+        setKmAlongTrail(snapped.kmAlongTrail);
+        setOffTrailKm(snapped.offTrailKm);
+        setGpsStatus("on");
+      },
+      () => setGpsStatus("error"),
+      { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 },
+    );
+    return () => {
+      if (watchRef.current !== null) navigator.geolocation?.clearWatch(watchRef.current);
+      watchRef.current = null;
+    };
+  }, [gpsEnabled]);
+
+  const handleManualKm = useCallback((km: number) => {
+    setGpsEnabled(false); // dragging the rig exits GPS follow
+    setKmAlongTrail(km);
+  }, []);
   const [visible, setVisible] = useState(true);
   // Random IDs must be generated after mount — during SSR they'd differ
   // from the client render and break hydration (killing all interactivity).
@@ -86,6 +126,28 @@ export default function PagDandiApp() {
         <Badge variant="outline" className="hidden sm:flex">
           Gemma 4 E4B on-device
         </Badge>
+        <Button
+          variant={gpsEnabled ? "default" : "outline"}
+          size="sm"
+          onClick={() => setGpsEnabled((v) => !v)}
+          title="Follow my GPS, snapped to the trail"
+          className="gap-1.5"
+        >
+          <LocateFixed
+            className={`size-4 ${gpsStatus === "locating" ? "animate-pulse" : ""}`}
+          />
+          <span className="hidden text-xs sm:inline">
+            {gpsStatus === "on"
+              ? offTrailKm > 0.15
+                ? `${(offTrailKm * 1000).toFixed(0)}m off trail`
+                : "On trail"
+              : gpsStatus === "locating"
+                ? "Locating…"
+                : gpsStatus === "error"
+                  ? "GPS unavailable"
+                  : "Use my GPS"}
+          </span>
+        </Button>
         <NightTrekToggle />
       </header>
 
@@ -108,7 +170,7 @@ export default function PagDandiApp() {
           <ElevationProfile
             manifest={manifest}
             kmAlongTrail={kmAlongTrail}
-            onKmChange={setKmAlongTrail}
+            onKmChange={handleManualKm}
           />
         </div>
 
@@ -132,7 +194,7 @@ export default function PagDandiApp() {
               <TrailSathi
                 manifest={manifest}
                 kmAlongTrail={kmAlongTrail}
-                onKmChange={setKmAlongTrail}
+                onKmChange={handleManualKm}
               />
             </TabsContent>
             <TabsContent value="bhasha" className="mt-3">
