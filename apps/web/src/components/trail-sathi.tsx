@@ -184,7 +184,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
                 {toolCalls.map((tc, i) => (
                   <pre
                     key={i}
-                    className="overflow-x-auto rounded bg-background p-1.5 text-[9px]"
+                    className="whitespace-pre-wrap break-all rounded bg-background p-1.5 text-[9px]"
                   >
                     {tc.name}({tc.args ? JSON.stringify(tc.args, null, 0) : ""}) →{" "}
                     {JSON.stringify(tc.result, null, 0).slice(0, 120)}…
