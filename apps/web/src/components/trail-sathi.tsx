@@ -22,6 +22,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
   const [reply, setReply] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [backend, setBackend] = useState<string | null>(null);
+  const [routedBy, setRoutedBy] = useState<string | null>(null);
   const [toolCalls, setToolCalls] = useState<
     Array<{ name: string; args?: unknown; result: unknown }>
   >([]);
@@ -33,6 +34,7 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
     setReply(null);
     setToolCalls([]);
     setBackend(null);
+    setRoutedBy(null);
     try {
       // Streaming path: SSE over fetch — tool_call events + live tokens
       const res = await fetch(`${SERVER_URL}/api/guide/stream`, {
@@ -57,12 +59,14 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
           const ev = JSON.parse(line.slice(6)) as {
             type: string;
             backend?: string;
+            model?: string;
             name?: string;
             args?: unknown;
             result?: unknown;
             text?: string;
           };
           if (ev.type === "meta" && ev.backend) setBackend(ev.backend);
+          if (ev.type === "router" && ev.model) setRoutedBy(ev.model);
           if (ev.type === "tool_call" && ev.name)
             setToolCalls((tc) => [...tc, { name: ev.name!, args: ev.args, result: ev.result }]);
           if (ev.type === "token" && ev.text) {
@@ -161,7 +165,10 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
           <div className="flex-1 space-y-2 overflow-auto rounded-lg border bg-muted/30 p-3">
             <p className="text-sm leading-relaxed">{reply}</p>
             {backend && (
-              <p className="text-[10px] text-muted-foreground">Backend: {backend}</p>
+              <p className="text-[10px] text-muted-foreground">
+                Backend: {backend}
+                {routedBy ? ` · routed by ${routedBy}` : ""}
+              </p>
             )}
             {toolCalls.length > 0 && (
               <div className="space-y-1 border-t pt-2">

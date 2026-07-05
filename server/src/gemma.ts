@@ -17,8 +17,17 @@ import {
 const LITERT_URL = process.env.LITERT_URL ?? "http://127.0.0.1:8080/v1";
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://127.0.0.1:11434";
 const GEMMA_MODEL = process.env.GEMMA_MODEL ?? "gemma4:e4b";
+// FunctionGemma (270M) — dedicated function-calling Gemma used as a sub-second
+// tool router when pulled locally. E4B then only does one composition pass.
+const ROUTER_MODEL = process.env.ROUTER_MODEL ?? "functiongemma";
 
 export type GemmaBackend = "litert-lm" | "ollama" | "simulator";
+
+let routerAvailable = false;
+/** True when the FunctionGemma router model is pulled in ollama. */
+export function hasRouter(): boolean {
+  return routerAvailable;
+}
 
 export async function detectBackend(): Promise<GemmaBackend> {
   try {
@@ -29,11 +38,54 @@ export async function detectBackend(): Promise<GemmaBackend> {
   }
   try {
     const r = await fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(1500) });
-    if (r.ok) return "ollama";
+    if (r.ok) {
+      try {
+        const data = (await r.json()) as { models?: Array<{ name: string }> };
+        routerAvailable = !!data.models?.some((m) => m.name.startsWith(ROUTER_MODEL));
+      } catch {
+        routerAvailable = false;
+      }
+      return "ollama";
+    }
   } catch {
     /* fallback */
   }
   return "simulator";
+}
+
+/**
+ * Sub-second tool dispatch via FunctionGemma. Returns tool calls to execute,
+ * or null when the router is unsure — caller falls back to the E4B loop.
+ */
+async function routeWithFunctionGemma(
+  question: string,
+  position: Position,
+): Promise<ToolCall[] | null> {
+  try {
+    const res = await fetch(`${OLLAMA_URL}/api/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(12_000),
+      body: JSON.stringify({
+        model: ROUTER_MODEL,
+        stream: false,
+        options: { temperature: 0 },
+        tools: TOOL_DEFINITIONS,
+        messages: [
+          {
+            role: "system",
+            content: `You dispatch a trekker's question to trail tools. Position: ${position.kmAlongTrail.toFixed(1)} km along trail at ${position.elevationM}m. Call the relevant tool(s). If none fit, reply "none".`,
+          },
+          { role: "user", content: question },
+        ],
+      }),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { message: { tool_calls?: ToolCall[] } };
+    return data.message.tool_calls?.length ? data.message.tool_calls : null;
+  } catch {
+    return null;
+  }
 }
 
 interface ChatMessage {
@@ -517,6 +569,7 @@ async function callOllamaStreamRound(
 
 export type GuideStreamEvent =
   | { type: "meta"; backend: GemmaBackend; position: Position }
+  | { type: "router"; model: string }
   | { type: "tool_call"; name: string; args?: unknown; result: unknown }
   | { type: "token"; text: string }
   | { type: "done"; backend: GemmaBackend }
@@ -554,6 +607,52 @@ export async function trailSathiGuideStream(
     emit({ type: "token", text: r.reply });
     emit({ type: "done", backend: r.backend });
     return;
+  }
+
+  // Fast path: FunctionGemma routes the question to tools in <1s, then E4B
+  // does a single composition pass — halves the expensive E4B turns.
+  if (hasRouter()) {
+    const routed = await routeWithFunctionGemma(question, position);
+    if (routed?.length) {
+      emit({ type: "router", model: ROUTER_MODEL });
+      const results: string[] = [];
+      for (const tc of routed) {
+        try {
+          const args = parseToolArgs(tc.function.arguments);
+          const result = executeTool(tc.function.name, args, position);
+          emit({ type: "tool_call", name: tc.function.name, args, result });
+          results.push(`${tc.function.name}(${JSON.stringify(args)}) → ${JSON.stringify(result)}`);
+        } catch {
+          /* router hallucinated a tool/args — skip it */
+        }
+      }
+      if (results.length) {
+        try {
+          const composeMessages: ChatMessage[] = [
+            {
+              role: "system",
+              content:
+                buildSystemPrompt(position) +
+                "\nTOOL RESULTS are already provided below — do NOT call tools; answer directly.",
+            },
+            {
+              role: "user",
+              content: `${question}\n\nTOOL RESULTS:\n${results.join("\n")}\n\nAnswer in plain text.`,
+            },
+          ];
+          let streamed = false;
+          const final = await callOllamaStreamRound(composeMessages, false, (t) => {
+            streamed = true;
+            emit({ type: "token", text: t });
+          });
+          if (!streamed && final.content) emit({ type: "token", text: final.content });
+          emit({ type: "done", backend });
+          return;
+        } catch {
+          /* fall through to the standard E4B loop */
+        }
+      }
+    }
   }
 
   const systemWithTools =

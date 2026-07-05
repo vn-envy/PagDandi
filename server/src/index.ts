@@ -5,6 +5,7 @@ import { attachHumsafar } from "./humsafar.js";
 import {
   bhashaTranslate,
   detectBackend,
+  hasRouter,
   humsafarSosBrief,
   prakritiLens,
   trailSathiGuide,
@@ -20,7 +21,7 @@ app.use(express.json({ limit: "12mb" }));
 
 app.get("/health", async (_req, res) => {
   const backend = await detectBackend();
-  res.json({ ok: true, backend, trek: "triund" });
+  res.json({ ok: true, backend, router: hasRouter(), trek: "triund" });
 });
 
 app.get("/api/trek/:id/manifest", (req, res) => {
