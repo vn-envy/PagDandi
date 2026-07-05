@@ -419,6 +419,219 @@ export async function trailSathiGuide(
   }
 }
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * One streamed ollama chat round. Forwards prose tokens via onToken as they
+ * arrive; holds back the first few chars so prompt-based ```tool_call``` fences
+ * are never streamed to the UI. Returns the accumulated message.
+ */
+async function callOllamaStreamRound(
+  messages: ChatMessage[],
+  useNativeTools: boolean,
+  onToken: (t: string) => void,
+): Promise<{ content: string; tool_calls?: ToolCall[] }> {
+  const withTools = useNativeTools && ollamaSupportsTools !== false;
+  const res = await fetch(`${OLLAMA_URL}/api/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: GEMMA_MODEL,
+      messages,
+      stream: true,
+      think: false,
+      options: { temperature: 0.3, num_ctx: 4096 },
+      ...(withTools ? { tools: TOOL_DEFINITIONS } : {}),
+    }),
+  });
+  if (!res.ok || !res.body) {
+    const text = await res.text();
+    if (withTools && /does not support tools/i.test(text)) {
+      ollamaSupportsTools = false;
+      return callOllamaStreamRound(messages, false, onToken);
+    }
+    throw new Error(`Ollama error ${res.status}: ${text.slice(0, 200)}`);
+  }
+  if (withTools) ollamaSupportsTools = true;
+
+  const reader = res.body.getReader();
+  const dec = new TextDecoder();
+  let buf = "";
+  let content = "";
+  const tool_calls: ToolCall[] = [];
+  let holdback = "";
+  let decided = false;
+  let isToolBlock = false;
+  const push = (delta: string) => {
+    if (!decided) {
+      holdback += delta;
+      if (holdback.trimStart().startsWith("```")) {
+        isToolBlock = true;
+        decided = true;
+      } else if (holdback.trimStart().length > 3) {
+        decided = true;
+        onToken(holdback);
+        holdback = "";
+      }
+      return;
+    }
+    if (!isToolBlock) onToken(delta);
+  };
+
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let idx: number;
+    while ((idx = buf.indexOf("\n")) >= 0) {
+      const line = buf.slice(0, idx).trim();
+      buf = buf.slice(idx + 1);
+      if (!line) continue;
+      try {
+        const chunk = JSON.parse(line) as {
+          message?: { content?: string; tool_calls?: ToolCall[] };
+        };
+        const delta = chunk.message?.content ?? "";
+        if (delta) {
+          content += delta;
+          push(delta);
+        }
+        if (chunk.message?.tool_calls?.length) tool_calls.push(...chunk.message.tool_calls);
+      } catch {
+        /* partial line — keep buffering */
+      }
+    }
+  }
+  if (!decided && holdback && !holdback.trimStart().startsWith("```")) onToken(holdback);
+
+  let finalToolCalls: ToolCall[] | undefined = tool_calls.length ? tool_calls : undefined;
+  if (!finalToolCalls?.length) {
+    const parsed = parsePromptToolCalls(content);
+    if (parsed.length) {
+      finalToolCalls = parsed;
+      content = "";
+    }
+  }
+  return { content, tool_calls: finalToolCalls };
+}
+
+export type GuideStreamEvent =
+  | { type: "meta"; backend: GemmaBackend; position: Position }
+  | { type: "tool_call"; name: string; args?: unknown; result: unknown }
+  | { type: "token"; text: string }
+  | { type: "done"; backend: GemmaBackend }
+  | { type: "error"; message: string };
+
+/** Streaming Trail Sathi: tool-call events between rounds, live tokens for prose. */
+export async function trailSathiGuideStream(
+  question: string,
+  kmAlongTrail: number,
+  emit: (ev: GuideStreamEvent) => void,
+): Promise<void> {
+  const position = interpolatePosition(kmAlongTrail);
+  const backend = await detectBackend();
+  emit({ type: "meta", backend, position });
+
+  if (backend === "simulator") {
+    const sim = simulatorGuide(question, position);
+    for (const t of sim.toolCalls) {
+      emit({ type: "tool_call", name: t.name, result: t.result });
+      await sleep(120);
+    }
+    for (const w of sim.reply.split(/(\s+)/)) {
+      if (!w) continue;
+      emit({ type: "token", text: w });
+      await sleep(14);
+    }
+    emit({ type: "done", backend });
+    return;
+  }
+
+  if (backend === "litert-lm") {
+    // LiteRT-LM path stays single-shot for now; emit as one block.
+    const r = await trailSathiGuide(question, kmAlongTrail);
+    for (const t of r.toolCalls) emit({ type: "tool_call", name: t.name, args: t.args, result: t.result });
+    emit({ type: "token", text: r.reply });
+    emit({ type: "done", backend: r.backend });
+    return;
+  }
+
+  const systemWithTools =
+    ollamaSupportsTools === false
+      ? buildSystemPrompt(position) + promptToolInstructions()
+      : buildSystemPrompt(position);
+  const messages: ChatMessage[] = [
+    { role: "system", content: systemWithTools },
+    { role: "user", content: question },
+  ];
+
+  try {
+    for (let round = 0; round < 4; round++) {
+      let streamedAny = false;
+      const response = await callOllamaStreamRound(messages, true, (t) => {
+        streamedAny = true;
+        emit({ type: "token", text: t });
+      });
+
+      if (!response.tool_calls?.length) {
+        if (!streamedAny && response.content) emit({ type: "token", text: response.content });
+        emit({ type: "done", backend });
+        return;
+      }
+
+      const promptBasedTools = ollamaSupportsTools === false;
+      if (promptBasedTools) {
+        const results: string[] = [];
+        for (const tc of response.tool_calls) {
+          const args = parseToolArgs(tc.function.arguments);
+          const result = executeTool(tc.function.name, args, position);
+          emit({ type: "tool_call", name: tc.function.name, args, result });
+          results.push(`${tc.function.name}(${JSON.stringify(args)}) → ${JSON.stringify(result)}`);
+        }
+        messages.push({ role: "assistant", content: `Calling tools:\n${results.map((r) => r.split(" →")[0]).join("\n")}` });
+        messages.push({
+          role: "user",
+          content: `TOOL RESULTS:\n${results.join("\n")}\n\nNow answer the original question in plain text using these results.`,
+        });
+      } else {
+        messages.push({
+          role: "assistant",
+          content: response.content || "",
+          // @ts-expect-error ollama tool_calls shape
+          tool_calls: response.tool_calls,
+        });
+        for (const tc of response.tool_calls) {
+          const args = parseToolArgs(tc.function.arguments);
+          const result = executeTool(tc.function.name, args, position);
+          emit({ type: "tool_call", name: tc.function.name, args, result });
+          messages.push({
+            role: "tool",
+            tool_call_id: tc.id,
+            name: tc.function.name,
+            content: JSON.stringify(result),
+          });
+        }
+      }
+    }
+
+    let streamedFinal = false;
+    const final = await callOllamaStreamRound(messages, false, (t) => {
+      streamedFinal = true;
+      emit({ type: "token", text: t });
+    });
+    if (!streamedFinal && final.content) emit({ type: "token", text: final.content });
+    emit({ type: "done", backend });
+  } catch {
+    const sim = simulatorGuide(question, position);
+    for (const t of sim.toolCalls) emit({ type: "tool_call", name: t.name, result: t.result });
+    emit({
+      type: "token",
+      text: `${sim.reply}\n\n_(Gemma offline — showing tool-reasoned fallback. Start LiteRT-LM or Ollama for live E4B.)_`,
+    });
+    emit({ type: "done", backend: "simulator" });
+  }
+}
+
 /** Transcode any browser audio (webm/ogg/mp4) to 16kHz mono WAV — Gemma's required format. */
 async function transcodeTo16kWav(audioBase64: string): Promise<string | null> {
   const { execFile } = await import("node:child_process");

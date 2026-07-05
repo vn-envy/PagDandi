@@ -29,18 +29,63 @@ export function TrailSathi({ manifest, kmAlongTrail, onKmChange }: TrailSathiPro
   async function ask() {
     setLoading(true);
     setReply(null);
+    setToolCalls([]);
+    setBackend(null);
     try {
-      const res = await fetch(`${SERVER_URL}/api/guide`, {
+      // Streaming path: SSE over fetch — tool_call events + live tokens
+      const res = await fetch(`${SERVER_URL}/api/guide/stream`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question, kmAlongTrail }),
       });
-      const data = await res.json();
-      setReply(data.reply);
-      setBackend(data.backend);
-      setToolCalls(data.toolCalls ?? []);
+      if (!res.ok || !res.body) throw new Error("stream unavailable");
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+      let gotTokens = false;
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        const frames = buf.split("\n\n");
+        buf = frames.pop() ?? "";
+        for (const frame of frames) {
+          const line = frame.split("\n").find((l) => l.startsWith("data: "));
+          if (!line) continue;
+          const ev = JSON.parse(line.slice(6)) as {
+            type: string;
+            backend?: string;
+            name?: string;
+            result?: unknown;
+            text?: string;
+          };
+          if (ev.type === "meta" && ev.backend) setBackend(ev.backend);
+          if (ev.type === "tool_call" && ev.name)
+            setToolCalls((tc) => [...tc, { name: ev.name!, result: ev.result }]);
+          if (ev.type === "token" && ev.text) {
+            gotTokens = true;
+            setLoading(false);
+            setReply((r) => (r ?? "") + ev.text);
+          }
+          if (ev.type === "done" && ev.backend) setBackend(ev.backend);
+        }
+      }
+      if (!gotTokens) throw new Error("empty stream");
     } catch {
-      setReply("Could not reach Trail Sathi. Is the local server running?");
+      // Legacy non-streaming fallback
+      try {
+        const res = await fetch(`${SERVER_URL}/api/guide`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question, kmAlongTrail }),
+        });
+        const data = await res.json();
+        setReply(data.reply);
+        setBackend(data.backend);
+        setToolCalls(data.toolCalls ?? []);
+      } catch {
+        setReply("Could not reach Trail Sathi. Is the local server running?");
+      }
     } finally {
       setLoading(false);
     }

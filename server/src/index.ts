@@ -8,6 +8,7 @@ import {
   humsafarSosBrief,
   prakritiLens,
   trailSathiGuide,
+  trailSathiGuideStream,
 } from "./gemma.js";
 import { interpolatePosition, loadManifest, nearestPoi } from "./trek-tools.js";
 
@@ -41,6 +42,30 @@ app.post("/api/guide", async (req, res) => {
   }
   const result = await trailSathiGuide(question, Number(kmAlongTrail));
   res.json(result);
+});
+
+// SSE token streaming — tool_call events between rounds, live tokens for prose
+app.post("/api/guide/stream", async (req, res) => {
+  const { question, kmAlongTrail = 5.1 } = req.body as {
+    question?: string;
+    kmAlongTrail?: number;
+  };
+  if (!question?.trim()) {
+    res.status(400).json({ error: "question required" });
+    return;
+  }
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache, no-transform");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("X-Accel-Buffering", "no"); // keep proxies from buffering SSE
+  res.flushHeaders();
+  const emit = (ev: unknown) => res.write(`data: ${JSON.stringify(ev)}\n\n`);
+  try {
+    await trailSathiGuideStream(question, Number(kmAlongTrail), emit);
+  } catch (err) {
+    emit({ type: "error", message: String(err) });
+  }
+  res.end();
 });
 
 app.post("/api/translate", async (req, res) => {
