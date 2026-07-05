@@ -1,9 +1,13 @@
 import {
   TOOL_DEFINITIONS,
+  bearingDegrees,
+  bearingLabel,
   buildSystemPrompt,
   executeTool,
+  haversineKm,
   interpolatePosition,
   loadManifest,
+  nearestPoi,
   type Position,
   estimateHikingMinutes,
   remainingAscent,
@@ -246,13 +250,62 @@ function simulatorGuide(question: string, position: Position): {
   };
 }
 
-function simulatorSosBrief(
-  position: Position,
-  sosPeer: { name: string; lat: number; lng: number; distanceKm: number },
-): string {
+/** Structured rescue brief — the shape Gemma is asked to emit (JSON schema). */
+export interface SosBriefStructured {
+  etaMin: number;
+  distanceKm: number;
+  bearing: string;
+  hazards: string[];
+  advice: string;
+}
+
+const SOS_BRIEF_SCHEMA = {
+  type: "object",
+  properties: {
+    etaMin: { type: "integer", description: "Minutes for the rescuer to reach the SOS peer on foot" },
+    hazards: { type: "array", items: { type: "string" }, description: "2-3 short hazard warnings for the route, most urgent first" },
+    advice: { type: "string", description: "2-3 decisive sentences: route to take, what to carry, what to do on arrival. Navigation only, no medical advice." },
+  },
+  required: ["etaMin", "hazards", "advice"],
+} as const;
+
+/** Deterministic grounding facts + fallback brief. Same tool functions Gemma uses. */
+function sosGrounding(position: Position, sosPeer: { name: string; lat: number; lng: number }) {
+  const distanceKm = haversineKm(position.lat, position.lng, sosPeer.lat, sosPeer.lng);
+  const bearing = bearingLabel(bearingDegrees(position.lat, position.lng, sosPeer.lat, sosPeer.lng));
   const sunset = sunsetTime(position.lat, position.lng);
-  const hikeMin = estimateHikingMinutes(sosPeer.distanceKm, 200);
-  return `SOS — ${sosPeer.name}, ${sosPeer.distanceKm.toFixed(1)} km northeast, below Laka Got ridge. At your pace: ~${hikeMin} minutes via the main trail. Sunset in ${Math.max(0, sunset.minutesUntilSunset)} minutes — ${sunset.minutesUntilSunset > hikeMin + 30 ? "you have margin" : "move now"}. Carry water; last source was the stream near Galu. Nearest human help is faster than helicopter dispatch from Dharamshala.`;
+  const etaMin = estimateHikingMinutes(distanceKm, 200);
+  const water = nearestPoi(position, "water");
+  const shelter = nearestPoi(position, "shelter");
+  const toolCalls = [
+    { name: "sunset_time", result: sunset },
+    { name: "nearest", args: { type: "water" }, result: { poi: water.poi.name, distanceKm: water.distanceKm } },
+    { name: "nearest", args: { type: "shelter" }, result: { poi: shelter.poi.name, distanceKm: shelter.distanceKm } },
+  ];
+
+  const hazards: string[] = [];
+  if (sunset.minutesUntilSunset < etaMin) {
+    hazards.push(`You arrive after sunset (${sunset.sunsetLocal}) — headlamp required`);
+  } else if (sunset.minutesUntilSunset < etaMin + 45) {
+    hazards.push(`Thin daylight margin — sunset ${sunset.sunsetLocal}`);
+  }
+  if (position.elevationM > 2650 || distanceKm > 2.5) {
+    hazards.push("Exposed ground above Snowline — wind chill, loose scree");
+  }
+  hazards.push("Stay on the main trail; never descend gullies in fading light");
+
+  const fallback: SosBriefStructured = {
+    etaMin,
+    distanceKm: Number(distanceKm.toFixed(1)),
+    bearing,
+    hazards: hazards.slice(0, 3),
+    advice: `Move now via the main trail toward ${sosPeer.name}. Fill water at ${water.poi.name} if passing (${water.distanceKm.toFixed(1)} km). On arrival, mark position with the LKP code and get them to ${shelter.poi.name} if mobile. The nearest human is almost always faster than a helicopter from Dharamshala.`,
+  };
+  return { distanceKm, bearing, sunset, etaMin, water, shelter, toolCalls, fallback };
+}
+
+function sosBriefText(b: SosBriefStructured, peerName: string): string {
+  return `SOS — ${peerName}, ${b.distanceKm.toFixed(1)} km ${b.bearing} of you, ~${b.etaMin} min on foot. ${b.hazards.join(". ")}. ${b.advice}`;
 }
 
 export async function trailSathiGuide(
@@ -544,14 +597,74 @@ Safety rules: mention hazards (aggressive wildlife, thorns, unstable ground) whe
   };
 }
 
-export function humsafarSosBrief(
+/**
+ * SOS rescue brief. Safety path: accuracy beats latency, so thinking mode is
+ * ON here (it is disabled on the chat path). Output is schema-constrained
+ * JSON via ollama's `format`; any failure falls back to the deterministic
+ * tool-computed brief — always labeled with its backend.
+ */
+export async function humsafarSosBrief(
   kmAlongTrail: number,
   sosPeer: { name: string; lat: number; lng: number },
-): string {
+): Promise<{ brief: SosBriefStructured; text: string; backend: GemmaBackend; toolCalls: Array<{ name: string; args?: unknown; result: unknown }> }> {
   const position = interpolatePosition(kmAlongTrail);
-  const distKm = Math.hypot(
-    (sosPeer.lat - position.lat) * 111,
-    (sosPeer.lng - position.lng) * 111 * Math.cos((position.lat * Math.PI) / 180),
-  );
-  return simulatorSosBrief(position, { ...sosPeer, distanceKm: distKm });
+  const g = sosGrounding(position, sosPeer);
+  const backend = await detectBackend();
+
+  if (backend === "ollama") {
+    try {
+      const facts = [
+        `Rescuer position: ${position.lat.toFixed(5)},${position.lng.toFixed(5)} at ${position.elevationM}m, ${position.kmAlongTrail.toFixed(1)} km along trail`,
+        `SOS peer: ${sosPeer.name} at ${sosPeer.lat.toFixed(5)},${sosPeer.lng.toFixed(5)} — ${g.distanceKm.toFixed(1)} km ${g.bearing} of rescuer`,
+        `Naismith ETA on foot: ~${g.etaMin} min`,
+        `Sunset: ${g.sunset.sunsetLocal} (${g.sunset.minutesUntilSunset} min from now), civil twilight ends ${g.sunset.civilTwilightEnd}`,
+        `Nearest water to rescuer: ${g.water.poi.name}, ${g.water.distanceKm.toFixed(1)} km ${g.water.bearingLabel}`,
+        `Nearest shelter: ${g.shelter.poi.name}, ${g.shelter.distanceKm.toFixed(1)} km ${g.shelter.bearingLabel}`,
+      ].join("\n");
+
+      const res = await fetch(`${OLLAMA_URL}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(90_000),
+        body: JSON.stringify({
+          model: GEMMA_MODEL,
+          stream: false,
+          think: true, // SOS: precision over latency
+          format: SOS_BRIEF_SCHEMA,
+          options: { temperature: 0.2, num_predict: 400 },
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are Trail Sathi composing a rescue brief for a trekker responding to a peer's SOS beacon on the Triund trail. Use ONLY the facts provided. Navigation and logistics only — absolutely no medical advice. Be decisive.",
+            },
+            { role: "user", content: `FACTS:\n${facts}\n\nCompose the rescue brief as JSON.` },
+          ],
+        }),
+      });
+      if (res.ok) {
+        const data = (await res.json()) as { message: { content?: string } };
+        const parsed = JSON.parse(data.message.content ?? "{}") as Partial<SosBriefStructured>;
+        if (typeof parsed.etaMin === "number" && Array.isArray(parsed.hazards) && typeof parsed.advice === "string") {
+          const brief: SosBriefStructured = {
+            etaMin: Math.round(parsed.etaMin),
+            distanceKm: Number(g.distanceKm.toFixed(1)),
+            bearing: g.bearing,
+            hazards: parsed.hazards.slice(0, 3).map(String),
+            advice: parsed.advice,
+          };
+          return { brief, text: sosBriefText(brief, sosPeer.name), backend, toolCalls: g.toolCalls };
+        }
+      }
+    } catch {
+      /* fall through to deterministic brief */
+    }
+  }
+
+  return {
+    brief: g.fallback,
+    text: sosBriefText(g.fallback, sosPeer.name),
+    backend: "simulator",
+    toolCalls: g.toolCalls,
+  };
 }

@@ -74,7 +74,7 @@ app.post("/api/lens", async (req, res) => {
   res.json(result);
 });
 
-app.post("/api/sos/brief", (req, res) => {
+app.post("/api/sos/brief", async (req, res) => {
   const { kmAlongTrail, sosPeer } = req.body as {
     kmAlongTrail?: number;
     sosPeer?: { name: string; lat: number; lng: number };
@@ -85,8 +85,13 @@ app.post("/api/sos/brief", (req, res) => {
   const manifest = loadManifest();
 
   let gemmaBrief: string | null = null;
+  let sosBrief: unknown = null;
+  let briefBackend: string | null = null;
   if (sosPeer) {
-    gemmaBrief = humsafarSosBrief(Number(kmAlongTrail ?? 5.1), sosPeer);
+    const r = await humsafarSosBrief(Number(kmAlongTrail ?? 5.1), sosPeer);
+    gemmaBrief = r.text;
+    sosBrief = r.brief;
+    briefBackend = r.backend;
   }
 
   const lkpCode = `PD-${position.lat.toFixed(3).replace(".", "")}-${position.lng.toFixed(3).replace(".", "")}`;
@@ -98,6 +103,8 @@ app.post("/api/sos/brief", (req, res) => {
     emergency: manifest.emergency,
     lastKnownPositionCode: lkpCode,
     gemmaBrief,
+    sosBrief,
+    briefBackend,
   });
 });
 

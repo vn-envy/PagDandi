@@ -5,7 +5,7 @@ import { AlertTriangle, Copy, Phone, Share2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SERVER_URL, type PeerState } from "@/lib/types";
+import { SERVER_URL, type PeerState, type SosBrief } from "@/lib/types";
 
 interface SosCardProps {
   kmAlongTrail: number;
@@ -19,6 +19,8 @@ export function SosCard({ kmAlongTrail, sosPeer }: SosCardProps) {
     emergency: Record<string, string>;
     lastKnownPositionCode: string;
     gemmaBrief?: string | null;
+    sosBrief?: SosBrief | null;
+    briefBackend?: string | null;
   } | null>(null);
 
   useEffect(() => {
@@ -54,10 +56,28 @@ export function SosCard({ kmAlongTrail, sosPeer }: SosCardProps) {
         </p>
       </CardHeader>
       <CardContent className="space-y-3 text-sm">
-        {data.gemmaBrief && (
-          <div className="rounded-lg border bg-background/70 p-2 text-xs leading-relaxed">
-            {data.gemmaBrief}
+        {data.sosBrief ? (
+          <div className="space-y-1 rounded-lg border bg-background/70 p-2 text-xs leading-relaxed">
+            <p className="font-semibold">
+              ETA ~{data.sosBrief.etaMin} min · {data.sosBrief.distanceKm.toFixed(1)} km{" "}
+              {data.sosBrief.bearing}
+            </p>
+            {data.sosBrief.hazards.length > 0 && (
+              <p className="text-muted-foreground">{data.sosBrief.hazards.join(" · ")}</p>
+            )}
+            <p>{data.sosBrief.advice}</p>
+            <p className="text-[10px] text-muted-foreground">
+              {data.briefBackend === "simulator"
+                ? "tool-computed fallback"
+                : "Gemma 4 E4B · thinking · schema-constrained"}
+            </p>
           </div>
+        ) : (
+          data.gemmaBrief && (
+            <div className="rounded-lg border bg-background/70 p-2 text-xs leading-relaxed">
+              {data.gemmaBrief}
+            </div>
+          )
         )}
         <div className="grid grid-cols-2 gap-2 text-xs">
           <div className="rounded border p-2">

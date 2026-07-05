@@ -46,6 +46,14 @@ export interface PoiFeature {
   description?: string;
 }
 
+export interface SosBrief {
+  etaMin: number;
+  distanceKm: number;
+  bearing: string;
+  hazards: string[];
+  advice: string;
+}
+
 export interface PeerState {
   id: string;
   name: string;

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Navigation, Siren, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SERVER_URL, type PeerState, type Position } from "@/lib/types";
+import { SERVER_URL, type PeerState, type Position, type SosBrief } from "@/lib/types";
 import { haversineKm } from "@/lib/geo";
 
 interface SosAlertBannerProps {
@@ -30,7 +30,8 @@ export function SosAlertBanner({
   kmAlongTrail,
   onDismiss,
 }: SosAlertBannerProps) {
-  const [brief, setBrief] = useState<string | null>(null);
+  const [brief, setBrief] = useState<SosBrief | null>(null);
+  const [briefBackend, setBriefBackend] = useState<string | null>(null);
 
   const distanceKm = haversineKm(position.lat, position.lng, sosPeer.lat, sosPeer.lng);
   const bearing = bearingLabel(position.lat, position.lng, sosPeer.lat, sosPeer.lng);
@@ -45,7 +46,10 @@ export function SosAlertBanner({
       }),
     })
       .then((r) => r.json())
-      .then((d) => setBrief(d.gemmaBrief ?? null))
+      .then((d) => {
+        setBrief(d.sosBrief ?? null);
+        setBriefBackend(d.briefBackend ?? null);
+      })
       .catch(() => null);
   }, [kmAlongTrail, sosPeer]);
 
@@ -67,10 +71,23 @@ export function SosAlertBanner({
             {distanceKm.toFixed(1)} km {bearing} of you
           </p>
           {brief ? (
-            <p className="rounded-md bg-red-900/60 p-2 text-sm leading-relaxed">
-              <span className="mr-1 font-semibold text-white">Trail Sathi:</span>
-              {brief}
-            </p>
+            <div className="space-y-1.5 rounded-md bg-red-900/60 p-2 text-sm leading-relaxed">
+              <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
+                <span>ETA ~{brief.etaMin} min</span>
+                <span className="font-normal text-red-200">
+                  {brief.distanceKm.toFixed(1)} km {brief.bearing} · on foot
+                </span>
+              </p>
+              {brief.hazards.length > 0 && (
+                <p className="text-xs text-red-200">{brief.hazards.join(" · ")}</p>
+              )}
+              <p>{brief.advice}</p>
+              <p className="text-[10px] text-red-300/70">
+                {briefBackend === "simulator"
+                  ? "tool-computed fallback — connect Gemma for live brief"
+                  : "Gemma 4 E4B · thinking mode · schema-constrained"}
+              </p>
+            </div>
           ) : (
             <p className="text-xs text-red-300/70 animate-pulse">
               Trail Sathi composing rescue brief…
