@@ -12,10 +12,14 @@ const MAX_RECORD_MS = 30_000;
 const LANGS = [
   { code: "English", speech: "en-US", label: "English" },
   { code: "Hindi", speech: "hi-IN", label: "हिन्दी" },
+  { code: "Nepali", speech: "ne-NP", label: "नेपाली" },
+  { code: "French", speech: "fr-FR", label: "Français" },
 ] as const;
+type LangCode = (typeof LANGS)[number]["code"];
 
 export function BhashaBridge() {
-  const [swap, setSwap] = useState(false);
+  const [srcCode, setSrcCode] = useState<LangCode>("English");
+  const [tgtCode, setTgtCode] = useState<LangCode>("Hindi");
   const [recording, setRecording] = useState(false);
   const [loading, setLoading] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
@@ -27,8 +31,23 @@ export function BhashaBridge() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const source = swap ? LANGS[1] : LANGS[0];
-  const target = swap ? LANGS[0] : LANGS[1];
+  const source = LANGS.find((l) => l.code === srcCode) ?? LANGS[0];
+  const target = LANGS.find((l) => l.code === tgtCode) ?? LANGS[1];
+
+  function swapLangs() {
+    setSrcCode(tgtCode);
+    setTgtCode(srcCode);
+  }
+
+  function pickLang(side: "src" | "tgt", code: LangCode) {
+    if (side === "src") {
+      if (code === tgtCode) setTgtCode(srcCode);
+      setSrcCode(code);
+    } else {
+      if (code === srcCode) setSrcCode(tgtCode);
+      setTgtCode(code);
+    }
+  }
 
   async function startRecording() {
     try {
@@ -96,7 +115,13 @@ export function BhashaBridge() {
       }
     } catch {
       setTranslation(
-        target.code === "Hindi" ? "सर्वर से कनेक्ट नहीं हो सका।" : "Could not reach the server.",
+        target.code === "Hindi"
+          ? "सर्वर से कनेक्ट नहीं हो सका।"
+          : target.code === "Nepali"
+            ? "सर्भरमा जडान हुन सकेन।"
+            : target.code === "French"
+              ? "Impossible de joindre le serveur."
+              : "Could not reach the server.",
       );
     } finally {
       setLoading(false);
@@ -110,7 +135,7 @@ export function BhashaBridge() {
           <Languages className="size-4 text-muted-foreground" />
           Bhasha Bridge
           <Badge variant="secondary" className="ml-auto text-[10px]">
-            35+ langs · offline
+            Gemma 4 · 140 langs · offline
           </Badge>
         </CardTitle>
         <p className="text-xs text-muted-foreground">
@@ -118,17 +143,39 @@ export function BhashaBridge() {
         </p>
       </CardHeader>
       <CardContent className="space-y-3">
-        <div className="flex items-center justify-center gap-3 rounded-lg border bg-muted/30 py-2 text-sm font-medium">
-          <span>{source.label}</span>
+        <div className="flex items-center justify-center gap-2 rounded-lg border bg-muted/30 px-2 py-2 text-sm font-medium">
+          <select
+            value={srcCode}
+            onChange={(e) => pickLang("src", e.target.value as LangCode)}
+            aria-label="Source language"
+            className="rounded-md bg-transparent px-2 py-1 text-center text-sm outline-none"
+          >
+            {LANGS.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.label}
+              </option>
+            ))}
+          </select>
           <Button
             variant="ghost"
             size="icon-xs"
-            onClick={() => setSwap((s) => !s)}
+            onClick={swapLangs}
             aria-label="Swap languages"
           >
             <ArrowLeftRight className="size-3.5" />
           </Button>
-          <span>{target.label}</span>
+          <select
+            value={tgtCode}
+            onChange={(e) => pickLang("tgt", e.target.value as LangCode)}
+            aria-label="Target language"
+            className="rounded-md bg-transparent px-2 py-1 text-center text-sm outline-none"
+          >
+            {LANGS.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.label}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="flex gap-2">

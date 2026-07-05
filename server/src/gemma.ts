@@ -831,15 +831,32 @@ When formatting the answer, first output the transcription in ${sourceLang}, the
     }
   }
 
-  // Demo fallback translations for hackathon video
+  // Demo fallback translations for hackathon video — Gemma 4 covers 140
+  // languages; the demo set mirrors the UI language picker.
   const demos: Record<string, { transcription: string; translation: string }> = {
-  "en-hi": {
+    "en-hi": {
       transcription: "Excuse me, is the trail to Triund still open? Is there water ahead?",
       translation: "माफ़ कीजिए, क्या त्रियुंड का रास्ता अभी भी खुला है? आगे पानी मिलेगा?",
     },
     "hi-en": {
       transcription: "हाँ, रास्ता खुला है। आगे मैजिक व्यू के पास पानी मिलेगा।",
       translation: "Yes, the trail is open. You'll find water near Magic View Café ahead.",
+    },
+    "en-ne": {
+      transcription: "Excuse me, is the trail to Triund still open? Is there water ahead?",
+      translation: "माफ गर्नुहोस्, के त्रिउण्ड जाने बाटो अझै खुला छ? अगाडि पानी पाइन्छ?",
+    },
+    "ne-en": {
+      transcription: "हो, बाटो खुला छ। अगाडि म्याजिक भ्यू नजिकै पानी पाइन्छ।",
+      translation: "Yes, the trail is open. You'll find water near Magic View ahead.",
+    },
+    "en-fr": {
+      transcription: "Excuse me, is the trail to Triund still open? Is there water ahead?",
+      translation: "Excusez-moi, le sentier vers Triund est-il toujours ouvert ? Y a-t-il de l'eau plus loin ?",
+    },
+    "fr-en": {
+      transcription: "Oui, le sentier est ouvert. Vous trouverez de l'eau près du Magic View Café.",
+      translation: "Yes, the trail is open. You'll find water near the Magic View Café.",
     },
   };
   const key = `${sourceLang.slice(0, 2).toLowerCase()}-${targetLang.slice(0, 2).toLowerCase()}`;
