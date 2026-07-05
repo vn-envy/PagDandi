@@ -566,8 +566,18 @@ export function executeTool(
 export function buildSystemPrompt(position: Position): string {
   const manifest = loadManifest();
   const pois = loadPois();
+  // Full POI notes — E4B's context window makes the compressed list obsolete.
   const poiSummary = pois
-    .map((p) => `- ${p.id}: ${p.name} (${p.type}, ${p.elevationM}m)`)
+    .map(
+      (p) =>
+        `- ${p.id}: ${p.name} (${p.type}, ${p.elevationM}m)${p.description ? ` — ${p.description}` : ""}`,
+    )
+    .join("\n");
+  const waypointTable = manifest.waypoints
+    .map((w) => `- ${w.kmAlongTrail} km: ${w.name} (${w.elevationM}m)`)
+    .join("\n");
+  const emergencyList = Object.entries(manifest.emergency)
+    .map(([k, v]) => `- ${k.replace(/_/g, " ")}: ${v}`)
     .join("\n");
 
   const recentHazards = loadHazards().slice(-3);
@@ -591,8 +601,14 @@ TRAIL FACTS:
 - Summit: ${manifest.summit.name} (${manifest.summit.elevationM}m)
 - Total length: ${manifest.trailLengthKm} km
 
+WAYPOINTS (km marks):
+${waypointTable}
+
 POIs:
 ${poiSummary}
+
+EMERGENCY CONTACTS:
+${emergencyList}
 ${hazardBlock}
 RULES:
 - Call tools BEFORE making any distance, time, or elevation claim. Never guess numbers.

@@ -21,6 +21,10 @@ const GEMMA_MODEL = process.env.GEMMA_MODEL ?? "gemma4:e4b";
 // FunctionGemma (270M) — dedicated function-calling Gemma used as a sub-second
 // tool router when pulled locally. E4B then only does one composition pass.
 const ROUTER_MODEL = process.env.ROUTER_MODEL ?? "functiongemma";
+// E4B supports a 128K context; default well above the old 4K so the full
+// manifest, POI notes, hazards, and retrieved almanac all fit. Tune down on
+// low-RAM CPU hosts via env.
+const GEMMA_NUM_CTX = Number(process.env.GEMMA_NUM_CTX ?? 16384);
 
 export type GemmaBackend = "litert-lm" | "ollama" | "simulator";
 
@@ -160,7 +164,7 @@ async function callOllama(
       messages,
       stream: false,
       think: false, // thinking mode adds ~30s/turn on CPU; disable for trail latency
-      options: { temperature: 0.3, num_ctx: 4096 },
+      options: { temperature: 0.3, num_ctx: GEMMA_NUM_CTX },
       ...(withTools ? { tools: TOOL_DEFINITIONS } : {}),
     }),
   });
@@ -499,7 +503,7 @@ async function callOllamaStreamRound(
       messages,
       stream: true,
       think: false,
-      options: { temperature: 0.3, num_ctx: 4096 },
+      options: { temperature: 0.3, num_ctx: GEMMA_NUM_CTX },
       ...(withTools ? { tools: TOOL_DEFINITIONS } : {}),
     }),
   });
