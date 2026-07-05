@@ -17,24 +17,38 @@ export function useHumsafar(
   const [sosAlert, setSosAlert] = useState<PeerState | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
 
+  // Position lives in a ref so sendPosition stays referentially stable —
+  // otherwise every slider tick re-runs the socket effect, tearing down and
+  // reopening the WebSocket, and a send() can land while the new socket is
+  // still CONNECTING (an uncaught DOMException that takes down the React tree).
+  const positionRef = useRef(position);
+  positionRef.current = position;
+  const peerNameRef = useRef(peerName);
+  peerNameRef.current = peerName;
+
   const sendPosition = useCallback(
     (status: "ok" | "sos" = "ok", visible = true) => {
-      wsRef.current?.send(
+      const ws = wsRef.current;
+      if (!ws || ws.readyState !== WebSocket.OPEN) return;
+      ws.send(
         JSON.stringify({
           type: "position",
-          lat: position.lat,
-          lng: position.lng,
+          lat: positionRef.current.lat,
+          lng: positionRef.current.lng,
           status,
           visible,
-          name: peerName,
+          name: peerNameRef.current,
         }),
       );
     },
-    [position.lat, position.lng, peerName],
+    [],
   );
 
   const triggerSos = useCallback(() => {
-    wsRef.current?.send(JSON.stringify({ type: "sos" }));
+    const ws = wsRef.current;
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: "sos" }));
+    }
     sendPosition("sos");
   }, [sendPosition]);
 
@@ -78,6 +92,7 @@ export function useHumsafar(
     };
   }, [enabled, peerId, peerName, sendPosition]);
 
+  // Push a fresh position when it changes (no socket teardown — see refs above).
   useEffect(() => {
     if (connected) sendPosition();
   }, [connected, position.lat, position.lng, sendPosition]);
