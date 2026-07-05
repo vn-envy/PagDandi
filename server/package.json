@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "eval": "tsx src/eval.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
