@@ -1,0 +1,46 @@
+{
+  "id": "triund",
+  "name": "Triund–Indrahar",
+  "nameHi": "त्रियुंड",
+  "region": "Dhauladhars, Himachal Pradesh",
+  "description": "Classic McLeod Ganj day-hike to Triund meadow with views of the Dhauladhar range. Dense OSM coverage, foreign-backpacker crowd — perfect for Bhasha Bridge demos.",
+  "bbox": [76.26, 32.17, 76.44, 32.34],
+  "center": [76.345, 32.248],
+  "defaultZoom": 12.5,
+  "pmtiles": "/trek-packs/triund/triund.pmtiles",
+  "trailLengthKm": 9.2,
+  "maxElevationM": 2875,
+  "start": {
+    "id": "mcleod-ganj",
+    "name": "McLeod Ganj (Dharamkot Road)",
+    "lat": 32.2196,
+    "lng": 76.3234,
+    "elevationM": 2082
+  },
+  "summit": {
+    "id": "triund-top",
+    "name": "Triund Top",
+    "lat": 32.2583,
+    "lng": 76.3667,
+    "elevationM": 2875
+  },
+  "emergency": {
+    "universal": "112",
+    "sdhrf": "0135-2716200",
+    "himachal_tourism": "1800-180-8077",
+    "nearest_hospital": "Tanda Medical College, Kangra"
+  },
+  "waypoints": [
+    { "id": "wp-0", "name": "McLeod Ganj", "lat": 32.2196, "lng": 76.3234, "elevationM": 2082, "distanceKm": 0, "kmAlongTrail": 0 },
+    { "id": "wp-1", "name": "Dharamkot junction", "lat": 32.2312, "lng": 76.3268, "elevationM": 2150, "distanceKm": 1.3, "kmAlongTrail": 1.3 },
+    { "id": "wp-2", "name": "Galu Temple", "lat": 32.2415, "lng": 76.3345, "elevationM": 2300, "distanceKm": 2.8, "kmAlongTrail": 2.8 },
+    { "id": "wp-3", "name": "Magic View Café", "lat": 32.2498, "lng": 76.3482, "elevationM": 2520, "distanceKm": 5.1, "kmAlongTrail": 5.1 },
+    { "id": "wp-4", "name": "Snowline Café", "lat": 32.2545, "lng": 76.3588, "elevationM": 2700, "distanceKm": 7.4, "kmAlongTrail": 7.4 },
+    { "id": "wp-5", "name": "Triund Top", "lat": 32.2583, "lng": 76.3667, "elevationM": 2875, "distanceKm": 9.2, "kmAlongTrail": 9.2 }
+  ],
+  "demoPositions": [
+    { "label": "Magic View Café", "kmAlongTrail": 5.1, "scenario": "Summit before dark?" },
+    { "label": "Below Snowline", "kmAlongTrail": 6.8, "scenario": "Camp or push on?" },
+    { "label": "Near ridge", "kmAlongTrail": 8.2, "scenario": "Final push to summit" }
+  ]
+}

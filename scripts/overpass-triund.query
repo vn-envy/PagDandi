@@ -1,0 +1,12 @@
+# Overpass API query — Triund region POIs
+# Run: curl -d @scripts/overpass-triund.query https://overpass-api.de/api/interpreter -o trek-packs/triund/pois-raw.json
+
+[out:json][timeout:60];
+(
+  node["tourism"="viewpoint"](32.17,76.26,32.34,76.44);
+  node["tourism"="camp_site"](32.17,76.26,32.34,76.44);
+  node["natural"="spring"](32.17,76.26,32.34,76.44);
+  node["amenity"="shelter"](32.17,76.26,32.34,76.44);
+  node["emergency"="assembly_point"](32.17,76.26,32.34,76.44);
+);
+out body;
