@@ -24,6 +24,7 @@ export function PrakritiLens({ kmAlongTrail }: PrakritiLensProps) {
   const [loading, setLoading] = useState(false);
   const [reply, setReply] = useState<string | null>(null);
   const [backend, setBackend] = useState<string | null>(null);
+  const [toolCalls, setToolCalls] = useState<Array<{ name: string; result: unknown }>>([]);
 
   const stopCamera = useCallback(() => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -79,6 +80,7 @@ export function PrakritiLens({ kmAlongTrail }: PrakritiLensProps) {
       const data = await res.json();
       setReply(data.reply);
       setBackend(data.backend);
+      setToolCalls(data.toolCalls ?? []);
     } catch {
       setReply("Could not reach Prakriti Lens. Is the local server running?");
     } finally {
@@ -210,6 +212,18 @@ export function PrakritiLens({ kmAlongTrail }: PrakritiLensProps) {
         {reply && (
           <div className="space-y-2 rounded-lg border bg-muted/40 p-3">
             <p className="text-sm leading-relaxed">{reply}</p>
+            {toolCalls.length > 0 && (
+              <div className="flex flex-wrap gap-1">
+                {toolCalls.map((tc, i) => (
+                  <span
+                    key={i}
+                    className="rounded-full border bg-background px-2 py-0.5 font-mono text-[9px] text-muted-foreground"
+                  >
+                    {tc.name}
+                  </span>
+                ))}
+              </div>
+            )}
             <div className="flex items-center justify-between">
               <p className="text-[10px] text-muted-foreground">
                 {backend && `via ${backend}`} · no foraging or medical advice, ever

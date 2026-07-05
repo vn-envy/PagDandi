@@ -749,9 +749,30 @@ const LENS_DEMOS = [
 export async function prakritiLens(
   imageBase64: string,
   kmAlongTrail: number,
-): Promise<{ reply: string; backend: GemmaBackend; position: Position }> {
+): Promise<{
+  reply: string;
+  backend: GemmaBackend;
+  position: Position;
+  toolCalls: Array<{ name: string; args?: unknown; result: unknown }>;
+}> {
   const position = interpolatePosition(kmAlongTrail);
   const manifest = loadManifest();
+
+  // Tool-grounded vision: run the same trek tools the chat path uses and hand
+  // the results to the vision prompt, so identifications carry live position
+  // context ("that peak is ~4h away") instead of generic captions.
+  const ascent = remainingAscent(position);
+  const viewpoint = nearestPoi(position, "viewpoint");
+  const toolCalls = [
+    { name: "remaining_ascent", result: ascent },
+    {
+      name: "nearest",
+      args: { type: "viewpoint" },
+      result: { poi: viewpoint.poi.name, distanceKm: Number(viewpoint.distanceKm.toFixed(2)), bearing: viewpoint.bearingLabel },
+    },
+  ];
+  const month = new Date().toLocaleString("en", { month: "long" });
+
   // Prompt structure matters: with a long persona-first prompt, gemma4:e4b
   // intermittently claims no image was attached (even though ollama decodes
   // it — visible as "image decoded" in server logs). Anchoring on the image
@@ -759,7 +780,12 @@ export async function prakritiLens(
   // defeats ollama's prompt-prefix KV cache.
   const prompt = `Look carefully at the attached photo. It was just taken on the ${manifest.name} trail (${manifest.region}) at about ${position.elevationM}m elevation.
 
-First, describe what you actually see. Then, speaking as Prakriti Lens — a warm, knowledgeable local sherpa-naturalist — explain it in 3-5 sentences: common name (with Hindi/Pahari local name and scientific name if it's a plant or animal), its ecology at this altitude, and any trail lore or practical relevance.
+TOOL CONTEXT (live, from trek tools — use when relevant):
+- remaining_ascent: ${ascent.remainingM}m to ${ascent.summitName} (${ascent.distanceToSummitKm.toFixed(1)} km away)
+- nearest viewpoint: ${viewpoint.poi.name}, ${viewpoint.distanceKm.toFixed(1)} km ${viewpoint.bearingLabel}
+- month: ${month} (flowering/migration season context)
+
+First, describe what you actually see. Then, speaking as Prakriti Lens — a warm, knowledgeable local sherpa-naturalist — explain it in 3-5 sentences: common name (with Hindi/Pahari local name and scientific name if it's a plant or animal), its ecology at this altitude, and any trail lore or practical relevance. If it's a peak or ridge, use the tool context to say how far/high it is from the trekker.
 
 Safety rules: mention hazards (aggressive wildlife, thorns, unstable ground) when relevant, but give absolutely NO medical, edibility, or foraging advice — if locals traditionally use a plant you may say so, adding that trekkers must never consume wild plants.
 [shot ${Date.now().toString(36)}]`;
@@ -793,7 +819,7 @@ Safety rules: mention hazards (aggressive wildlife, thorns, unstable ground) whe
         const data = (await res.json()) as { response: string };
         const reply = data.response.trim();
         if (!refusalPattern.test(reply.slice(0, 200))) {
-          return { reply, backend, position };
+          return { reply, backend, position, toolCalls };
         }
         console.log(`[lens] model ignored image (attempt ${attempt + 1}/2), retrying`);
       }
@@ -807,6 +833,7 @@ Safety rules: mention hazards (aggressive wildlife, thorns, unstable ground) whe
     reply: `${demo.reply}\n\n_(Demo response — connect Gemma for live identification.)_`,
     backend: "simulator",
     position,
+    toolCalls,
   };
 }
 
